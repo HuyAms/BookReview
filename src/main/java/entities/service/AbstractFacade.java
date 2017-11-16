@@ -43,6 +43,12 @@ public abstract class AbstractFacade<T> {
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
+    
+    public T findNewest() {
+        List<T> listEntity = findAll();
+        int lastIndex = listEntity.size() - 1;
+        return listEntity.get(lastIndex);
+    }
 
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();

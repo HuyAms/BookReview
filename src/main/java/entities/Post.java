@@ -7,6 +7,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,7 +61,7 @@ public class Post implements Serializable {
     @Column(name = "REVIEW")
     private String review;
     @Column(name = "TIMESTAMP")
-    private Integer timestamp;
+    private Date timestamp;
     @ManyToMany(mappedBy = "postCollection")
     private Collection<Category> categoryCollection;
     @JoinColumn(name = "USER_UID", referencedColumnName = "UID")
@@ -118,11 +119,11 @@ public class Post implements Serializable {
         this.review = review;
     }
 
-    public Integer getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 

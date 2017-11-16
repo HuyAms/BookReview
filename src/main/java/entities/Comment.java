@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Comment implements Serializable {
     @Column(name = "CONTENT")
     private String content;
     @Column(name = "TIMESTAMP")
-    private Integer timestamp;
+    private Date timestamp;
     @JoinColumn(name = "POST_POSTID", referencedColumnName = "POSTID")
     @ManyToOne
     private Post postPostid;
@@ -75,11 +76,11 @@ public class Comment implements Serializable {
         this.content = content;
     }
 
-    public Integer getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 

@@ -21,7 +21,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import servererror.ServerError;
 import utilities.AuthUtil;
+import utilities.ErrorUtil;
 import utilities.JsonUtil;
 import utilities.TextUtil;
 
@@ -49,13 +51,56 @@ public class UserFacadeREST extends AbstractFacade<User> {
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
+    public Response register(@QueryParam("email") String email, @QueryParam("username") String userName, @QueryParam("password") String password) {
+        System.out.println("username: " + userName);
+        System.out.println("password: " + password);
+        System.out.println("email: " + email);
+        
+        if (TextUtil.isEmpty(userName) || TextUtil.isEmpty(password) || TextUtil.isEmpty(email)) { 
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("Field should not be empty")).build();
+        }
+        
+        List<User> listUser = findAll();
+        for(User user: listUser) {
+            if (user.getUsername().equals(userName)) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ErrorUtil.badRequest("This username is already registered"))
+                        .build();
+            }
+            if (user.getEmail().equals(email)){
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ErrorUtil.badRequest("This email is already registered"))
+                        .build();
+            }
+        }
+    
+        User newUser = new User();
+        newUser.setEmail(email);
+        newUser.setPass(password);
+        newUser.setUsername(userName);
+        
+        super.create(newUser);
+        
+        newUser = super.findNewest();
+       
+        String userId = newUser.getUid() + "";
+        String token = AuthUtil.createToken(userId);
+        String jsonToken = JsonUtil.jsonToken(token);
+                
+        return Response.status(Response.Status.CREATED).entity(jsonToken).build();
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
     @Path("login")
     public Response logIn(@QueryParam("username") String userName, @QueryParam("password") String password) {
         System.out.println("username: " + userName);
         System.out.println("password: " + password);
         
         if (TextUtil.isEmpty(userName) || TextUtil.isEmpty(password)) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("Field should not be empty")).build();
         }
         
         List<User> listUser = findAll();
@@ -71,14 +116,16 @@ public class UserFacadeREST extends AbstractFacade<User> {
  
                     return Response.status(Response.Status.OK).entity(jsonToken).build();
                 } else {
-                    return Response.status(Response.Status.UNAUTHORIZED).build();
+                    return Response.status(Response.Status.UNAUTHORIZED)
+                            .entity(ErrorUtil.unAuthorized("Invalid password"))
+                            .build();
                 }
-            } else {
-                return Response.status(Response.Status.BAD_REQUEST).build();
-            }
+            } 
         }
-        
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+  
+        return Response.status(Response.Status.UNAUTHORIZED)
+                 .entity(ErrorUtil.unAuthorized("Invalid username"))
+                .build();
     }
 
     @PUT
