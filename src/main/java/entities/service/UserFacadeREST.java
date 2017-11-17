@@ -20,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mindrot.jbcrypt.BCrypt;
@@ -288,14 +289,20 @@ public class UserFacadeREST extends AbstractFacade<User> {
     }
 
     @GET
-    @Override
     @Produces({MediaType.APPLICATION_JSON})
-    public List<User> findAll() {
-        List<User> listUser = super.findAll();
-//        for(User user: listUser) {
-//             user.setPass("");
-//        }
-        return listUser;
+    public Response findAll(@HeaderParam("authorization") String token) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            List<User> listUser = super.findAll();
+            GenericEntity<List<User>> entities = new GenericEntity<List<User>>(listUser) {};
+            return Response.status(Response.Status.OK)
+                    .entity(entities)
+                    .build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
     }
 
     @GET

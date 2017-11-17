@@ -222,6 +222,14 @@ Query params:
 | oldpassword |string  |   |
 | newpassword |string  |   |
 
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| pass | string |Empty |
+| uid | string | |
+| username | string |  |
+
 Sample header:
 ```json
 {
@@ -248,6 +256,42 @@ Sample response:
 }
 ```
 ####  DELETE/webresources/users
+User delete account
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| pass | string |Empty |
+| uid | string | |
+| username | string |  |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+{
+    "email": "huy@gmailcom",
+    "pass": "",
+    "uid": 1,
+    "username": "HuyTrinh"
+}
+```
+
 ## Post
 ## Comment
 ## Category
