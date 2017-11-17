@@ -33,10 +33,12 @@ public class TokenUtil {
         }
     }
     
-    public static String decodeToken(String token) {
+    public static Long decodeToken(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return jwt.getKeyId();
+            String stringId = jwt.getIssuer();
+            Long id = Long.parseLong(stringId);
+            return id;
         } catch (JWTDecodeException exception){
             //Invalid token
             return null;
