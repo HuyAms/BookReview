@@ -4,12 +4,13 @@ import entities.Category;
 import entities.Comment;
 import entities.Rate;
 import entities.User;
+import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-16T18:48:02")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-17T02:51:27")
 @StaticMetamodel(Post.class)
 public class Post_ { 
 
@@ -21,7 +22,7 @@ public class Post_ {
     public static volatile SingularAttribute<Post, Long> postid;
     public static volatile SingularAttribute<Post, String> bookAuthor;
     public static volatile SingularAttribute<Post, String> bookTitle;
-    public static volatile SingularAttribute<Post, Integer> timestamp;
+    public static volatile SingularAttribute<Post, Date> timestamp;
     public static volatile SingularAttribute<Post, User> userUid;
 
 }

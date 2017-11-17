@@ -8,13 +8,15 @@ package utilities;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import java.io.UnsupportedEncodingException;
 
 /**
  *
  * @author HUYTRINH
  */
-public class AuthUtil {
+public class TokenUtil {
     public static String createToken(String userId) {
         try {
             Algorithm algorithm = Algorithm.HMAC256("huydeptrai");
@@ -27,6 +29,16 @@ public class AuthUtil {
             return null;
         } catch (JWTCreationException exception){
             //Invalid Signing configuration / Couldn't convert Claims.
+            return null;
+        }
+    }
+    
+    public static String decodeToken(String token) {
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            return jwt.getKeyId();
+        } catch (JWTDecodeException exception){
+            //Invalid token
             return null;
         }
     }

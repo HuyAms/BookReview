@@ -21,8 +21,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mindrot.jbcrypt.BCrypt;
 import servererror.ServerError;
-import utilities.AuthUtil;
+import utilities.TokenUtil;
 import utilities.ErrorUtil;
 import utilities.JsonUtil;
 import utilities.TextUtil;
@@ -77,7 +78,10 @@ public class UserFacadeREST extends AbstractFacade<User> {
     
         User newUser = new User();
         newUser.setEmail(email);
-        newUser.setPass(password);
+        
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
+        newUser.setPass(hashedPassword);
+        
         newUser.setUsername(userName);
         
         super.create(newUser);
@@ -85,7 +89,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         newUser = super.findNewest();
        
         String userId = newUser.getUid() + "";
-        String token = AuthUtil.createToken(userId);
+        String token = TokenUtil.createToken(userId);
         String jsonToken = JsonUtil.jsonToken(token);
                 
         return Response.status(Response.Status.CREATED).entity(jsonToken).build();
@@ -106,9 +110,9 @@ public class UserFacadeREST extends AbstractFacade<User> {
         List<User> listUser = findAll();
         for(User user: listUser) {
             if (user.getUsername().equals(userName)) {
-                if (user.getPass().equals(password)) {
+                if (BCrypt.checkpw(password, user.getPass())) {
                     String userId = user.getUid() + "";
-                    String token = AuthUtil.createToken(userId);
+                    String token = TokenUtil.createToken(userId);
                     String jsonToken = JsonUtil.jsonToken(token);
                     System.out.println("username: " + userName);
                     System.out.println("pass: " + password);
@@ -145,14 +149,20 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public User find(@PathParam("id") Long id) {
-        return super.find(id);
+        User user = super.find(id);
+//        user.setPass("");
+        return user;
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_JSON})
     public List<User> findAll() {
-        return super.findAll();
+        List<User> listUser = super.findAll();
+//        for(User user: listUser) {
+//             user.setPass("");
+//        }
+        return listUser;
     }
 
     @GET

@@ -1,0 +1,13 @@
+entities\Post.class
+entities\service\CommentFacadeREST.class
+entities\Category.class
+entities\service\RateFacadeREST.class
+utilities\TokenUtil.class
+entities\service\AbstractFacade.class
+servererror\ServerError.class
+utilities\TextUtil.class
+entities\Comment.class
+entities\service\PostFacadeREST.class
+entities\Rate.class
+entities\User.class
+.netbeans_automatic_build
