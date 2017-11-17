@@ -35,6 +35,7 @@ public class TokenUtil {
     
     public static Long decodeToken(String token) {
         try {
+            System.out.println("token: " + token);
             DecodedJWT jwt = JWT.decode(token);
             String stringId = jwt.getIssuer();
             Long id = Long.parseLong(stringId);

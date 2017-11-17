@@ -51,7 +51,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         super.create(entity);
     }
     
-     @POST
+    @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("register")
     public Response register(@QueryParam("email") String email, @QueryParam("username") String userName, @QueryParam("password") String password) {
@@ -136,13 +136,81 @@ public class UserFacadeREST extends AbstractFacade<User> {
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Long id, User entity) {
         super.edit(entity);
     }
+    
+    @PUT
+    @Path("me")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response editMe(@HeaderParam("authorization") String token,
+                       @QueryParam("email") String email, 
+                       @QueryParam("username") String userName, 
+                       @QueryParam("oldpassword") String oldPassword, 
+                       @QueryParam("newpassword") String newPassword) {
+        
+        Long id = TokenUtil.decodeToken(token);
+        if (id != null) {
+            if(!TextUtil.isEmpty(newPassword)) {
+                //update password
+                User me = super.find(id);
+                if(!TextUtil.isEmpty(oldPassword)) {
+                    if (BCrypt.checkpw(oldPassword, me.getPass())) {
+                        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
+                        me.setPass(hashedPassword);
+                        super.edit(me);
+                        return Response.ok(me).build();
+                    } else {
+                        return Response.status(Response.Status.UNAUTHORIZED)
+                       .entity(ErrorUtil.unAuthorized("Old password is not correct"))
+                       .build();
+                    }  
+                } else {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("old password should not be empty")).build();
+                }   
+            } else {
+                //not update password
+                User me = super.find(id);
+                
+                
+                //check valid email and pass
+                List<User> listUser = findAll();
+                for(User user: listUser) {
+                    if (user.getUsername().equals(userName) && !me.getUsername().equals(userName)) {
+                        return Response.status(Response.Status.BAD_REQUEST)
+                                .entity(ErrorUtil.badRequest("This username is already registered"))
+                                .build();
+                    }
+                    if (user.getEmail().equals(email) && !me.getEmail().equals(email)){
+                        return Response.status(Response.Status.BAD_REQUEST)
+                                .entity(ErrorUtil.badRequest("This email is already registered"))
+                                .build();
+                    }
+                }
+                
+                if (TextUtil.isEmpty(userName) || TextUtil.isEmpty(email)) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                                .entity(ErrorUtil.badRequest("Fields should not be empty"))
+                                .build();
+                }
+               
+                me.setEmail(email);
+                me.setUsername(userName);
+                super.edit(me);
+                return Response.ok(me).build();
+            }
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
 
     @DELETE
-//    @Path("{id}")
+    @Path("me")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public Response remove(@HeaderParam("authorization") String token) {
@@ -164,12 +232,12 @@ public class UserFacadeREST extends AbstractFacade<User> {
             }
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                     .entity(ErrorUtil.notFound("Invalid token"))
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
                     .build();
         }
     }
 
-     @GET
+    @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response find(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
@@ -177,7 +245,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         if (userId != null) {
             User user = super.find(id);
             if (user!= null) {
-                user.setPass("");
+//                user.setPass("");
                 return Response.status(Response.Status.OK)
                     .entity(user)
                     .build();
@@ -189,7 +257,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                                
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                     .entity(ErrorUtil.notFound("Invalid token"))
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
                     .build();
         }
     }
@@ -202,7 +270,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         if (userId != null) {
             User user = super.find(userId);
             if (user!= null) {
-                user.setPass("");
+//                user.setPass("");
                 return Response.status(Response.Status.OK)
                     .entity(user)
                     .build();
@@ -214,7 +282,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                                
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                     .entity(ErrorUtil.notFound("Invalid token"))
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
                     .build();
         }
     }
