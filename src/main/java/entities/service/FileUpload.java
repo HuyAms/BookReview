@@ -50,7 +50,7 @@ public class FileUpload {
             
             Long id = TokenUtil.decodeToken(token);
             if (id != null) {
-                 String filePath = SERVER_UPLOAD_LOCATION_FOLDER + contentDispositionHeader.getFileName();
+                 String filePath = SERVER_UPLOAD_LOCATION_FOLDER + System.currentTimeMillis() + contentDispositionHeader.getFileName();
 
             // save the file to the server
             saveFile(fileInputStream, filePath);
