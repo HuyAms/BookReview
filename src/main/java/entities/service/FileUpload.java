@@ -69,7 +69,6 @@ public class FileUpload {
 	// save uploaded file to a defined location on the server
 	private void saveFile(InputStream uploadedInputStream,
 			String serverLocation) {
-
 		try {
 			OutputStream outpuStream = new FileOutputStream(new File(serverLocation));
 			int read = 0;

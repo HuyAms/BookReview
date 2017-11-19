@@ -17,4 +17,12 @@ public class TextUtil {
          return false;
      } 
     }
+    
+    public static boolean isEmpty(String ... text){
+        for(String t: text) {
+            if (t == null || t.equals("")) 
+            return true; 
+        }
+        return false;
+    }
 }
