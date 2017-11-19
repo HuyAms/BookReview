@@ -10,7 +10,8 @@ package utilities;
  * @author HUYTRINH
  */
 public class JsonUtil {
-    public static String jsonToken(String token) {
-       return "{\"token\":\""+token+"\"}" ;
+    public static String jsonToken(String tag, String data) {
+//       return "{\"token\":\""+token+"\"}" ;
+       return "{\"" + tag + "\":" + "\"" + data + "\"}";
    }
 }

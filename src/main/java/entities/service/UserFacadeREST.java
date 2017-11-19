@@ -93,7 +93,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
        
         String userId = newUser.getUid() + "";
         String token = TokenUtil.createToken(userId);
-        String jsonToken = JsonUtil.jsonToken(token);
+        String jsonToken = JsonUtil.jsonToken("token", token);
                
         return Response.status(Response.Status.CREATED).entity(jsonToken).build();
     }
@@ -116,7 +116,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                 if (BCrypt.checkpw(password, user.getPass())) {
                     String userId = user.getUid() + "";
                     String token = TokenUtil.createToken(userId);
-                    String jsonToken = JsonUtil.jsonToken(token);
+                    String jsonToken = JsonUtil.jsonToken("token", token);
                     System.out.println("username: " + userName);
                     System.out.println("pass: " + password);
                     System.out.println("jsonToken: " + jsonToken);

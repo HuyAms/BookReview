@@ -7,6 +7,7 @@ package entities.service;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
+        resources.add(MultiPartFeature.class);
         addRestResourceClasses(resources);
         return resources;
     }
@@ -31,6 +33,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(entities.service.CategoryFacadeREST.class);
         resources.add(entities.service.CommentFacadeREST.class);
+        resources.add(entities.service.FileUpload.class);
         resources.add(entities.service.PostFacadeREST.class);
         resources.add(entities.service.RateFacadeREST.class);
         resources.add(entities.service.UserFacadeREST.class);
