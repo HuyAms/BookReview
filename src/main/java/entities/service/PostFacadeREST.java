@@ -158,7 +158,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
             Post post = super.find(id);
             if (post == null) {
                  return Response.status(Response.Status.NOT_FOUND)
-                    .entity(ErrorUtil.unAuthorized("Cannot find the post with that id"))
+                    .entity(ErrorUtil.notFound("Cannot find the post with that id"))
                     .build();
             } else {
                 return Response.ok(post).build();

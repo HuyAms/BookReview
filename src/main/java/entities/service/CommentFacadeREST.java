@@ -6,6 +6,8 @@
 package entities.service;
 
 import entities.Comment;
+import entities.Post;
+import entities.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,12 +15,18 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import utilities.ErrorUtil;
+import utilities.TextUtil;
+import utilities.TokenUtil;
 
 /**
  *
@@ -36,10 +44,56 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     }
 
     @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Comment entity) {
-        super.create(entity);
+    @Path("{postId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response create(
+            @HeaderParam("authorization") String token,
+            @PathParam("postId") Long postId,
+            @QueryParam("content") String content 
+    ) {
+        Long userId = TokenUtil.decodeToken(token);
+        
+        if (userId != null) {
+            Comment comment = new Comment();
+            Post post = em.find(Post.class, postId);
+            User user = em.find(User.class, userId);
+            
+            if (postId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            if (userId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            if (TextUtil.isEmpty(content)) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("Field should not be empty"))
+                    .build();
+            }    
+            
+            System.out.println("user: " + user);
+            System.out.println("post: " + post);
+            System.out.println("content: " + content);
+            
+            comment.setUserUid(user);
+            comment.setPostPostid(post);
+            comment.setContent(content);
+            
+            super.create(comment);
+            
+            return Response.ok(comment).build();
+            
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
     }
 
     @PUT
