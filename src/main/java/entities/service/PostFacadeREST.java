@@ -8,6 +8,7 @@ package entities.service;
 import entities.Category;
 import entities.Comment;
 import entities.Post;
+import entities.Rate;
 import entities.User;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +32,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import utilities.ErrorUtil;
+import utilities.JsonUtil;
 import utilities.TextUtil;
 import utilities.TokenUtil;
 
@@ -64,24 +66,26 @@ public class PostFacadeREST extends AbstractFacade<Post> {
           
     }
    
-//
-//    @POST
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces({MediaType.APPLICATION_JSON})
-//    public Response create(
-//            @HeaderParam("authorization") String token,
+
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public void create(
+            @HeaderParam("authorization") String token,
 //            @QueryParam("title") String title, 
 //            @QueryParam("author") String author, 
 //            @QueryParam("path") String path, 
 //            @QueryParam("review") String review,
 //            @QueryParam("categories") List<String> categories
-//    ) {
-//        
-//                System.out.println("title: " + title);
-//                System.out.println("author: " + author);
-//                System.out.println("path: " + path);
-//                System.out.println("review: " + review);
-//                
+            Post post
+    ) {
+        
+                System.out.println("title: " + post.getBookTitle());
+                System.out.println("author: " + post.getBookAuthor());
+                System.out.println("path: " + post.getPath());
+                System.out.println("review: " + post.getReview());
+                System.out.println("review: " + post.getCategoryCollection());
+                
 //                for(String cat: categories) {
 //                    System.out.println("categories: " + categories);
 //                }
@@ -135,7 +139,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
 //                     .entity(ErrorUtil.unAuthorized("Invalid token"))
 //                    .build();
 //        }
-//    }
+    }
 
     @PUT
     @Path("{id}")
@@ -275,7 +279,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @DELETE
     @Produces({MediaType.APPLICATION_JSON})
     @Path("comments/{id}")
-    public Response remove(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
+    public Response removeComment(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
         Long userId = TokenUtil.decodeToken(token);
         if (userId != null) {
             Comment comment = em.find(Comment.class, id);
@@ -295,6 +299,109 @@ public class PostFacadeREST extends AbstractFacade<Post> {
         }
     }
     
+    // <-----------RATING------------------->
+    @POST
+    @Path("{postId}/ratings/")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response postRating(
+            @HeaderParam("authorization") String token,
+            @PathParam("postId") Long postId) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Rate newRate = new Rate();
+            Post post = em.find(Post.class, postId);
+            User user = em.find(User.class, userId);
+            
+            if (postId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            if (userId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            List<Rate> ratings = em.createNamedQuery("Rate.findAll").getResultList();
+            boolean hasRated = false;
+            for(Rate rate: ratings) {
+                if (rate.getUserUid().getUid() == userId) {
+                    hasRated = true;
+                }
+            }
+            
+            if (!hasRated) {
+                newRate.setUserUid(user);
+                newRate.setPostPostid(post);
+          
+                em.persist(newRate);
+            
+                return Response.ok(newRate).build();
+            }
+            
+            return Response.status(Response.Status.BAD_REQUEST).entity(ErrorUtil.badRequest("User has rated this post")).build();
+            
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @GET
+    @Path("{postId}/ratings/")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getRatings(@HeaderParam("authorization") String token, @PathParam("postId") Long postId) {
+        Long id = TokenUtil.decodeToken(token);
+        if (id != null) {
+            Post post = super.find(id);
+            if (post == null) {
+                 return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find the post with that id"))
+                    .build();
+            } else {
+                List<Rate> ratings = em.createNamedQuery("Rate.findAll").getResultList();
+                List<Rate> postRatings = new ArrayList();
+                for(Rate rate: ratings) {
+                    if (rate.getPostPostid().getPostid() == postId) {
+                        postRatings.add(rate);
+                    }
+                }
+                
+                String countRating = postRatings.size() + "";
+                return Response.ok(JsonUtil.jsonToken("rating", countRating)).build();
+            } 
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @DELETE
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("ratings/{id}")
+    public Response removeRating(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Rate rate = em.find(Rate.class, id);
+            if (rate != null) {
+                em.remove(em.merge(rate));
+                return Response.ok(rate).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find rate with that id"))
+                    .build();
+            }
+            
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
     
     
 

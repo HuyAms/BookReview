@@ -5,6 +5,8 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -28,8 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r")
-    , @NamedQuery(name = "Rate.findByRateid", query = "SELECT r FROM Rate r WHERE r.rateid = :rateid")
-    , @NamedQuery(name = "Rate.findByRating", query = "SELECT r FROM Rate r WHERE r.rating = :rating")})
+    , @NamedQuery(name = "Rate.findByRateid", query = "SELECT r FROM Rate r WHERE r.rateid = :rateid")})
+//    , @NamedQuery(name = "Rate.findByRating", query = "SELECT r FROM Rate r WHERE r.rating = :rating")})
 public class Rate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,8 +40,8 @@ public class Rate implements Serializable {
     @Basic(optional = false)
     @Column(name = "RATEID")
     private Long rateid;
-    @Column(name = "RATING")
-    private Integer rating;
+//    @Column(name = "RATING")
+//    private Integer rating;
     @JoinColumn(name = "POST_POSTID", referencedColumnName = "POSTID")
     @ManyToOne
     private Post postPostid;
@@ -62,13 +64,13 @@ public class Rate implements Serializable {
         this.rateid = rateid;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
+//    public Integer getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(Integer rating) {
+//        this.rating = rating;
+//    }
 
     public Post getPostPostid() {
         return postPostid;
@@ -78,6 +80,7 @@ public class Rate implements Serializable {
         this.postPostid = postPostid;
     }
 
+    @JsonIgnore
     public User getUserUid() {
         return userUid;
     }
