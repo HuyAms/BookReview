@@ -272,6 +272,29 @@ public class PostFacadeREST extends AbstractFacade<Post> {
         }
     }
     
+    @DELETE
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("comments/{id}")
+    public Response remove(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Comment comment = em.find(Comment.class, id);
+            if (comment != null) {
+                em.remove(em.merge(comment));
+                return Response.ok(comment).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find comment with that id"))
+                    .build();
+            }
+            
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
     
     
 
