@@ -9,6 +9,7 @@ import entities.Category;
 import entities.Comment;
 import entities.Post;
 import entities.User;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -189,7 +190,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     }
     
     
-//    COMMENT
+// <-----------COMMENT------------------->
     
     @POST
     @Path("{postId}/comments/")
@@ -253,9 +254,14 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                     .entity(ErrorUtil.notFound("Cannot find the post with that id"))
                     .build();
             } else {
-                List<Comment> comments = (List<Comment>) post.getCommentCollection();
-                
-                System.out.println("comments: " + comments);
+                List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
+                List<Comment> postComments = new ArrayList();
+                for(Comment comment: comments) {
+                    if (comment.getPostPostid().getPostid() == postId) {
+                        postComments.add(comment);
+                    }
+                }
+
                 GenericEntity<List<Comment>> entities = new GenericEntity<List<Comment>>(comments) {};
                 return Response.ok(entities).build();
             } 
