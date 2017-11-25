@@ -135,16 +135,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                 for(Category category: bookCategories) {
                     post.addCategory(category);
                 }
-                
-                
-//                post.setCategoryCollection(bookCategories);
-//                List<Category> setCategoires = post.getCategoryCollection();
-//                for (Category category: setCategoires) {
-//                    System.out.println("setCategories: " + category);
-//                }
-                
-                
-                
+              
                 //User
                 User user = em.find(User.class, id);
                 if (user == null) {
