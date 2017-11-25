@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -65,7 +66,7 @@ public class Post implements Serializable {
     @Column(name = "TIMESTAMP")
     private Date timestamp;
     @ManyToMany(mappedBy = "postCollection")
-    private List<Category> categoryCollection;
+    private List<Category> categoryCollection = new ArrayList();
     @JoinColumn(name = "USER_UID", referencedColumnName = "UID")
     @ManyToOne
     private User userUid;
@@ -79,6 +80,11 @@ public class Post implements Serializable {
 
     public Post(Long postid) {
         this.postid = postid;
+    }
+    
+    public void addCategory(Category category) {
+        categoryCollection.add(category);
+        category.getPostCollection().add(this);
     }
 
     public Long getPostid() {
@@ -129,7 +135,7 @@ public class Post implements Serializable {
         this.timestamp = timestamp;
     }
 
-    @XmlTransient
+//    @XmlTransient
     public List<Category> getCategoryCollection() {
         return categoryCollection;
     }

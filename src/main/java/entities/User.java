@@ -90,6 +90,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    @XmlTransient
     public String getPass() {
         return pass;
     }

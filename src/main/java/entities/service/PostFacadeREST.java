@@ -108,7 +108,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                
                 
                 //Category
-                List<Category> bookCategories = new ArrayList();
+//                List<Category> bookCategories = new ArrayList();
                 List<Category> availableCategories = em.createNamedQuery("Category.findAll").getResultList();
                 boolean validCategory = false;
                 
@@ -121,7 +121,8 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                         if (availableCategory.getCategory().equals(category)) {
                             validCategory = true;
                             System.out.println("valid: " + validCategory);
-                            bookCategories.add(availableCategory);
+//                            bookCategories.add(availableCategory);
+                            post.addCategory(availableCategory);
                             
                         } 
                     }
@@ -134,11 +135,11 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                 }
                 
                 
-                post.setCategoryCollection(bookCategories);
-                List<Category> setCategoires = post.getCategoryCollection();
-                for (Category category: setCategoires) {
-                    System.out.println("setCategories: " + category);
-                }
+//                post.setCategoryCollection(bookCategories);
+//                List<Category> setCategoires = post.getCategoryCollection();
+//                for (Category category: setCategoires) {
+//                    System.out.println("setCategories: " + category);
+//                }
                 
                 
                 
@@ -171,7 +172,6 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     }
 
     @DELETE
-
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response remove(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
