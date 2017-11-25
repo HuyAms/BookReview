@@ -114,6 +114,8 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
                 List<Comment> postComments = new ArrayList();
                 for(Comment comment: comments) {
                     if (comment.getPostPostid().getPostid() == postId) {
+                        System.out.println("postid: " + comment.getPostPostid().getPostid());
+                        System.out.println("param: " + postId);
                         postComments.add(comment);
                     }
                 }

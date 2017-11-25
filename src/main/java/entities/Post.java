@@ -8,7 +8,9 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,13 +65,13 @@ public class Post implements Serializable {
     @Column(name = "TIMESTAMP")
     private Date timestamp;
     @ManyToMany(mappedBy = "postCollection")
-    private Collection<Category> categoryCollection;
+    private List<Category> categoryCollection;
     @JoinColumn(name = "USER_UID", referencedColumnName = "UID")
     @ManyToOne
     private User userUid;
-    @OneToMany(mappedBy = "postPostid")
+    @OneToMany(mappedBy = "postPostid", cascade = {CascadeType.REMOVE })
     private Collection<Rate> rateCollection;
-    @OneToMany(mappedBy = "postPostid")
+    @OneToMany(mappedBy = "postPostid", cascade = {CascadeType.REMOVE })
     private Collection<Comment> commentCollection;
 
     public Post() {
@@ -128,11 +130,11 @@ public class Post implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Category> getCategoryCollection() {
+    public List<Category> getCategoryCollection() {
         return categoryCollection;
     }
 
-    public void setCategoryCollection(Collection<Category> categoryCollection) {
+    public void setCategoryCollection(List<Category> categoryCollection) {
         this.categoryCollection = categoryCollection;
     }
 
