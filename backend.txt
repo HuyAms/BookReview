@@ -12,9 +12,22 @@
 	* PUT/webresources/users
 	* DELETE/webresources/users
 * Post
+    * POST/webresources/posts
+    * DELETE /webresources/posts/{id}
+    * GET /webresources/posts
+    * GET /webresources/posts/{id}
 * Comment
+    * GET /webresources/comments/posts/{postsId}    
+    * POST /webresources/comments/posts/{postId}
+    * DELETE /webresources/comments/{id}
+* File upload
+    *  POST /webresources/photo
 * Category
+    *    
 * Rate
+    * POST /webresources/ratings/posts/{postId}
+    * GET /webresources/ratings/posts/{postID}
+    * DELETE /webresources/ratings/{id}
 
 ##Errors handling
 Http status code should be checked for at least following error conditions:
@@ -85,7 +98,7 @@ Sample response:
 ```
 
 ## User
-#### GET/webresources/users
+#### GET/webresources/users/me
 User get its own information
 Header payload:
 | key |	type | description |
@@ -101,7 +114,6 @@ Response payload:
 | key |	type | description |
 | --- | --- | --- |
 | email | string ||
-| pass | string |Empty |
 | uid | string | |
 | username | string |  |
 
@@ -116,7 +128,6 @@ Sample response:
 ```json
 {
     "email": "huy@gmailcom",
-    "pass": "",
     "uid": 1,
     "username": "HuyTrinh"
 }
@@ -139,7 +150,6 @@ Response payload:
 | key |	type | description |
 | --- | --- | --- |
 | email | string ||
-| pass | string |Empty |
 | uid | string | |
 | username | string |  |
 
@@ -155,13 +165,11 @@ Sample response:
 [
     {
         "email": "huy@gmailcom",
-        "pass": "",
         "uid": 1,
         "username": "HuyTrinh"
     },
     {
         "email": "tuan@gmailcom",
-        "pass": "",
         "uid": 2,
         "username": "TuanLe"
     }
@@ -185,7 +193,6 @@ Response payload:
 | key |	type | description |
 | --- | --- | --- |
 | email | string ||
-| pass | string |Empty |
 | uid | string | |
 | username | string |  |
 
@@ -200,7 +207,6 @@ Sample response:
 ```json
 {
     "email": "huy@gmailcom",
-    "pass": "",
     "uid": 1,
     "username": "HuyTrinh"
 }
@@ -226,7 +232,6 @@ Response payload:
 | key |	type | description |
 | --- | --- | --- |
 | email | string ||
-| pass | string |Empty |
 | uid | string | |
 | username | string |  |
 
@@ -250,7 +255,6 @@ Sample response:
 ```json
 {
     "email": "huy@gmailcom",
-    "pass": "",
     "uid": 1,
     "username": "HuyTrinh"
 }
@@ -272,7 +276,6 @@ Response payload:
 | key |	type | description |
 | --- | --- | --- |
 | email | string ||
-| pass | string |Empty |
 | uid | string | |
 | username | string |  |
 
@@ -286,13 +289,613 @@ Sample response:
 ```json
 {
     "email": "huy@gmailcom",
-    "pass": "",
     "uid": 1,
     "username": "HuyTrinh"
 }
 ```
 
 ## Post
+####  GET /webresources/posts
+Get all posts from database
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+{
+        {
+        "bookAuthor": "JK",
+        "bookTitle": "HP",
+        "categoryCollection": [
+            {
+                "category": "science",
+                "categoryid": 1
+            },
+            {
+                "category": "action",
+                "categoryid": 2
+            },
+            {
+                "category": "self-help",
+                "categoryid": 7
+            }
+        ],
+        "path": "url",
+        "postid": 17,
+        "review": "This book is great",
+        "timestamp": "2017-11-25T16:40:53+02:00",
+        "userUid": {
+            "email": "h@gmail.com",
+            "uid": 4,
+            "username": "huy"
+        }
+    },
+    {
+        "bookAuthor": "JK",
+        "bookTitle": "Harry Potter",
+        "categoryCollection": [
+            {
+                "category": "mystery",
+                "categoryid": 4
+            },
+            {
+                "category": "action",
+                "categoryid": 2
+            }
+        ],
+        "path": "D://picture/hp.jpeg",
+        "postid": 18,
+        "review": "This book is great",
+        "timestamp": "2017-11-25T17:23:19.373+02:00",
+        "userUid": {
+            "email": "h@gmail.com",
+            "uid": 4,
+            "username": "huy"
+        }
+    }
+}
+```
+####  GET /webresources/posts/{id}
+Get a post based on id
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+{
+    "bookAuthor": "JK",
+    "bookTitle": "Harry Potter",
+    "categoryCollection": [
+        {
+            "category": "mystery",
+            "categoryid": 4
+        },
+        {
+            "category": "action",
+            "categoryid": 2
+        }
+    ],
+    "path": "D://picture/hp.jpeg",
+    "postid": 18,
+    "review": "This book is great",
+    "timestamp": "2017-11-25T17:23:19.373+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
+####  POST /webresources/posts
+Create a new post
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| title | string  |   |
+| author | string  |   |
+| path | string  |   |
+| review | string  |   |
+| categories | string[]  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample request:
+```json
+{
+	"title":"Harry Potter",
+	"author":"JK",
+	"path":"D://picture/hp.jpeg",
+	"review":"This book is great",
+	"categories":["mystery","action"]
+}
+```
+Sample response:
+```json
+{
+    "bookAuthor": "JK",
+    "bookTitle": "Harry Potter",
+    "categoryCollection": [
+        {
+            "category": "mystery",
+            "categoryid": 4
+        },
+        {
+            "category": "action",
+            "categoryid": 2
+        }
+    ],
+    "path": "D://picture/hp.jpeg",
+    "postid": 18,
+    "review": "This book is great",
+    "timestamp": "2017-11-25T17:23:19.373+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
+####  DELETE /webresources/posts/{id}
+Delete a post based on id
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+{
+    "bookAuthor": "JK",
+    "bookTitle": "Harry Potter",
+    "categoryCollection": [
+        {
+            "category": "mystery",
+            "categoryid": 4
+        },
+        {
+            "category": "action",
+            "categoryid": 2
+        }
+    ],
+    "path": "D://picture/hp.jpeg",
+    "postid": 18,
+    "review": "This book is great",
+    "timestamp": "2017-11-25T17:23:19.373+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
 ## Comment
+#### GET /webresources/comments/posts/{postsId}
+Get all comments which belong to a post
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| commentid | string ||
+| content | string | |
+| postPostid | post |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**post** in details:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category | |
+| path | string | |
+| postid | string | |
+| review | string | |
+| timestamp | string | |
+| userUid | user | |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+[
+    {
+        "commentid": 1,
+        "content": "Great review",
+        "postPostid": {
+            "bookAuthor": "author1",
+            "bookTitle": "title1",
+            "categoryCollection": [],
+            "path": "path1",
+            "postid": 3,
+            "review": "review1",
+            "timestamp": "2013-08-05T18:19:03+03:00",
+            "userUid": {
+                "email": "user2@gmailcom",
+                "uid": 2,
+                "username": "user2"
+            }
+        },
+        "timestamp": "2017-11-25T17:35:20.428+02:00",
+        "userUid": {
+            "email": "h@gmail.com",
+            "uid": 4,
+            "username": "huy"
+        }
+    },
+    {
+        "commentid": 2,
+        "content": "amazing",
+        "postPostid": {
+            "bookAuthor": "author1",
+            "bookTitle": "title1",
+            "categoryCollection": [],
+            "path": "path1",
+            "postid": 3,
+            "review": "review1",
+            "timestamp": "2013-08-05T18:19:03+03:00",
+            "userUid": {
+                "email": "user2@gmailcom",
+                "uid": 2,
+                "username": "user2"
+            }
+        },
+        "timestamp": "2017-11-25T17:39:48.796+02:00",
+        "userUid": {
+            "email": "h@gmail.com",
+            "uid": 4,
+            "username": "huy"
+        }
+    }
+]
+```
+#### POST /webresources/comments/posts/{postId}
+Create a new comment for a post
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| content | string |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| commentid | string ||
+| content | string | |
+| postPostid | post |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**post** in details:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category | |
+| path | string | |
+| postid | string | |
+| review | string | |
+| timestamp | string | |
+| userUid | user | |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample request:
+```json
+{
+	"content": "Great book!"
+}
+```
+
+Sample response:
+```json
+{
+    "commentid": 11,
+    "content": "Great book",
+    "postPostid": {
+        "bookAuthor": "author1",
+        "bookTitle": "title1",
+        "categoryCollection": [],
+        "path": "path1",
+        "postid": 3,
+        "review": "review1",
+        "timestamp": "2013-08-05T18:19:03+03:00",
+        "userUid": {
+            "email": "user2@gmailcom",
+            "uid": 2,
+            "username": "user2"
+        }
+    },
+    "timestamp": "2017-11-25T17:45:32.249+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
+#### DELETE /webresources/comments/{id}
+Delete a comment based on id
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| content | string |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| commentid | string ||
+| content | string | |
+| postPostid | post |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**post** in details:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category | |
+| path | string | |
+| postid | string | |
+| review | string | |
+| timestamp | string | |
+| userUid | user | |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample response:
+```json
+{
+    "commentid": 11,
+    "content": "Great book",
+    "postPostid": {
+        "bookAuthor": "author1",
+        "bookTitle": "title1",
+        "categoryCollection": [],
+        "path": "path1",
+        "postid": 3,
+        "review": "review1",
+        "timestamp": "2013-08-05T18:19:03+03:00",
+        "userUid": {
+            "email": "user2@gmailcom",
+            "uid": 2,
+            "username": "user2"
+        }
+    },
+    "timestamp": "2017-11-25T17:45:32.249+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
+## File upload
+#### POST /webresources/photo
 ## Category
 ## Rate
+#### POST /webresources/ratings/posts/{postId}
+#### GET /webresources/ratings/posts/{postID}
+#### DELETE /webresources/ratings/{id}
