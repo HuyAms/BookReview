@@ -9,6 +9,7 @@ import entities.Comment;
 import entities.Post;
 import entities.User;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -45,58 +46,110 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
         super(Comment.class);
     }
 
-//    @POST
-//    @Path("{postId}")
-//    @Produces({MediaType.APPLICATION_JSON})
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    public Response create(
-//            @HeaderParam("authorization") String token,
-//            @PathParam("postId") Long postId,
-//            @QueryParam("content") String content 
-//    ) {
-//        Long userId = TokenUtil.decodeToken(token);
-//        
-//        if (userId != null) {
-//            Comment comment = new Comment();
-//            Post post = em.find(Post.class, postId);
-//            User user = em.find(User.class, userId);
-//            
-//            if (postId == null) {
-//                return Response.status(Response.Status.NOT_FOUND)
-//                    .entity(ErrorUtil.notFound("Invalid token"))
-//                    .build();
-//            }
-//            
-//            if (userId == null) {
-//                return Response.status(Response.Status.NOT_FOUND)
-//                    .entity(ErrorUtil.notFound("Invalid token"))
-//                    .build();
-//            }
-//            
-//            if (TextUtil.isEmpty(content)) {
-//                return Response.status(Response.Status.BAD_REQUEST)
-//                    .entity(ErrorUtil.badRequest("Field should not be empty"))
-//                    .build();
-//            }    
-//            
-//            System.out.println("user: " + user);
-//            System.out.println("post: " + post);
-//            System.out.println("content: " + content);
-//            
-//            comment.setUserUid(user);
-//            comment.setPostPostid(post);
-//            comment.setContent(content);
-//            
-//            super.create(comment);
-//            
-//            return Response.ok(comment).build();
-//            
-//        } else {
-//            return Response.status(Response.Status.UNAUTHORIZED)
-//                    .entity(ErrorUtil.unAuthorized("Invalid token"))
-//                    .build();
-//        }
-//    }
+    @POST
+    @Path("posts/{postId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response postComment(
+            @HeaderParam("authorization") String token,
+            @PathParam("postId") Long postId,
+            @QueryParam("content") String content) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Comment comment = new Comment();
+            Post post = em.find(Post.class, postId);
+            User user = em.find(User.class, userId);
+            
+            if (postId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            if (userId == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .build();
+            }
+            
+            if (TextUtil.isEmpty(content)) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("Field should not be empty"))
+                    .build();
+            }    
+            
+            System.out.println("user: " + user);
+            System.out.println("post: " + post);
+            System.out.println("content: " + content);
+            
+            comment.setUserUid(user);
+            comment.setPostPostid(post);
+            comment.setContent(content);
+            comment.setTimestamp(new Date());
+            
+            em.persist(comment);
+            
+            return Response.ok(comment).build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @GET
+    @Path("/posts/{postId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findAllComment(@HeaderParam("authorization") String token, @PathParam("postId") Long postId) {
+        Long id = TokenUtil.decodeToken(token);
+        if (id != null) {
+//            Post post = super.find(id);
+            Post post = em.find(Post.class, postId);
+            if (post == null) {
+                 return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find the post with that id"))
+                    .build();
+            } else {
+//                List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
+                List<Comment> comments = findAll();
+                List<Comment> postComments = new ArrayList();
+                for(Comment comment: comments) {
+                    if (comment.getPostPostid().getPostid() == postId) {
+                        postComments.add(comment);
+                    }
+                }
+
+                GenericEntity<List<Comment>> entities = new GenericEntity<List<Comment>>(comments) {};
+                return Response.ok(entities).build();
+            } 
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @DELETE
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("{id}")
+    public Response removeComment(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Comment comment = em.find(Comment.class, id);
+            if (comment != null) {
+                em.remove(em.merge(comment));
+                return Response.ok(comment).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find comment with that id"))
+                    .build();
+            }
+            
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
 
     @PUT
     @Path("{id}")
