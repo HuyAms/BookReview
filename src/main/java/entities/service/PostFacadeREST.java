@@ -108,7 +108,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                
                 
                 //Category
-//                List<Category> bookCategories = new ArrayList();
+                List<Category> bookCategories = new ArrayList();
                 List<Category> availableCategories = em.createNamedQuery("Category.findAll").getResultList();
                 boolean validCategory = false;
                 
@@ -121,9 +121,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                         if (availableCategory.getCategory().equals(category)) {
                             validCategory = true;
                             System.out.println("valid: " + validCategory);
-//                            bookCategories.add(availableCategory);
-                            post.addCategory(availableCategory);
-                            
+                            bookCategories.add(availableCategory);              
                         } 
                     }
                     
@@ -132,6 +130,10 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                                     .entity(ErrorUtil.badRequest("Wrong category"))
                                     .build();
                     }
+                }
+                
+                for(Category category: bookCategories) {
+                    post.addCategory(category);
                 }
                 
                 
