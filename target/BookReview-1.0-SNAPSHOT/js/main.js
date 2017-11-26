@@ -22,18 +22,15 @@ document.getElementById("defaultOpen").click();
 
 $(document).ready(function () {
     console.log('ready');
-    $.ajaxSetup({ contentType: "application/json; charset=utf-8" });
+    $.ajaxSetup({ contentType: "application/json; charset=utf-8", error: handleError });
     $("#buttonSignIn").click(signIn);
     $("#buttonSignUp").click(signUp);
 })
-
 
 var signIn = function (e) {
       e.preventDefault();
       var userName = $('#textUserNameSignIn').val();
       var password = $('#textPasswordSignIn').val();
-
-      console.log(userName);
 
       var object =   { username: userName, password : password};
       var request = $.param(object);
@@ -43,9 +40,9 @@ var signIn = function (e) {
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
       })
-      .fail(function(){
-          console.log("error");
-      });
+      // .fail(function(e){
+      //     console.log("error:" + e);
+      // });
 }
 
 var signUp = function (e) {
@@ -61,8 +58,16 @@ var signUp = function (e) {
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
-      })
-      .fail(function(){
-          console.log("error");
-      });
+          }
+      )
+
+      // .fail(function(textStatus, errorThrown){
+      //     console.log('status ' + textStatus);
+      //     console.log('error ' + errorThrown);
+      // });
+}
+
+var handleError = function(jqXHR, textStatus, errorThrown) {
+  alert(jqXHR.responseJSON.error);
+  console.log(jqXHR.responseJSON.error);
 }
