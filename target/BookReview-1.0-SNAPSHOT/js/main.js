@@ -39,10 +39,8 @@ var signIn = function (e) {
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
+            localStorage.setItem("token", obj.token);
       })
-      // .fail(function(e){
-      //     console.log("error:" + e);
-      // });
 }
 
 var signUp = function (e) {
@@ -58,13 +56,9 @@ var signUp = function (e) {
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
+            localStorage.setItem("token", obj.token);
           }
       )
-
-      // .fail(function(textStatus, errorThrown){
-      //     console.log('status ' + textStatus);
-      //     console.log('error ' + errorThrown);
-      // });
 }
 
 var handleError = function(jqXHR, textStatus, errorThrown) {
