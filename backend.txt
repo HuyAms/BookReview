@@ -16,14 +16,13 @@
     * DELETE /webresources/posts/{id}
     * GET /webresources/posts
     * GET /webresources/posts/{id}
+    * GET /webresources/posts/categories
 * Comment
     * GET /webresources/comments/posts/{postsId}    
     * POST /webresources/comments/posts/{postId}
     * DELETE /webresources/comments/{id}
 * File upload
     *  POST /webresources/photo
-* Category
-    *    
 * Rate
     * POST /webresources/ratings/posts/{postId}
     * GET /webresources/ratings/posts/{postID}
@@ -478,6 +477,83 @@ Sample response:
     }
 }
 ```
+#### GET /webresources/posts/categories
+Get list of posts filtered by category
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| filters | string  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+Sample request:
+```json
+{
+	"filters":"action"
+}
+```
+Sample response:
+```json
+{
+    "bookAuthor": "JK",
+    "bookTitle": "Harry Potter",
+    "categoryCollection": [
+        {
+            "category": "mystery",
+            "categoryid": 4
+        },
+        {
+            "category": "action",
+            "categoryid": 2
+        }
+    ],
+    "path": "D://picture/hp.jpeg",
+    "postid": 18,
+    "review": "This book is great",
+    "timestamp": "2017-11-25T17:23:19.373+02:00",
+    "userUid": {
+        "email": "h@gmail.com",
+        "uid": 4,
+        "username": "huy"
+    }
+}
+```
+
 ####  POST /webresources/posts
 Create a new post
 
@@ -908,7 +984,44 @@ Sample response:
 ```
 ## File upload
 #### POST /webresources/photo
-## Category
+
+Upload book picture to server
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Request body payload:
+| key |	type | description |
+| --- | --- | --- |
+| file | photo | Photo in JPEG format  |
+
+Response body payload:
+| key |	type | description |
+| --- | --- | --- |
+| url | string | Photo url  |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+
+Sample request:
+```json
+{
+	"file":"BINARY PHOTO HERE"
+}
+```
+
+Sample response:
+```json
+{
+	"url":"D://uploaded/1511687147971huy.jpg"
+}
+```
 ## Rate
 #### POST /webresources/ratings/posts/{postId}
 #### GET /webresources/ratings/posts/{postID}
