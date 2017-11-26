@@ -39,7 +39,10 @@ var signIn = function (e) {
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
-            localStorage.setItem("token", obj.token);
+            localStorage.setItem("token", obj.token);  //save token to use
+
+            //TODO: Navigate to main page
+            window.location.href = "mainpage.html";
       })
 }
 
@@ -56,9 +59,12 @@ var signUp = function (e) {
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
-            localStorage.setItem("token", obj.token);
+            localStorage.setItem("token", obj.token); //save token to use
           }
       )
+
+      //TODO: Navigate to main page
+      window.location.href = "mainpage.html";
 }
 
 var handleError = function(jqXHR, textStatus, errorThrown) {
