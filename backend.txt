@@ -41,6 +41,20 @@ Http status code should be checked for at least following error conditions:
 * 500 Internal Server Error
 * 503 Service Unavailable
 
+Eror response payload:
+| key |	type | description |
+| --- | --- | --- |
+| code | string | HTTP Response Code |
+| error | string | |
+
+Sample error response
+```json
+{
+    "code": 400,
+    "error": "Cannot find the post with that id"
+}
+```
+
 ## Authentication
 #### POST/webresources/users/login
 User log in to server system
