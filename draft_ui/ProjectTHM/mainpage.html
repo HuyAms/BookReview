@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>MainPage</title>
+          <link rel="stylesheet" href="./css/main1.css">
+          <link rel="stylesheet" href="./css/modalreview.css">
+    </head>  
+
+    <body>
+
+        <nav class="navbar">
+           <div class="navcontent">
+<!--
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                </div>
+-->
+<!--                <div class="collapse navbar-collapse" id="myNavbar">-->
+                    <ul >
+                        <li>
+                            <a>ABOUT</a>
+                        </li>
+                        <li>
+                            <a>BOOK REVIEWS</a>
+                        </li>
+                        <li>
+                            <a>LOG IN/SIGN UP</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+<!--            </div>   
+-->
+        </nav>
+
+
+        <div class="jumbotron">
+            <h1>WELCOME TO BOOK HOUSE</h1>
+            <p>Meet your next favourite book</p>
+        </div> 
+
+        <div class="maincontent">
+            <div class="subnav-top">
+                
+                    <ul class="subnavigation">
+                        <li class="tab" id="defaultOpen" onclick="showcontent('fiction')"><a href="#">Fiction</a></li>
+                        <li class="tab" onclick="showcontent('nonfiction')"><a href="#">Non fiction</a></li>
+                        <li class="tab" onclick="showcontent('academic')"><a href="#">Academic book</a></li>
+                    </ul>
+             
+<!--
+                <div id="quote">
+                    <h2>"The best book, reviewed with insight and charm, but without compromise"</h2>
+                    <h4>-author Jackie French</h4>
+
+                </div>
+-->
+            </div>
+        
+        <!-- search book
+                        <div class="input-group">
+                             <input type="text" class="form-control" placeholder="Search book..">
+                             <span class="input-group-btn">
+                                 <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                             </span>    
+                        </div><br>
+-->
+        
+        <div class="gallery">      
+            <div class="book fiction">
+                <div id="title"><h2>Fiction books</h2></div>
+                    <div class="booklist">
+                        
+                        <div class="thumbnail">
+                            <img src="./images/gmat.jpeg" alt="gmat">
+                            <button class="btn" data-toggle="modal" data-target="gmat">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/clean_code.jpg" alt="CleanCode">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/html-css-book.jpg" alt="HTML&CSS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/CRM_book.jpeg" alt="CRM">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/book-marketing-for-dummies.jpg" alt="marketing">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/javascript-and-jquery-book.png" alt="JS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="book nonfiction" style="display:none">
+                <div id="title"><h2>Non fiction books</h2></div>
+                    <div class="booklist">
+                        <div class="thumbnail">
+                            <img src="./images/gmat.jpeg" alt="gmat">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/clean_code.jpg" alt="CleanCode">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/html-css-book.jpg" alt="HTML&CSS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/CRM_book.jpeg" alt="CRM">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/book-marketing-for-dummies.jpg" alt="marketing">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/javascript-and-jquery-book.png" alt="JS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="book academic" style="display:none">
+                <div id="title"><h2>Academic books</h2></div>
+                    <div class="booklist">
+                        <div class="thumbnail">
+                            <img src="./images/gmat.jpeg" alt="gmat">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/clean_code.jpg" alt="CleanCode">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/html-css-book.jpg" alt="HTML&CSS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/CRM_book.jpeg" alt="CRM">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/book-marketing-for-dummies.jpg" alt="marketing">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/javascript-and-jquery-book.png" alt="JS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+            
+            
+<!--
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" size="50" placeholder="Email Address" required>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger">Subscribe</button>
+                    </div>
+                        </div>
+                    </form>
+-->
+<!-- /*modal pop up review*/-->
+        <div class="modalreview">
+    
+            <div class="modal" id="gmat">
+                <div class="modal-window">
+                
+                
+                    <div class="reviewpost">
+                    
+                    <img src="./images/gmat.jpeg" alt="gmat">
+                    <h2>The official guide for GMAT 2017</h2>
+                    <p>Author: publish company<br>
+                    Publish year: 2017</p>
+                    <p>I am a Harvard grad, 99% GMAT scorer and professional GMAT tutor with 16 years of experience, and am fairly obsessed with this test. I also take the GMAT at least once every 5 years to stay up-to-date, including a recent score of 770 (47 Q/48 V). The Official Guide for GMAT Review 2017 receives my strong recommendation because it provides a great source of real GMAT questions at a decent price (it normally retails for about $30).</p>
+                    <p>One aspect of this book that you must understand is that it is not meant to teach you GMAT test-taking strategy. For that, look elsewhere (see product links below). However, it includes some of the very best practice materials available, straight from the test-maker, and although the answer explanations are often convoluted, they are still useful in understanding how the GMAC thinks.</p>
+                    <p>Why are the 2017 Official Guides the very best place to start your GMAT preparation, other than the free GMATPrep software? Because the questions in these books are super-realistic. They are just like the questions on the real GMAT, because these books are written by the test-maker and use actual, retired GMAT questions. Don't waste your time and money practicing on questions made by any other companies--these are merely inferior imitations of the real thing. If you must use other materials for test strategy, then that's fine, and in most cases necessary, but try your best to stick to official questions whenever possible.</p>
+                    <p>Pro tip: You can take each of the 6 GMAT Prep CATs more than once, because the GMAT is an adaptive test (it adjusts the difficulty level of later questions based on your previous responses). There are about 4 to 16 times as many questions in the GMAC's question pool as there are in any given test, which means that every test you take will be different. Tests 1 and 2 draw from a (gigantic!) pool of about 1,500 questions, and tests 3, 4, 5, and 6 draw from a more modest pool of about 400 questions each. To re-take your GMAT Prep tests, click "reset" in the lower-left hand corner of the GMAT Prep software window, but make sure to take screenshots of your previous test sessions beforehand--frequent screenshots are a good idea anyway because the software is prone to crashing and losing your data. For your screenshots, use either the "Print Screen" (Windows Key + PrtScn) button on a PC or (Shift + Command + 3) on a Mac. For more information, check out this blog.</p>
+                </div>
+                
+                <div class="writecomment">
+                        <h2>Share your thought</h2>
+                        <form>
+                            <div class="showcomment">
+                                <input type="text" name="newcomment" placeholder="Write your comment here">
+                            </div>
+                            <input id="send" type="submit" value="Send">
+                        </form>
+                        
+                    </div>
+                <div class="sharecomment">
+                    <h2>Comments:</h2>
+                    <div class="listcomment">
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>Username</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>This is useful post. Thank you</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>name name</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>I will buy this book. Thank you</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>zebra</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>I will have exam next month. I hope I could have high grade like yours. This book is really helpful for me</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="modal__close" data-dismiss="modal">&#10005;</button>
+                </div>
+                
+            </div>
+        </div>
+        
+         <script type="text/javascript" src="./js/mainpagescript.js"></script>
+         <script type="text/javascript" src="./js/modalreview.js"></script>
+    </body>
+                    
+                    
+        
+        
+        
+        
+    
+    
+       
+    
+    
+  
+    

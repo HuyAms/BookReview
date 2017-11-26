@@ -1,0 +1,77 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    overflow: auto;
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+.modal-window {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+}
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 24px;
+  color: #747474;
+  font-weight: bold;
+}
+.modal__close:hover {
+  color: #000;
+}
+.open {
+    display: block;
+}
+
+.modalreview{
+    padding: 20px;
+    
+}
+.reviewpost img{
+    height:280px;
+    width: 200px;
+    float:left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.showcomment{
+    border: 1px solid #ccc!important;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.writecomment{
+    margin: 20px 0;
+}
+.writecomment input{
+    font-size: 15px;
+    padding: 10px 0;
+    border:none;
+    width:100%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+#send{
+    align-self: flex-end;
+    padding: 10px;
+    margin: 10px 0;
+    width:auto;
+    background-color: #179b78;
+}
+.listcomment{
+    height: 300px;
+    overflow-y: scroll;
+}
