@@ -227,6 +227,41 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     }
     
     @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("categories")
+    public Response findPostByCategory(@HeaderParam("authorization") String token, @QueryParam("filters") String category) {
+        Long id = TokenUtil.decodeToken(token);
+        if (id != null) {
+            List<Category> availableCategories = em.createNamedQuery("Category.findAll").getResultList();
+            boolean validCategory = false;
+            for (Category availableCategory: availableCategories) {
+                if (availableCategory.getCategory().equals(category)) {
+                    validCategory = true;
+                }
+            }
+            
+            if (!validCategory) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find that category"))
+                    .build();
+            }
+            
+            List<Category> filterCategories = em.createNamedQuery("Category.findByCategory").setParameter("category", category).getResultList();
+            System.out.println("category: " + filterCategories);
+            Category filterCategory = filterCategories.get(0);
+            List<Post> posts = (List<Post>) filterCategory.getPostCollection();
+            GenericEntity<List<Post>> entities = new GenericEntity<List<Post>>(posts) {};
+            return Response.status(Response.Status.OK)
+                    .entity(entities)
+                    .build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Post> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
