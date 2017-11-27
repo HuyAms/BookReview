@@ -1,4 +1,4 @@
-# BOOK REVIEW NETWORK
+# BOOK HOUSE
 
 *a project by THM team*
 
