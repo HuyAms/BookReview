@@ -86,10 +86,10 @@ var loadBook = function(category) {
 
   $.get(url,
           function(returnData) {
+
+            //refresh HTML
             $("#postList").html("");
             $.each(returnData, function(i, item) {
-
-                //refresh HTML
                 var pictureUrl = item.path;
                 var postid = item.postid;
                 var author = item.bookAuthor;

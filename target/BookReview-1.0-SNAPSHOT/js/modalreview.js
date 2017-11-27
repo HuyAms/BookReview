@@ -3,6 +3,7 @@ document.addEventListener('click', function (e) {
     var target = e.target || e.srcElement;
     e.preventDefault();
 
+    //Button Read review clicked
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             var m_ID = target.getAttribute('data-target');
@@ -13,6 +14,9 @@ document.addEventListener('click', function (e) {
 
             //load bookdetail by id
             getBookDetail(m_ID);
+
+            //Load comments
+            getPostComment(m_ID);
         }
     }
 
@@ -21,16 +25,18 @@ document.addEventListener('click', function (e) {
         var modal = document.querySelector('[class="modal open"]');
         modal.classList.remove('open');
         console.log('dissmiss modal');
-        //Dissmiss modal
     }
 }, false);
 
-var getBookDetail = function(postId) {
-  var token = localStorage.getItem('token');
-  $.ajaxSetup({ contentType: "application/json; charset=utf-8",
-  error: handleError,
-  headers: { 'authorization': token}});
+$(document).ready(function () {
+    var token = localStorage.getItem('token');
+    console.log('MainPage Ready');
+    $.ajaxSetup({ contentType: "application/json; charset=utf-8",
+    error: handleError,
+    headers: { 'authorization': token}});
+})
 
+var getBookDetail = function(postId) {
   url = "http://localhost:43319/BookReview/webresources/posts/" + postId;
 
   $.get(url,
@@ -57,8 +63,32 @@ var getBookDetail = function(postId) {
               <p>${review}</p>
               `
             );
+          });
+}
 
+var getPostComment = function(postId) {
+  url = "http://localhost:43319/BookReview/webresources/comments/posts/" + postId;
+  $.get(url,
+          function(returnData) {
+            console.log('Load comments');
+            console.log(returnData);
+             $('#commentList').html("");
 
+            $.each(returnData, function(i, item) {
+              var commnet = item.content;
+              var username = item.userUid.username;
+
+             $('#commentList').append(`
+               <div class="comment">
+                   <div class="sideinfo">
+                       <h4>${username}</h4>
+                   </div>
+                   <div class="showcomment">
+                       <p>${commnet}</p>
+                   </div>
+               </div>
+             `)
+            });
           });
 }
 
