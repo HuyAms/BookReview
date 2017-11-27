@@ -30,8 +30,8 @@ body {
 }
 .navcontent ul, .subnav-top ul {
     list-style-type: none;
-    margin: 0; 
-    
+    margin: 0;
+
     float: right;
     top: 0;
     width: 100%;
@@ -58,7 +58,7 @@ body {
       background-image: url(../images/bookbg.jpg);
       padding: 70px 25px;
       font-family: sans-serif;
-    
+
 }
 h1{
     text-align: center;
@@ -86,13 +86,13 @@ h1{
     padding: 0px 10px;
     border-right: 1px solid;
     border-color:#179b78;
-   
+
 }
 .subnav-top li a{
     color: black;
     font-size: 20px;
     text-decoration: none;
-    
+
 }
 .subnav-top li:hover:not(.active) {
     background-color: #179b78;
@@ -130,7 +130,7 @@ h2{
     background-color:#1ab188;
 }
 .tabActive a{
-    color:#ffffff; 
+    color:#ffffff;
 }
 .book {
     padding-top: 20px;
@@ -144,3 +144,6 @@ h2{
     padding: 0 10px;
 }
 
+#title h2::first-letter {
+    text-transform:capitalize;
+}

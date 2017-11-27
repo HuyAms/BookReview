@@ -54,8 +54,8 @@ var getBookDetail = function(postId) {
               `
               <img src="${pictureUrl}" alt="${title}">
               <h2>${title}</h2>
-              <p>Author: ${author}<br>
-              Publish year: 2017</p>
+              <p><b>Author:</b> ${author}<br>
+              <b>Publish year:</b> 2017</p>
               <p>${review}</p>
               `
             );

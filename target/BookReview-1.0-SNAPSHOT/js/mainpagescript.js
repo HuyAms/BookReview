@@ -1,29 +1,4 @@
 "use strict"
-// function showcontent(){
-//
-//     var i, book, tab;
-
-    // book = document.getElementsByClassName("book");
-    // for (i=0; i<book.length;i++){
-    //     book[i].style.display = "none";
-    //     console.log(book.length);
-    // }
-
-    // tab = document.getElementsByClassName("subnavigation")[0].children;
-    // for (i=0; i<tab.length;i++){
-    //     tab[i].className= tab[i].className.replace("Active","");
-    // }
-   //  console.log(action);
-   //  document.getElementsByClassName(action)[0].style.display = "block";
-   //  event.currentTarget.className += "Active";
-   //  event.preventDefault();
-   // var action = event.currentTarget.textContent;
-   // console.log(action);
-// }.
-
-
-//Load all book by default
-// document.getElementById("tabAll").click();
 
 $(document).ready(function () {
   console.log('document ready');
@@ -34,42 +9,72 @@ $(document).ready(function () {
 
     //Load all book by default
     loadBook('all');
+    hightLightTab('all');
+    changeTitle('all');
 
     $("#tabAll").click(function(){
       loadBook('all');
+      hightLightTab('all');
+      changeTitle('all');
+
     });
     $("#tabGuide").click(function(){
-      loadBook('fiction');
+      loadBook('guide');
+      hightLightTab('guide');
+      changeTitle('guide');
     });
     $("#tabNovel").click(function(){
       loadBook('novel');
+      hightLightTab('novel');
+      changeTitle('novel');
     });
     $("#tabHorror").click(function(){
-      loadBook('travel');
+      loadBook('horror');
+      hightLightTab('horror');
+      changeTitle('horror');
     });
     $("#tabTravel").click(function(){
-      loadBook('guide');
+      loadBook('travel');
+      hightLightTab('travel');
+      changeTitle('travel');
     });
     $("#tabFiction").click(function(){
-      loadBook('horror');
+      loadBook('fiction');
+      hightLightTab('fiction');
+      changeTitle('fiction');
     });
     $("#tabRomance").click(function(){
       loadBook('romance');
+      hightLightTab('romance');
+      changeTitle('romance');
     });
     $("#tabScience").click(function(){
       loadBook('science');
-    });
-    $("#tabOthers").click(function(){
-      loadBook('science');
+      hightLightTab('science');
+      changeTitle('science');
     });
     $("#tabOthers").click(function(){
       loadBook('others');
+      hightLightTab('others');
+      changeTitle('others');
     });
 });
 
-var hightLightTab = function(tab) {
+var changeTitle = function(tab) {
+  $('#title').html(`
+    <h2>${tab} Books</h2>
+  `)
+}
 
+var hightLightTab = function(tab) {
+  if ($('li').hasClass('tabActive')) {
+    $('li').removeClass('tabActive');
+  }
+
+  //hightLightTab
+  $(`li[name=${tab}]`).addClass('tabActive');
 };
+
 
 var loadBook = function(category) {
   switch (category) {
@@ -77,7 +82,7 @@ var loadBook = function(category) {
       url = "http://localhost:43319/BookReview/webresources/posts";
       break;
     default:
-      var object =   { category: category};
+      var object =   { filters: category};
       var request = $.param(object);
       var url = "http://localhost:43319/BookReview/webresources/posts/categories?" + request;
   }
