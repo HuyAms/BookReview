@@ -51,6 +51,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
 //    public void create(User entity) {
 //        super.create(entity);
 //    }
+   
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
@@ -264,6 +265,12 @@ public class UserFacadeREST extends AbstractFacade<User> {
     }
     
     @GET
+    @Path("test")
+    public String test() {
+        return "My name is Huy";
+    }
+    
+    @GET
     @Path("me")
     @Produces({MediaType.APPLICATION_JSON})
     public Response findMe(@HeaderParam("authorization") String token) {
@@ -323,5 +330,4 @@ public class UserFacadeREST extends AbstractFacade<User> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
 }

@@ -72,7 +72,6 @@ var hightLightTab = function(tab) {
 };
 
 var loadBook = function(category) {
-  console.log(category);
   switch (category) {
     case 'all':
       url = "http://localhost:43319/BookReview/webresources/posts";
@@ -89,15 +88,24 @@ var loadBook = function(category) {
           function(returnData) {
             $("#postList").html("");
             $.each(returnData, function(i, item) {
+
                 //refresh HTML
                 var pictureUrl = item.path;
                 var postid = item.postid;
+                var author = item.bookAuthor;
+                var title = item.bookTitle;
+                var review = item.review;
+
+
+                //Load book into book list
                 $("#postList").append(
                   `<div class="thumbnail">
                       <img src="${pictureUrl}" alt="gmat">
-                      <button class="btn" data-toggle="modal" data-target="gmat">READ REVIEW</button>
+                      <button class="btn" data-toggle="modal" data-target="${postid}">READ REVIEW</button>
                   </div>`
                 );
+
+                //load list commnet
             });
           });
 
