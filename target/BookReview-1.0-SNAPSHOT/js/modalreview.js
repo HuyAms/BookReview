@@ -39,7 +39,7 @@ $(document).ready(function () {
 })
 
 var getBookDetail = function(postId) {
-  url = "http://localhost:43319/BookReview/webresources/posts/" + postId;
+  url = endPointUrl + "webresources/posts/" + postId;
 
   $.get(url,
           function(returnData) {
@@ -64,7 +64,7 @@ var getBookDetail = function(postId) {
 
 var getPostComment = function(postId) {
 
-  url = "http://localhost:43319/BookReview/webresources/comments/posts/" + postId;
+  url = endPointUrl + "webresources/comments/posts/" + postId;
   $.get(url,
           function(returnData) {
             console.log('Load comments');
@@ -101,7 +101,7 @@ var postComment = function(e) {
   var object =   { content: comment };
   var request = $.param(object);
 
-  $.post('http://localhost:43319/BookReview/webresources/comments/posts/' + m_ID + '?' + request,
+  $.post( endPointUrl + 'webresources/comments/posts/' + m_ID + '?' + request,
       function(returnedData){
         console.log(returnedData);
 

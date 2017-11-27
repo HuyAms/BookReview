@@ -79,12 +79,12 @@ var hightLightTab = function(tab) {
 var loadBook = function(category) {
   switch (category) {
     case 'all':
-      url = "http://localhost:43319/BookReview/webresources/posts";
+      url = endPointUrl + "webresources/posts";
       break;
     default:
       var object =   { filters: category};
       var request = $.param(object);
-      var url = "http://localhost:43319/BookReview/webresources/posts/categories?" + request;
+      var url = endPointUrl + "webresources/posts/categories?" + request;
   }
 
   console.log('url:' + url);
@@ -109,8 +109,6 @@ var loadBook = function(category) {
                       <button class="btn" data-toggle="modal" data-target="${postid}">READ REVIEW</button>
                   </div>`
                 );
-
-                //load list commnet
             });
           });
 

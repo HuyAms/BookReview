@@ -21,7 +21,7 @@ function showcontent(action) {
 document.getElementById("defaultOpen").click();
 
 $(document).ready(function () {
-    console.log('ready');
+    console.log('ready: ' + endPointUrl);
     $.ajaxSetup({ contentType: "application/json; charset=utf-8", error: handleError });
     $("#buttonSignIn").click(signIn);
     $("#buttonSignUp").click(signUp);
@@ -35,7 +35,7 @@ var signIn = function (e) {
       var object =   { username: userName, password : password};
       var request = $.param(object);
 
-      $.post('http://localhost:43319/BookReview/webresources/users/login?' + request,
+      $.post(endPointUrl + 'webresources/users/login?' + request,
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
@@ -56,7 +56,7 @@ var signUp = function (e) {
       var object =   { username: userName, password : password, email : email};
       var request = $.param(object);
 
-      $.post('http://localhost:43319/BookReview/webresources/users/register?' + request,
+      $.post(endPointUrl + 'webresources/users/register?' + request,
           function(returnedData){
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
