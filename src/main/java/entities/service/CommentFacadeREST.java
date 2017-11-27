@@ -55,6 +55,7 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
             @QueryParam("content") String content) {
         Long userId = TokenUtil.decodeToken(token);
         if (userId != null) {
+            System.out.println("New comment: " + content);
             Comment comment = new Comment();
             Post post = em.find(Post.class, postId);
             User user = em.find(User.class, userId);
@@ -120,7 +121,7 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
                     }
                 }
 
-                GenericEntity<List<Comment>> entities = new GenericEntity<List<Comment>>(comments) {};
+                GenericEntity<List<Comment>> entities = new GenericEntity<List<Comment>>(postComments) {};
                 return Response.ok(entities).build();
             } 
         } else {
