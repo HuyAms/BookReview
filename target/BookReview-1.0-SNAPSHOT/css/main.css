@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  background-image:url(../image/book.jpg);
+  background-image:url(../images/book.jpg);
   font-family: 'Titillium Web', sans-serif;
   background-size:cover;
 }
@@ -19,7 +19,7 @@ body {
 }
 
 .form {
-  
+
   background:rgba(255, 255, 255,0.4);
   padding: 40px;
   min-width:400px;
@@ -31,7 +31,7 @@ body {
       list-style:none;
       padding:0;
       margin:0 0 30px 0;
-    
+
 
 }
 .tab-group::after {
@@ -55,7 +55,7 @@ li {
     box-sizing: border-box;
     -webkit-transition: .5s ease;
   transition: .5s ease;
-    
+
 }
 
 li:hover {
@@ -70,7 +70,7 @@ a {
   -webkit-transition: .5s ease;
   transition: .5s ease;
   padding:15px;
-  
+
 }
 
 a:hover {
@@ -82,7 +82,7 @@ a:hover {
 }
 .tabActive a{
     color:#ffffff;
-  
+
 }
 
 h1 {
@@ -101,7 +101,7 @@ label {
   position:absolute;
   transform:translateY(6px);
   left:13px;
-  
+
   transition:all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
@@ -194,7 +194,7 @@ textarea {
     float:left;
     width:48%;
     margin-right:4%;
-    &:last-child { 
+    &:last-child {
       margin:0;
     }
   }

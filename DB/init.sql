@@ -37,19 +37,19 @@ ADD CONSTRAINT FK_RATE_POST_POSTID FOREIGN KEY (POST_POSTID) REFERENCES POST(POS
 INSERT INTO `USER` VALUE (NULL, "user1@gmailcom","user1", "123456");
 INSERT INTO `USER` VALUE (NULL, "user2@gmailcom","user2", "123456");
 
-INSERT INTO `CATEGORY` VALUE (NULL, "science");
-INSERT INTO `CATEGORY` VALUE (NULL, "action");
-INSERT INTO `CATEGORY` VALUE (NULL, "romance");
-INSERT INTO `CATEGORY` VALUE (NULL, "mystery");
-INSERT INTO `CATEGORY` VALUE (NULL, "adventure");
-INSERT INTO `CATEGORY` VALUE (NULL, "horror");
-INSERT INTO `CATEGORY` VALUE (NULL, "self-help");
+
+INSERT INTO `CATEGORY` VALUE (NULL, "fiction");
+INSERT INTO `CATEGORY` VALUE (NULL, "novel");
+INSERT INTO `CATEGORY` VALUE (NULL, "travel");
 INSERT INTO `CATEGORY` VALUE (NULL, "guide");
+INSERT INTO `CATEGORY` VALUE (NULL, "horror");
+INSERT INTO `CATEGORY` VALUE (NULL, "romance");
+INSERT INTO `CATEGORY` VALUE (NULL, "science");
 INSERT INTO `CATEGORY` VALUE (NULL, "others");
 
-INSERT INTO `POST` VALUE (NULL, "title1", "author1", "path1","review1",'2013-08-05 18:19:03', 2);
-INSERT INTO `POST` VALUE (NULL, "title1", "author1", "path1","review1",'2013-08-05 18:19:03', 1);
-INSERT INTO `POST` VALUE (NULL, "title1", "author1", "path1","review1",'2013-08-05 18:19:03', 2);
-INSERT INTO `POST` VALUE (NULL, "title1", "author1", "path1","review1",'2013-08-05 18:19:03', 1);
-
+INSERT INTO `POST` VALUE (NULL, "GMAT", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2);
+INSERT INTO `POST` VALUE (NULL, "Clean Code", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+INSERT INTO `POST` VALUE (NULL, "CSS and HTML", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2);
+INSERT INTO `POST` VALUE (NULL, "Book Marketing", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
 
