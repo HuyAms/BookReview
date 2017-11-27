@@ -40,6 +40,7 @@ var signIn = function (e) {
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
             localStorage.setItem("token", obj.token);  //save token to use
+            localStorage.setItem("didLogIn", true); //save login state
 
             //TODO: Navigate to main page
             window.location.href = "mainpage.html";
@@ -60,11 +61,12 @@ var signUp = function (e) {
             var obj = jQuery.parseJSON(returnedData);
             console.log(obj.token );
             localStorage.setItem("token", obj.token); //save token to use
+            localStorage.setItem("didLogIn", true); //save login state
+
+            //TODO: Navigate to main page
+            window.location.href = "mainpage.html";
           }
       )
-
-      //TODO: Navigate to main page
-      window.location.href = "mainpage.html";
 }
 
 var handleError = function(jqXHR, textStatus, errorThrown) {
