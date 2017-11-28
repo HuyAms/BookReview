@@ -9,16 +9,17 @@ document.addEventListener('click', function (e) {
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             m_ID = target.getAttribute('data-target');
-            console.log("open modal with bookID:" + m_ID);
+            postID = target.getAttribute('book-id');
+            console.log("open modal with bookID:" + postID);
 
             // open modal
-            document.getElementById('modalReview').classList.add('open');
+            document.getElementById(m_ID).classList.add('open');
 
             //load bookdetail by id
-            getBookDetail(m_ID);
+            getBookDetail(postID);
 
             //Load comments
-            getPostComment(m_ID);
+            getPostComment(postID);
         }
     }
 

@@ -106,7 +106,7 @@ var loadBook = function(category) {
                 $("#postList").append(
                   `<div class="thumbnail">
                       <img src="${pictureUrl}" alt="gmat">
-                      <button class="btn" data-toggle="modal" data-target="${postid}">READ REVIEW</button>
+                      <button class="btn" data-toggle="modal" data-target="modalReview" book-id=${postid}>READ REVIEW</button>
                   </div>`
                 );
             });
