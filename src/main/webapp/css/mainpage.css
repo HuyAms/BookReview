@@ -8,7 +8,7 @@ body {
 .navbar {
       margin-bottom: 0;
       background-color: #179b78;
-      z-index: 9999;
+     
       border: 0;
       font-size: 12px !important;
       line-height: 1.42857143 !important;
@@ -30,8 +30,8 @@ body {
 }
 .navcontent ul, .subnav-top ul {
     list-style-type: none;
-    margin: 0;
-
+    margin: 0; 
+    overflow: hidden;
     float: right;
     top: 0;
     width: 100%;
@@ -40,10 +40,10 @@ body {
 }
 .navcontent li{
     float:right;
-    position: relative;
+    
     display: block;
 }
-.navcontent li a {
+.navcontent li a,.dropbtn {
     display: block;
     color: white;
     text-align: center;
@@ -51,9 +51,35 @@ body {
     text-decoration: none;
 }
 
-.navcontent li a:hover:not(.active) {
+#writepost:hover, .dropdown:hover .dropbtn{
     background-color: #111;
 }
+#writepost{
+    background-color: #85adad;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: WHITE;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #595959}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .jumbotron {
       background-image: url(../images/bookbg.jpg);
       padding: 70px 25px;
