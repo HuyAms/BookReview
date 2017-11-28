@@ -3,11 +3,12 @@ var m_ID;
 document.addEventListener('click', function (e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
-    e.preventDefault();
-
+    
     //Button Read review clicked
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
+            e.preventDefault();
+
             m_ID = target.getAttribute('data-target');
             postID = target.getAttribute('book-id');
             console.log("open modal with bookID:" + postID);
