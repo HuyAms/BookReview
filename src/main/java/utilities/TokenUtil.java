@@ -11,16 +11,19 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 /**
  *
  * @author HUYTRINH
  */
 public class TokenUtil {
+    private static final int EXPIRE_TIME = 864000000; //10 days
     public static String createToken(String userId) {
         try {
             Algorithm algorithm = Algorithm.HMAC256("huydeptrai");
                 String token = JWT.create()
+                    .withExpiresAt(new Date(EXPIRE_TIME + System.currentTimeMillis()))
                     .withIssuer(userId)
                     .sign(algorithm);
             return token;
