@@ -64,12 +64,20 @@ form {
     display: flex;
     flex-direction: column;
 }
-#send{
+#buttonSend{
     align-self: flex-end;
     padding: 10px;
     margin: 10px 0;
     width:auto;
     background-color: #179b78;
+    font-size: 15px;
+    color: white;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   font-size: 11pt; 
+}
+::-moz-placeholder { /* Firefox 19+ */
+   font-size: 11pt; 
 }
 .listcomment{
     height: 300px;

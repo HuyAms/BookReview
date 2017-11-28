@@ -5,6 +5,7 @@ entities\Post_.class
 entities\service\AbstractFacade.class
 entities\service\CategoryFacadeREST.class
 entities\Test.class
+server\CORSFilter.class
 entities\service\PostFacadeREST$1.class
 utilities\TextUtil.class
 entities\Comment.class

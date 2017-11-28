@@ -6,8 +6,12 @@
           <title>MainPage</title>
           <link rel="stylesheet" href="./css/mainpage.css">
           <link rel="stylesheet" href="./css/modalreview.css">
+          <link rel="stylesheet" href="./css/modalpost.css">
     </head>
+    
+    <style>
 
+    </style>
     <body>
 
         <nav class="navbar">
@@ -23,15 +27,17 @@
 -->
 <!--                <div class="collapse navbar-collapse" id="myNavbar">-->
                     <ul >
-                        <li>
-                            <a>ABOUT</a>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">HI USER</a>
+                            <div class="dropdown-content">
+                                <a href="#">YOUR PROFILE</a>
+                                <a href="#">LOG OUT</a>
+                            </div>
                         </li>
                         <li>
-                            <a>BOOK REVIEWS</a>
+                            <a data-toggle="modal" data-target="post" id="writepost">WRITE A POST</a>
                         </li>
-                        <li>
-                            <a>LOG IN/SIGN UP</a>
-                        </li>
+                        
                     </ul>
 
 
@@ -165,7 +171,7 @@
                         <h2>Share your thought</h2>
                         <form>
                             <div class="showcomment">
-                                <input type="text" id="inputComment" name="newcomment" placeholder="Write your comment here*">
+                                <textarea style="height:200px" placeholder="Write your comment here"></textarea>
                             </div>
                             <input id="buttonSend" type="submit" value="Send">
                         </form>
@@ -208,6 +214,49 @@
 
             </div>
         </div>
+        <!-- /*modal pop up write a post*/-->
+        
+        <div class="modal" id="post">
+            <div class="modal-window">
+                <header id="header"><h2>Write a post</h2></header>
+                <form action="#">
+                    <span class="title">Title:</span><input type="text" name="title" placeholder="Book's title">
+                    <span class="title">Author:</span><input type="text" name="author" placeholder="Author's name">
+                     
+                    <span class="title">
+                        Category:
+                    </span>
+                    
+                    <label class="checkbox">Fiction
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox">Novel
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox">Travel
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox">Horror
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox">Science
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <textarea style="height:200px" placeholder="Write your post here"></textarea>
+                    <input id="buttonAdd" type="submit" value="Add book cover picture">
+                    <input id="buttonSend" type="submit" value="Submit">
+                </form>
+     
+            </div>   
+        </div> 
+        
+        
+      
          <script type="text/javascript" src="js/config.js"></script>
          <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
          <script type="text/javascript" src="./js/mainpagescript.js"></script>
