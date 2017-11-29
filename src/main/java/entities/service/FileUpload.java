@@ -30,7 +30,7 @@ import utilities.TokenUtil;
 @Path("/photo")
 public class FileUpload {
     
-    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "D://uploaded/";
+    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "C://Users/HUYTRINH/Desktop/Server/BookReview/src/main/webapp/images/uploaded/";
 
 	/**
 	 * Upload a File
