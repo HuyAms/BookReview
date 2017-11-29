@@ -61,7 +61,36 @@ $(document).ready(function () {
 
     //logOut
     $('#logOut').click(logOut);
+
+    //post reivew
+    $('#buttonPosReview').click(postReview);
 });
+
+var postReview = function(e) {
+  e.preventDefault();
+
+  //uploadFile
+  var upLoalImgUrl = endPointUrl + 'webresources/photo';
+  var data = new FormData();
+  var file = $("#imgFile")[0].files[0];
+  data.append('file', file);
+
+  $.ajax({
+            type: "POST",
+            url: upLoalImgUrl,
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            processData: false,
+            success: function (returnData) {
+              console.log(returnData);
+              alert("Data Uploaded: ");
+            }
+        });
+
+}
 
 var logOut = function(e) {
   e.preventDefault();
