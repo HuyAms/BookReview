@@ -6,16 +6,20 @@ html {
 }
 
 body {
-  background-image:url(../images/book.jpg);
-  font-family: 'Titillium Web', sans-serif;
-  background-size:cover;
+    background: url(../images/book.jpg) no-repeat center center fixed;;
+    font-family: 'Titillium Web', sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
 .container{
     position: absolute;
     top: 50%;
-    left: 30%;
+    right: 70%;
     /*transform: translateX(-50%) translateY(-50%);*/
-    transform: translate(-50%, -50%);
+    transform: translate(50%, -50%);
 }
 
 .form {
@@ -149,6 +153,11 @@ button {
     display: block;
     width:100%;
 }
+
+.button-block:hover, .button-block:focus {
+  background: #179b77;
+}
+
 .button:hover, .button:focus {
   background: #179b77;
 }
@@ -203,3 +212,26 @@ textarea {
 
 
 */
+@media only screen and (max-width: 500px) {
+    .container {
+        transform: none;
+        top: 20%;
+        left: 0;
+        width: 100%;
+    }
+    .form {
+        padding: 40px 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 501px) {
+    .container {
+        transform: translate(65%,-50%);
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 601px) {
+    .container {
+        transform: translate(60%,-50%);
+    }
+}
