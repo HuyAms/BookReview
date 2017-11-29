@@ -90,6 +90,32 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                 String review = postBody.getReview();
                 List<String> categories = postBody.getCategories();
                 
+                //Checkempty
+                if (TextUtil.isEmpty(title)) {
+                    System.out.println("Book title is empty");
+                    return Response.status(Response.Status.BAD_REQUEST)
+                     .entity(ErrorUtil.badRequest("Book title should not be empty"))
+                    .build();
+                }
+                
+                if (TextUtil.isEmpty(author)) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                     .entity(ErrorUtil.badRequest("Book author should not be empty"))
+                    .build();
+                }
+                
+                if (categories.size() == 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                     .entity(ErrorUtil.badRequest("Please choose at least one category"))
+                    .build();
+                }
+                
+                if (TextUtil.isEmpty(review)) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                     .entity(ErrorUtil.badRequest("Book review should not be empty"))
+                    .build();
+                }
+                  
         Long id = TokenUtil.decodeToken(token);
         if (id != null) {
             Post post = new Post();

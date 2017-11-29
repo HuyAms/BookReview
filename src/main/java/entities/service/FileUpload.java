@@ -43,13 +43,14 @@ public class FileUpload {
 			@FormDataParam("file") InputStream fileInputStream,
 			@FormDataParam("file") FormDataContentDisposition contentDispositionHeader) {
             
-            if (contentDispositionHeader == null) {
-                System.out.println("contentDispositionHeader null");
-                return Response.ok("contentDispositionHeader null").build();
-            }
-            
             Long id = TokenUtil.decodeToken(token);
             if (id != null) {
+                 if ( contentDispositionHeader.getFileName() == null) {
+                     System.out.println("book cover is empty");
+                return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("Please choose book cover photo"))
+                    .build();
+                 }
                  String imgName = System.currentTimeMillis() + contentDispositionHeader.getFileName();
                  String filePath = SERVER_UPLOAD_LOCATION_FOLDER + imgName;
                  String imgUrl =  IMG_URL_PREFIX + imgName;
