@@ -71,7 +71,7 @@ var postReview = function(e) {
 
 
   var upLoalImgUrl = endPointUrl + 'webresources/photo';
-  var postReviewUrl = endPointUrl + 'webresources/posts?';
+  var postReviewUrl = endPointUrl + 'webresources/posts';
 
   var data = new FormData();
   var file = $("#imgFile")[0].files[0];
@@ -92,64 +92,57 @@ var postReview = function(e) {
     }
   });
 
-  var object =   { title: title, author : author, path : 'imgUrl', review: review, categories: categories};
-  console.log(object);
-
-  $.ajax({
-    type: 'POST',
-    url: postReviewUrl,
-    data: object,
-    contentType: 'application/json; charset=utf-8',
-    success: function(returnedData) {
-      console.log(returnedData);
-    }
-  })
-
-  // $.post(postReviewUrl, object, function(returnedData){
+  // var object =   { title: title, author : author, path : 'imgUrl', review: review, categories: categories};
+  // var postRequest = JSON.stringify(object);
+  // console.log(postRequest);
+  //
+  // $.post(postReviewUrl, postRequest, function(returnedData){
   //                   console.log(returnedData);
   // });
 
 
   //Upload img File
-  // $.ajax({
-  //           type: "POST",
-  //           url: upLoalImgUrl,
-  //           data: data,
-  //           async: false,
-  //           cache: false,
-  //           contentType: false,
-  //           enctype: 'multipart/form-data',
-  //           processData: false,
-  //           success: function (returnedData) {
-  //             console.log('upload picture success');
-  //             //Upload img success => upload Review
-  //             var obj = jQuery.parseJSON(returnedData);
-  //             var imgUrl = obj.url;
-  //             var title = $('#inputBookTitle').val();
-  //             var author = $('#inputBookAuthor').val();
-  //             var review = $('#inputReview').val();
-  //
-  //             //checkbox
-  //             var input = $('form input:checkbox');
-  //             var categories = [];
-  //             $.each(input, function(i, item) {
-  //               if ($(item).prop('checked')) {
-  //                 // var category = item.prop('');
-  //                 var category = $(item).prop('name');
-  //                 categories.push(category);
-  //               }
-  //             });
-  //
-  //             var object =   { title: title, author : author, path : imgUrl, review: review, categories: categories};
-  //             // var request = $.param(object);
-  //
-  //             $.post(postReviewUrl, object,
-  //                 function(returnedData){
-  //                   console.log(returnedData);
-  //                 }
-  //             )
-  //           }
-  //       });
+  $.ajax({
+            type: "POST",
+            url: upLoalImgUrl,
+            data: data,
+            async: false,
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            processData: false,
+            success: function (returnedData) {
+              console.log('upload picture success');
+              //Upload img success => upload Review
+              var obj = jQuery.parseJSON(returnedData);
+              var imgUrl = obj.url;
+              var title = $('#inputBookTitle').val();
+              var author = $('#inputBookAuthor').val();
+              var review = $('#inputReview').val();
+
+              //checkbox
+              var input = $('form input:checkbox');
+              var categories = [];
+              $.each(input, function(i, item) {
+                if ($(item).prop('checked')) {
+                  // var category = item.prop('');
+                  var category = $(item).prop('name');
+                  categories.push(category);
+                }
+              });
+
+              var object =   { title: title, author : author, path : imgUrl, review: review, categories: categories};
+              var postRequest = JSON.stringify(object);
+
+              $.post(postReviewUrl, postRequest, function(returnedData){
+                //Load all book
+                // loadBook('all');
+                // hightLightTab('all');
+                // changeTitle('all');
+                console.log(returnedData);
+              });
+            }
+        });
 
 }
 
@@ -207,7 +200,7 @@ var loadBook = function(category) {
                 //Load book into book list
                 $("#postList").append(
                   `<div class="thumbnail">
-                      <img src="${pictureUrl}" alt="gmat">
+                      <img src="${pictureUrl}" alt="${title}">
                       <button class="btn" data-toggle="modal" data-target="modalReview" book-id=${postid}>READ REVIEW</button>
                   </div>`
                 );

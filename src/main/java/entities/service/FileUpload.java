@@ -31,11 +31,11 @@ import utilities.TokenUtil;
 public class FileUpload {
     
     private static final String SERVER_UPLOAD_LOCATION_FOLDER = "C://Users/HUYTRINH/Desktop/BookReview/src/main/webapp/images/uploaded/";
+    private static final String IMG_URL_PREFIX = "./images/uploaded/";
 
 	/**
 	 * Upload a File
 	 */
-
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadFile(
@@ -50,12 +50,14 @@ public class FileUpload {
             
             Long id = TokenUtil.decodeToken(token);
             if (id != null) {
-                 String filePath = SERVER_UPLOAD_LOCATION_FOLDER + System.currentTimeMillis() + contentDispositionHeader.getFileName();
+                 String imgName = System.currentTimeMillis() + contentDispositionHeader.getFileName();
+                 String filePath = SERVER_UPLOAD_LOCATION_FOLDER + imgName;
+                 String imgUrl =  IMG_URL_PREFIX + imgName;
 
             // save the file to the server
             saveFile(fileInputStream, filePath);
 
-            String output = JsonUtil.jsonToken("url", filePath);
+            String output = JsonUtil.jsonToken("url", imgUrl);
 
             return Response.ok(output).build();
 
