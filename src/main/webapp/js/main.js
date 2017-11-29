@@ -27,6 +27,7 @@ $(document).ready(function () {
     $("#buttonSignUp").click(signUp);
 })
 
+
 var signIn = function (e) {
       e.preventDefault();
       var userName = $('#textUserNameSignIn').val();
