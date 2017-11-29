@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>MainPage</title>
+          <link rel="stylesheet" href="./css/mainpage.css">
+          <link rel="stylesheet" href="./css/modalreview.css">
+          <link rel="stylesheet" href="./css/modalpost.css">
+          <link rel="stylesheet" href="./css/latestpost.css">
+    </head>
+
+    <style>
+
+    </style>
+    <body>
+
+        <nav class="navbar">
+           <div class="navcontent">
+<!--
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+-->
+<!--                <div class="collapse navbar-collapse" id="myNavbar">-->
+                    <ul >
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">HI USER</a>
+                            <div class="dropdown-content">
+                                <a id="yourProfile" href="#">YOUR PROFILE</a>
+                                <a id="logOut" href="#">LOG OUT</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="post" id="writepost">WRITE A POST</a>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+<!--            </div>
+-->
+        </nav>
+
+
+        <div class="jumbotron">
+            <h1>WELCOME TO BOOK HOUSE</h1>
+            <p>Meet your next favourite book</p>
+        </div>
+
+        <div class="maincontent">
+            <div class="subnav-top">
+
+<!--
+                    <ul class="subnavigation">
+                        <li class="tab" id="defaultOpen" onclick="showcontent('fiction')"><a href="#">Fiction</a></li>
+                        <li class="tab" onclick="showcontent('nonfiction')"><a href="#">Non fiction</a></li>
+                        <li class="tab" onclick="showcontent('academic')"><a href="#">Academic book</a></li>
+                    </ul> 
+-->
+
+                    <ul class="subnavigation">
+                        <li id="tabAll" name="all"><a href="#">Home</a></li>
+                        <li id="tabAll" name="all"><a href="#">All</a></li>
+                        <li id="tabFiction" name="fiction"><a href="#">Fiction</a></li>
+                        <li id="tabNovel" name="novel"><a href="#">Novel</a></li>
+                        <li id="tabTravel" name="travel"><a href="#">Travel</a></li>
+                        <li id="tabGuide" name="guide"><a href="#">Guide</a></li>
+                        <li id="tabHorror" name="horror"><a href="#">Horror</a></li>
+                        <li id="tabRomance" name="romance"><a href="#">Romance</a></li>
+                        <li id="tabScience" name="science"><a href="#">Science</a></li>
+                        <li id="tabOthers" name="others"><a href="#">Others</a></li>
+                    </ul>
+            </div> 
+           
+            <div class="latestpost">
+                <div id="news1" class="news">
+                    <div class="image">
+                        <img src="images/news1.jpeg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+                        <div class="briefcontent">
+                        "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Sadie Trombetta</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+                
+                <div id="news1" class="news">
+                    <div class="image">
+                        <img src="images/news1.jpeg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+                        <div class="briefcontent">
+                        "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Sadie Trombetta</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+                
+                <div id="news1" class="news">
+                    <div class="image">
+                        <img src="images/news1.jpeg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+                        <div class="briefcontent">
+                        "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Sadie Trombetta</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+            </div>
+            
+        </div>
+        <footer>
+            <div class="footercontainer">
+                <div class="social-btn">
+                    <img src="images/tumblr.png">
+                    <img src="images/Facebook.png">
+                    <img src="images/twitter.png">
+                    <img src="images/VKlogo.png">
+                </div>
+                <div class="footermenu">
+                    <ul>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="#">Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subcribe">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" size="50" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group-btn">
+                            <button type="button" id="subcribe-btn" >SUBCRIBE</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        
+        
+        </footer>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
