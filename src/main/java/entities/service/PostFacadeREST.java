@@ -115,8 +115,6 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                 for(String category: categories) {
                     validCategory = false;
                     for(Category availableCategory: availableCategories) {
-                        System.out.println("availableCategory: " + availableCategory.getCategory());
-                        System.out.println("category: " + category);
                        
                         if (availableCategory.getCategory().equals(category)) {
                             validCategory = true;

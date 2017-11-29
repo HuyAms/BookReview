@@ -71,50 +71,85 @@ var postReview = function(e) {
 
 
   var upLoalImgUrl = endPointUrl + 'webresources/photo';
-  var uploadReviewUrl = endPointUrl + 'webresources/posts?';
+  var postReviewUrl = endPointUrl + 'webresources/posts?';
 
   var data = new FormData();
   var file = $("#imgFile")[0].files[0];
   data.append('file', file);
 
-  //Upload img File
+  var title = $('#inputBookTitle').val();
+  var author = $('#inputBookAuthor').val();
+  var review = $('#inputReview').val();
+
+  //checkbox
+  var input = $('form input:checkbox');
+  var categories = [];
+  $.each(input, function(i, item) {
+    if ($(item).prop('checked')) {
+      // var category = item.prop('');
+      var category = $(item).prop('name');
+      categories.push(category);
+    }
+  });
+
+  var object =   { title: title, author : author, path : 'imgUrl', review: review, categories: categories};
+  console.log(object);
+
   $.ajax({
-            type: "POST",
-            url: upLoalImgUrl,
-            data: data,
-            async: false,
-            cache: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false,
-            success: function (returnedData) {
-              var obj = jQuery.parseJSON(returnedData);
-              var imgUrl = obj.url;
-              
+    type: 'POST',
+    url: postReviewUrl,
+    data: object,
+    contentType: 'application/json; charset=utf-8',
+    success: function(returnedData) {
+      console.log(returnedData);
+    }
+  })
 
-              //Upload img success => upload Review
-              // var title = $('#inputBookTitle').val();
-              // var author = $('#inputBookAuthor').val();
-              // var review = $('#inputReview').val();
-
-              // var object =   { username: userName, password : password, email : email};
-              // var request = $.param(object);
-              //
-              // $.post(uploadReviewUrl + request,
-              //     function(returnedData){
-              //       var obj = jQuery.parseJSON(returnedData);
-              //       console.log(obj.token );
-              //       localStorage.setItem("token", obj.token); //save token to use
-              //       localStorage.setItem("didLogIn", true); //save login state
-              //
-              //       //TODO: Navigate to main page
-              //       window.location.href = "mainpage.html";
-              //     }
-              // )
+  // $.post(postReviewUrl, object, function(returnedData){
+  //                   console.log(returnedData);
+  // });
 
 
-            }
-        });
+  //Upload img File
+  // $.ajax({
+  //           type: "POST",
+  //           url: upLoalImgUrl,
+  //           data: data,
+  //           async: false,
+  //           cache: false,
+  //           contentType: false,
+  //           enctype: 'multipart/form-data',
+  //           processData: false,
+  //           success: function (returnedData) {
+  //             console.log('upload picture success');
+  //             //Upload img success => upload Review
+  //             var obj = jQuery.parseJSON(returnedData);
+  //             var imgUrl = obj.url;
+  //             var title = $('#inputBookTitle').val();
+  //             var author = $('#inputBookAuthor').val();
+  //             var review = $('#inputReview').val();
+  //
+  //             //checkbox
+  //             var input = $('form input:checkbox');
+  //             var categories = [];
+  //             $.each(input, function(i, item) {
+  //               if ($(item).prop('checked')) {
+  //                 // var category = item.prop('');
+  //                 var category = $(item).prop('name');
+  //                 categories.push(category);
+  //               }
+  //             });
+  //
+  //             var object =   { title: title, author : author, path : imgUrl, review: review, categories: categories};
+  //             // var request = $.param(object);
+  //
+  //             $.post(postReviewUrl, object,
+  //                 function(returnedData){
+  //                   console.log(returnedData);
+  //                 }
+  //             )
+  //           }
+  //       });
 
 }
 
@@ -184,4 +219,5 @@ var loadBook = function(category) {
 var handleError = function(jqXHR, textStatus, errorThrown) {
   alert(jqXHR.responseJSON.error);
   console.log(jqXHR.responseJSON.error);
+  console.log(errorThrown);
 };
