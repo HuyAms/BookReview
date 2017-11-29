@@ -37,7 +37,7 @@
 
 .modalreview{
     padding: 20px;
-    
+
 }
 .reviewpost img{
     height:280px;
@@ -47,6 +47,9 @@
     margin-bottom: 20px;
 }
 .showcomment{
+    width: 90%;
+    overflow: hidden;
+    word-wrap: break-word;
     border: 1px solid #ccc!important;
     border-radius: 5px;
     padding: 0 10px;
@@ -74,10 +77,10 @@ form {
     color: white;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-   font-size: 11pt; 
+   font-size: 11pt;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-   font-size: 11pt; 
+   font-size: 11pt;
 }
 .listcomment{
     height: 300px;
