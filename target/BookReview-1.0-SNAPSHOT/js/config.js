@@ -1,3 +1,3 @@
 "user strict"
 
-var endPointUrl = "http://localhost:43319/BookReview/";
+var endPointUrl = "http://localhost:28427/BookReview/";

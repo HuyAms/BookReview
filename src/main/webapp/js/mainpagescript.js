@@ -58,7 +58,19 @@ $(document).ready(function () {
       hightLightTab('others');
       changeTitle('others');
     });
+
+    //logOut
+    $('#logOut').click(logOut);
 });
+
+var logOut = function(e) {
+  e.preventDefault();
+  localStorage.setItem("didLogIn", false); //save login state
+  localStorage.removeItem('token'); //remove token
+
+  //TODO: Navigate to main page
+  window.location.href = "index.html";
+}
 
 var changeTitle = function(tab) {
   $('#title').html(`
