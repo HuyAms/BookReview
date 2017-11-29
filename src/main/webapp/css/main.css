@@ -212,7 +212,7 @@ textarea {
 
 
 */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 480px) {
     .container {
         transform: none;
         top: 20%;
@@ -224,13 +224,13 @@ textarea {
     }
 }
 
-@media only screen and (max-width: 600px) and (min-width: 501px) {
+@media only screen and (max-width: 580px) and (min-width: 481px) {
     .container {
         transform: translate(65%,-50%);
     }
 }
 
-@media only screen and (max-width: 800px) and (min-width: 601px) {
+@media only screen and (max-width: 768px) and (min-width: 581px) {
     .container {
         transform: translate(60%,-50%);
     }
