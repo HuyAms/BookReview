@@ -69,12 +69,15 @@ $(document).ready(function () {
 var postReview = function(e) {
   e.preventDefault();
 
-  //uploadFile
+
   var upLoalImgUrl = endPointUrl + 'webresources/photo';
+  var uploadReviewUrl = endPointUrl + 'webresources/posts?';
+
   var data = new FormData();
   var file = $("#imgFile")[0].files[0];
   data.append('file', file);
 
+  //Upload img File
   $.ajax({
             type: "POST",
             url: upLoalImgUrl,
@@ -84,9 +87,32 @@ var postReview = function(e) {
             contentType: false,
             enctype: 'multipart/form-data',
             processData: false,
-            success: function (returnData) {
-              console.log(returnData);
-              alert("Data Uploaded: ");
+            success: function (returnedData) {
+              var obj = jQuery.parseJSON(returnedData);
+              var imgUrl = obj.url;
+              
+
+              //Upload img success => upload Review
+              // var title = $('#inputBookTitle').val();
+              // var author = $('#inputBookAuthor').val();
+              // var review = $('#inputReview').val();
+
+              // var object =   { username: userName, password : password, email : email};
+              // var request = $.param(object);
+              //
+              // $.post(uploadReviewUrl + request,
+              //     function(returnedData){
+              //       var obj = jQuery.parseJSON(returnedData);
+              //       console.log(obj.token );
+              //       localStorage.setItem("token", obj.token); //save token to use
+              //       localStorage.setItem("didLogIn", true); //save login state
+              //
+              //       //TODO: Navigate to main page
+              //       window.location.href = "mainpage.html";
+              //     }
+              // )
+
+
             }
         });
 

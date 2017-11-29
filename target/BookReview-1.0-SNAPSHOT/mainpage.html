@@ -171,7 +171,7 @@
                         <h2>Share your thought</h2>
                         <form>
                             <div>
-                                <textarea id="inputComment" maxlength="250" style="height:200px" placeholder="Write your comment here"></textarea>
+                                <textarea id="inputComment" maxlength="250" style="height:100px" placeholder="Write your comment here"></textarea>
                             </div>
                             <input id="buttonSend" class="buttonSend" type="submit" value="Send">
                         </form>
@@ -220,8 +220,8 @@
             <div class="modal-window">
                 <header id="header"><h2>Write a post</h2></header>
                 <form action="#">
-                    <span class="title">Title:</span><input type="text" name="title" placeholder="Book's title">
-                    <span class="title">Author:</span><input type="text" name="author" placeholder="Author's name">
+                    <span id="inputBookTitle" class="title">Title:</span><input type="text" name="title" placeholder="Book's title">
+                    <span id="inputBookAuthor" class="title">Author:</span><input type="text" name="author" placeholder="Author's name">
 
                     <span class="title">
                         Category:
@@ -259,8 +259,11 @@
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
-                    <textarea style="height:200px" placeholder="Write your post here"></textarea>
+
+                    <textarea id="inputReview" style="height:200px" placeholder="Write your post here"></textarea>
+
                     <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
+
                     <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
                 </form>
 
