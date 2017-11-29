@@ -92,15 +92,6 @@ var postReview = function(e) {
     }
   });
 
-  // var object =   { title: title, author : author, path : 'imgUrl', review: review, categories: categories};
-  // var postRequest = JSON.stringify(object);
-  // console.log(postRequest);
-  //
-  // $.post(postReviewUrl, postRequest, function(returnedData){
-  //                   console.log(returnedData);
-  // });
-
-
   //Upload img File
   $.ajax({
             type: "POST",
