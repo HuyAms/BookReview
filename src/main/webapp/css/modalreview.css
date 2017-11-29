@@ -67,7 +67,7 @@ form {
     display: flex;
     flex-direction: column;
 }
-#buttonSend{
+.buttonSend{
     align-self: flex-end;
     padding: 10px;
     margin: 10px 0;
