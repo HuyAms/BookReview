@@ -1,0 +1,35 @@
+.detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.detail h4{
+    margin: 0 60px;
+}
+#change{
+    margin-bottom: 0px;
+}
+.detail h5{
+    margin: 0 0;
+    
+}
+.detail input{
+    font-size: 15px;
+    padding: 10px 0;
+    border:none;
+    width:70%;
+    border: 1px solid;
+    margin: 0 0;
+    border-radius: 4px;
+}
+
+.profilebtn{
+    list-style-type: none;
+    
+}
+.profilebtn li{
+    display: inline-block;
+    float: right;
+    margin-left:10px;
+}

@@ -7,6 +7,7 @@
           <link rel="stylesheet" href="./css/mainpage.css">
           <link rel="stylesheet" href="./css/modalreview.css">
           <link rel="stylesheet" href="./css/modalpost.css">
+        <link rel="stylesheet" href="./css/profile.css">
     </head>
 
     <style>
@@ -30,7 +31,7 @@
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn">HI USER</a>
                             <div class="dropdown-content">
-                                <a id="yourProfile" href="#">YOUR PROFILE</a>
+                                <a id="yourProfile" data-toggle="modal" data-target="profile">YOUR PROFILE</a>
                                 <a id="logOut" href="#">LOG OUT</a>
                             </div>
                         </li>
@@ -74,14 +75,6 @@
                         <li id="tabOthers" name="others"><a href="#">Others</a></li>
                     </ul>
             </div> <!--navigation>
-
-<!--
-                <div id="quote">
-                    <h2>"The best book, reviewed with insight and charm, but without compromise"</h2>
-                    <h4>-author Jackie French</h4>
-
-                </div>
--->
 
 
         <!-- search book
@@ -228,8 +221,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+     
 
 
 
@@ -317,42 +309,51 @@
                     <span class="title">
                         Category:
                     </span>
-
-                    <label class="checkbox">Fiction
-                        <input name="fiction" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Novel
-                        <input name="novel" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Travel
-                        <input name="travel" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Guide
-                        <input name="guide" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Horror
-                        <input name="horror" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Romance
-                        <input name="romance" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Science
-                        <input name="science" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Others
-                        <input name="others" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+                    <div class="categorybook">
+                        <div class="columnleft">
+                            <label class="checkbox">Fiction
+                                <input name="fiction" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Novel
+                                <input name="novel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Travel
+                                <input name="travel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Guide
+                                <input name="guide" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        
+                        </div>
+                        <div class="columnright">
+                            <label class="checkbox">Horror
+                                <input name="horror" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Romance
+                                <input name="romance" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Science
+                                <input name="science" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Others
+                                <input name="others" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
 
                     <textarea id="inputReview" style="height:200px" placeholder="Write your post here"></textarea>
-
+                    <span class="title">
+                        Add book's cover:
+                    </span>
                     <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
 
                     <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
@@ -361,6 +362,48 @@
             </div>
         </div>
 
+        <!-- /*modal pop up profile*/-->
+        <div class="modal" id="profile">
+            <div class="modal-window">
+                <header id="header"><h2>Your profile</h2></header>
+                <div class="detail">
+                    <span class="title">Email:</span><h4>minhtran@123.com</h4>
+                </div>
+                <div class="detail">
+                    <span class="title">Password:</span><h4>123456</h4>
+                </div>
+                
+                    <h4 class="title" id="change">Change password and Email:</h4>
+                
+                
+                <form action="#" class="updateform">
+                    <div class="detail">
+                        <h5>Current password:</h5><input type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h5>New password:</h5><input type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h5>Confirm new password:</h5><input type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h5>New Email:</h5><input type="text" size="50" required>
+                    </div>
+                    <ul class="profilebtn">
+                        <li><input class="buttonSend" type="submit" value="Update"></li>
+                        <li><input class="buttonSend" id="cancel" type="submit" value="Cancel"></li>
+                        
+                    </ul>
+                    
+                    
+                    
+                </form>
+            </div>
+        </div>
+        
+        
+        
+        
 
 
          <script type="text/javascript" src="js/config.js"></script>
