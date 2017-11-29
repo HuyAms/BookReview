@@ -1,26 +1,32 @@
-var m_ID;
+"use strict"
+
+var postID;
 
 document.addEventListener('click', function (e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
-    
+
     //Button Read review clicked
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             e.preventDefault();
 
-            m_ID = target.getAttribute('data-target');
+            var m_ID = target.getAttribute('data-target');
             postID = target.getAttribute('book-id');
             console.log("open modal with bookID:" + postID);
 
             // open modal
             document.getElementById(m_ID).classList.add('open');
+            switch (m_ID) {
+              case 'modalReview':
+                //load bookdetail by id
+                getBookDetail(postID);
 
-            //load bookdetail by id
-            getBookDetail(postID);
-
-            //Load comments
-            getPostComment(postID);
+                //Load comments
+                getPostComment(postID);
+                break;
+              default:
+            }
         }
     }
 
@@ -41,7 +47,7 @@ $(document).ready(function () {
 })
 
 var getBookDetail = function(postId) {
-  url = endPointUrl + "webresources/posts/" + postId;
+  var url = endPointUrl + "webresources/posts/" + postId;
 
   $.get(url,
           function(returnData) {
@@ -66,7 +72,7 @@ var getBookDetail = function(postId) {
 
 var getPostComment = function(postId) {
 
-  url = endPointUrl + "webresources/comments/posts/" + postId;
+  var url = endPointUrl + "webresources/comments/posts/" + postId;
   $.get(url,
           function(returnData) {
             console.log('Load comments');
@@ -103,7 +109,7 @@ var postComment = function(e) {
   var object =   { content: comment };
   var request = $.param(object);
 
-  $.post( endPointUrl + 'webresources/comments/posts/' + m_ID + '?' + request,
+  $.post( endPointUrl + 'webresources/comments/posts/' + postID + '?' + request,
       function(returnedData){
         console.log(returnedData);
 
@@ -111,7 +117,7 @@ var postComment = function(e) {
         $('#inputComment').val('');
 
         //reload comment
-        getPostComment(m_ID);
+        getPostComment(postID);
       }
   )
 }
