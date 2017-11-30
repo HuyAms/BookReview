@@ -16,7 +16,7 @@ body {
 }
 .container{
     position: absolute;
-    top: 50%;
+    top: 70%;
     right: 70%;
     /*transform: translateX(-50%) translateY(-50%);*/
     transform: translate(50%, -50%);
@@ -214,8 +214,7 @@ textarea {
 */
 @media only screen and (max-width: 480px) {
     .container {
-        transform: none;
-        top: 20%;
+        transform: translate(0%,-50%);
         left: 0;
         width: 100%;
     }

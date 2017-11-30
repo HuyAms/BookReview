@@ -17,7 +17,7 @@ $(document).ready(function () {
       /* Act on the event */
       var name = $(event.currentTarget).attr('name');
       hightLightTab(name);
-      currentTab = `#${name}`
+      currentTab = $(event.currentTarget).attr('id');
       switch (name) {
         case 'home':
           changeTitle(`${name}`);
@@ -103,11 +103,9 @@ var postReview = function(e) {
               var postRequest = JSON.stringify(object);
 
               $.post(postReviewUrl, postRequest, function(returnedData){
-                //Load all book
-                // loadBook('all');
-                // hightLightTab('all');
-                // changeTitle('all');
-                console.log(returnedData);
+                //reload tab
+                console.log('currentTab: ' + currentTab );
+                $(`#${currentTab}`).click();
               });
             }
         });
