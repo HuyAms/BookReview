@@ -32,8 +32,51 @@ buttonGetStarted.addEventListener('click', function(){
 
 
 
+const buttonLogin = document.querySelector('#buttonLogin');
+const buttonSignUp = document.querySelector('#buttonSignUp');
+
+//Login
+buttonLogin.addEventListener('click', (evt) => {
+  console.log('button login clicked');
+  evt.preventDefault();
+  const userName = document.querySelector('#textUserNameLogin').value;
+  const password = document.querySelector('#textPasswordLogin').value;
+
+  const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
+  console.log(url);
+  fetch(url, {
+    method: 'post'
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      localStorage.setItem("token", data.token);  //save token to use
+      localStorage.setItem("didLogIn", true); //save login state
+
+      //TODO: Navigate to main page
+      window.location.href = "mainpage.html";
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+});
+
+//Register
+// buttonSignUp.addEventListener('click', (e) => {
 
 
+
+//Signup
+buttonSignUp.addEventListener('click', (e) => {
+  e.preventDefault();
+});
+
+const json = (res) => {
+  return res.json();
+}
 
 
 
