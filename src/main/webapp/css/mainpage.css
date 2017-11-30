@@ -144,6 +144,7 @@ h2{
 .booklist div img{
     width: 100%;
     height: 270px;
+    object-fit: cover;
 }
 .btn{
     margin: 15px 0px;

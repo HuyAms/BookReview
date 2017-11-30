@@ -102,6 +102,8 @@ var postReview = function(e) {
               var object =   { title: title, author : author, path : imgUrl, review: review, categories: categories};
               var postRequest = JSON.stringify(object);
 
+
+              //Post book modalreview
               $.post(postReviewUrl, postRequest, function(returnedData){
                 //reload tab
                 console.log('currentTab: ' + currentTab );

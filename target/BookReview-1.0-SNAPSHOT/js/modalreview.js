@@ -52,6 +52,7 @@ $(document).ready(function () {
     $('#buttonUpdateProfile').click(updateProfile);
 })
 
+
 //GET my profile
 var getMyProfile = function() {
   var url = endPointUrl + "webresources/users/me";
@@ -130,17 +131,15 @@ var getPostComment = function(postId) {
   var url = endPointUrl + "webresources/comments/posts/" + postId;
   $.get(url,
           function(returnData) {
-            console.log('Load comments');
-            console.log(returnData);
-            console.log('PostId: ' + postId);
              $('#commentList').html("");
 
              if (returnData.length === 0) {
                 $('#commentList').html('<p>There are no comments yet Be the first to comment.</p>');
              } else {
                $.each(returnData, function(i, item) {
-                 var commnet = item.content;
+                 var comment = item.content;
                  var username = item.userUid.username;
+                 console.log('comment: ' + comment);
 
                 $('#commentList').append(`
                   <div class="comment">
@@ -148,7 +147,7 @@ var getPostComment = function(postId) {
                           <h4>${username}</h4>
                       </div>
                       <div class="showcomment">
-                          <p>${commnet}</p>
+                          <pre>${comment}</pre>
                       </div>
                   </div>
                 `)
