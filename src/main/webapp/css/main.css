@@ -23,6 +23,10 @@ body {
     transform: translate(50%, -50%);
 }
 
+.container {
+  display: none;
+}
+
 .form{
 
   background:rgba(255, 255, 255,0.4);
@@ -123,7 +127,7 @@ header h1 {
     margin: 0;
     text-align: center;
     font-family: 'BenchNine', sans-serif;
-        
+
 }
 
 header p {
@@ -279,11 +283,11 @@ textarea {
     header p {
         font-size: 1.25em;
     }
-    
+
     header h1 {
         font-size: 50px;
     }
-    
+
     #slogan {
         font-size: 1.75em;
     }
@@ -297,11 +301,11 @@ textarea {
     header p {
         font-size: 1.75em;
     }
-    
+
     header h1 {
         font-size: 70px;
     }
-    
+
     #slogan {
         font-size: 2.1em;
     }

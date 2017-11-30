@@ -9,16 +9,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=BenchNine:300|Quicksand:400,700" rel="stylesheet">
     </head>
 
     <body>
-     <div class="container">
+
+     <header id="mainHeader">
+         <p id="slogan">Let your passion for books inspire milllions of others</p>
+         <h1>BOOK HOUSE</h1>
+         <p>BOOK HOUSE is a place to find recommendations</p>
+         <p>BOOK HOUSE is a place simply to express who you are</p>
+         <p>BOOK HOUSE is a place anyone can become a novice book critic</p>
+         <button id="buttonGetStarted" class="button-block">Get started</button>
+     </header>
+
+
+     <section class="container">
 
         <div class="form">
 
             <ul class="tab-group">
-                <li class="tab" id="defaultOpen" onclick="showcontent('signup')"><a href="#signup">Sign Up</a></li>
-                <li class="tab" onclick="showcontent('login')"><a href="#login">Log In</a></li>
+                <li class="tab" id="defaultOpen" onclick="showcontent('login')"><a href="#login">Log In</a></li>
+                <li class="tab" onclick="showcontent('signup')"><a href="#signup">Sign Up</a></li>
+
             </ul>
 
             <div class="tab-content">
@@ -34,20 +47,12 @@
                         </div>
 
                         <div class="field-wrap">
-<!--
-                            <label>
-                                Email Address<span class="req">*</span>
-                            </label>
--->
+
                             <input type="email" id="textEmailSignUp" name="email" required autocomplete="off" placeholder="Email Address*"/>
                         </div>
 
                         <div class="field-wrap">
-<!--
-                            <label>
-                                Set A Password<span class="req">*</span>
-                            </label>
--->
+
                             <input type="password" id="textPasswordSignUp" name="password" required autocomplete="off" placeholder="Set a password*"/>
                         </div>
 
@@ -63,21 +68,13 @@
                     <form id="formLogin" action="/" method="post">
 
                         <div class="field-wrap">
-<!--
-                            <label>
-                                Username<span class="req">*</span>
-                            </label>
--->
+
                             <input id="textUserNameSignIn" type="text" required autocomplete="off" placeholder="Username*" />
 
                         </div>
 
                         <div class="field-wrap">
-<!--
-                            <label>
-                                Password<span class="req">*</span>
-                            </label>
--->
+
                             <input id="textPasswordSignIn" type="password" required autocomplete="off" placeholder="Password*"/>
                         </div>
 
@@ -88,10 +85,9 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
+    </section>
+
          <script type="text/javascript" src="js/config.js"></script>
-         <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-         <script type="text/javascript" src="js/main.js"></script>
+         <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
