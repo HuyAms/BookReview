@@ -47,9 +47,9 @@ public class FileUpload {
             if (id != null) {
                  if ( contentDispositionHeader.getFileName() == null) {
                      System.out.println("book cover is empty");
-                return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(ErrorUtil.badRequest("Please choose book cover photo"))
-                    .build();
+                     return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ErrorUtil.badRequest("Please choose book cover photo"))
+                        .build();
                  }
                  String imgName = System.currentTimeMillis() + contentDispositionHeader.getFileName();
                  String filePath = SERVER_UPLOAD_LOCATION_FOLDER + imgName;

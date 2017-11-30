@@ -188,7 +188,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                         return Response.ok(me).build();
                     } else {
                         System.out.println("oldPassword not currect: " + oldPassword);
-                        return Response.status(Response.Status.BAD_REQUEST)
+                         return Response.status(Response.Status.BAD_REQUEST)
                         .entity(ErrorUtil.badRequest("Old password is not correct")).build();
                     }  
                 } else {
