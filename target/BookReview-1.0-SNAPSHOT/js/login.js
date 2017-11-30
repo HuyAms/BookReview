@@ -37,13 +37,12 @@ const buttonSignUp = document.querySelector('#buttonSignUp');
 
 //Login
 buttonLogin.addEventListener('click', (evt) => {
-  console.log('button login clicked');
   evt.preventDefault();
   const userName = document.querySelector('#textUserNameLogin').value;
   const password = document.querySelector('#textPasswordLogin').value;
 
   const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
-  console.log(url);
+
   fetch(url, {
     method: 'post'
   })
@@ -65,79 +64,36 @@ buttonLogin.addEventListener('click', (evt) => {
 });
 
 //Register
-// buttonSignUp.addEventListener('click', (e) => {
+buttonSignUp.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  console.log('sign up clicked');
+  const userName = document.querySelector('#textUserNameSignUp').value;
+  const password = document.querySelector('#textPasswordSignUp').value;
+  const email = document.querySelector('#textEmailSignUp').value;
 
+  const url = endPointUrl + `webresources/users/register?username=${userName}&&password=${password}&&email=${email}`;
 
+  fetch(url, {
+    method: 'post'
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      localStorage.setItem("token", data.token);  //save token to use
+      localStorage.setItem("didLogIn", true); //save login state
 
-//Signup
-buttonSignUp.addEventListener('click', (e) => {
-  e.preventDefault();
+      //TODO: Navigate to main page
+      window.location.href = "mainpage.html";
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
 });
+
 
 const json = (res) => {
   return res.json();
 }
-
-
-
-
-
-
-// $(document).ready(function () {
-//     console.log('ready: ' + endPointUrl);
-//     $.ajaxSetup({ contentType: "application/json; charset=utf-8", error: handleError });
-//     $("#buttonSignIn").click(signIn);
-//     $("#buttonSignUp").click(signUp);
-// })
-
-//Sign In
-// var signIn = function (e) {
-//       e.preventDefault();
-//       var userName = $('#textUserNameSignIn').val();
-//       var password = $('#textPasswordSignIn').val();
-//
-//       var object =   { username: userName, password : password};
-//       var request = $.param(object);
-//
-//       $.post(endPointUrl + 'webresources/users/login?' + request,
-//           function(returnedData){
-//             var obj = jQuery.parseJSON(returnedData);
-//             console.log(obj.token );
-//             localStorage.setItem("token", obj.token);  //save token to use
-//             localStorage.setItem("didLogIn", true); //save login state
-//
-//             //TODO: Navigate to main page
-//             window.location.href = "mainpage.html";
-//       })
-// }
-
-
-//Sign up
-// var signUp = function (e) {
-//      e.preventDefault();
-//       var userName = $('#textUserNameSignUp').val();
-//       var email = $('#textEmailSignUp').val();
-//       var password = $('#textPasswordSignUp').val();
-//
-//       var object =   { username: userName, password : password, email : email};
-//       var request = $.param(object);
-//
-//       $.post(endPointUrl + 'webresources/users/register?' + request,
-//           function(returnedData){
-//             var obj = jQuery.parseJSON(returnedData);
-//             console.log(obj.token );
-//             localStorage.setItem("token", obj.token); //save token to use
-//             localStorage.setItem("didLogIn", true); //save login state
-//
-//             //TODO: Navigate to main page
-//             window.location.href = "mainpage.html";
-//           }
-//       )
-// }
-
-
-//HANDLE Error
-// var handleError = function(jqXHR, textStatus, errorThrown) {
-//   alert(jqXHR.responseJSON.error);
-//   console.log(jqXHR.responseJSON.error);
-// }
