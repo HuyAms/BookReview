@@ -1,0 +1,52 @@
+.news{
+    max-width: 900px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+.image{
+    align-self: flex-start;
+}
+.postcontent{
+    align-self: flex-end;
+    padding-left: 20px;
+}
+.citeAuthor{
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.source{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+
+
+@media screen and (min-width: 768px){
+    .image{
+        width: 470px;
+}
+    .image img{
+        width: 461px;
+        height: 245px;
+    }
+    .postcontent h3{
+        font-size: 1.75rem;
+        font-family: proxima-nova,Helvetica,sans-serif;
+        font-weight: 300;
+        line-height: 35px;
+        margin: 0;
+        max-height: 137px;  
+    }
+    .briefcontent{
+        display: block;
+        font-size: .8rem;
+        line-height: 1.4;
+        margin: 15px 0 30px;
+        height: 50px;
+    }
+}

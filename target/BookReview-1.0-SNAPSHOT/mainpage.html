@@ -7,6 +7,7 @@
           <link rel="stylesheet" href="./css/mainpage.css">
           <link rel="stylesheet" href="./css/modalreview.css">
           <link rel="stylesheet" href="./css/modalpost.css">
+        <link rel="stylesheet" href="./css/profile.css">
     </head>
 
     <style>
@@ -30,7 +31,7 @@
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn">HI USER</a>
                             <div class="dropdown-content">
-                                <a id="yourProfile" href="#">YOUR PROFILE</a>
+                                <a id="yourProfile" data-toggle="modal" data-target="profile">YOUR PROFILE</a>
                                 <a id="logOut" href="#">LOG OUT</a>
                             </div>
                         </li>
@@ -62,6 +63,7 @@
                     </ul> -->
 
                     <ul class="subnavigation">
+                        <li id="tabHome" name="home"><a href="#">Home</a></li>
                         <li id="tabAll" name="all"><a href="#">All</a></li>
                         <li id="tabFiction" name="fiction"><a href="#">Fiction</a></li>
                         <li id="tabNovel" name="novel"><a href="#">Novel</a></li>
@@ -74,14 +76,6 @@
                     </ul>
             </div> <!--navigation>
 
-<!--
-                <div id="quote">
-                    <h2>"The best book, reviewed with insight and charm, but without compromise"</h2>
-                    <h4>-author Jackie French</h4>
-
-                </div>
--->
-
 
         <!-- search book
                         <div class="input-group">
@@ -93,6 +87,66 @@
                              </span>
                         </div><br>
 -->
+ <!--latestpost-->
+
+<div class="latestpost">
+                <div id="news1" class="news">
+                    <div class="image">
+                        <img src="images/news1.jpeg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+                        <div class="briefcontent">
+                        "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Sadie Trombetta</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="news2" class="news">
+                    <div class="image">
+                        <img src="images/booksvocabulary.jpg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>25 Splendiferous words you should add to your daily vocabulary</h3>
+                        <div class="briefcontent">
+                        "If you're a sesquipedalian ( or just a plain old logophile), then you know the power of a prodigious vocabulary. Sometimes it's about adding to your stockpile of words, so you always have the perfect verbiage for any" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Charlotte Ahlin</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">11 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="news3" class="news">
+                    <div class="image">
+                        <img src="images/womenbook.jpg">
+                    </div>
+                    <div class="postcontent">
+                        <h3>17 books by women from 2017 that you need to read</h3>
+                        <div class="briefcontent">
+                        "Like clockwork, with each year’s end comes that time when we book-lovers take stock of all the books we’ve read throughout the year: the good, the not-so-good, and the rare few (OK, if you’re anything like me, the not-so-rare many) that " <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By E.CE Miller</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+    <!--Booklist-->
 
         <div class="gallery">
             <div class="book fiction">
@@ -127,21 +181,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
 
 
 
-
-<!--
-                <form>
-                    <div class="input-group">
-                        <input type="text" class="form-control" size="50" placeholder="Email Address" required>
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-danger">Subscribe</button>
-                    </div>
-                        </div>
-                    </form>
--->
 <!-- /*modal pop up review*/-->
         <div class="modalreview">
 
@@ -226,42 +269,51 @@
                     <span class="title">
                         Category:
                     </span>
+                    <div class="categorybook">
+                        <div class="columnleft">
+                            <label class="checkbox">Fiction
+                                <input name="fiction" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Novel
+                                <input name="novel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Travel
+                                <input name="travel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Guide
+                                <input name="guide" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
 
-                    <label class="checkbox">Fiction
-                        <input name="fiction" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Novel
-                        <input name="novel" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Travel
-                        <input name="travel" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Guide
-                        <input name="guide" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Horror
-                        <input name="horror" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Romance
-                        <input name="romance" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Science
-                        <input name="science" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox">Others
-                        <input name="others" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+                        </div>
+                        <div class="columnright">
+                            <label class="checkbox">Horror
+                                <input name="horror" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Romance
+                                <input name="romance" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Science
+                                <input name="science" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Others
+                                <input name="others" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
 
                     <textarea id="inputReview" style="height:200px" placeholder="Write your post here"></textarea>
-
+                    <span class="title">
+                        Add book's cover:
+                    </span>
                     <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
 
                     <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
@@ -269,6 +321,79 @@
 
             </div>
         </div>
+
+        <!-- /*modal pop up profile*/-->
+        <div class="modal" id="profile">
+            <div class="modal-window">
+                <header id="header"><h2>Your profile</h2></header>
+                <form action="#" class="updateform">
+                    <div class="detail">
+                        <span class="title">Username:</span><input type="text" value="minhtran">
+                    </div>
+                    <div class="detail">
+                        <span class="title">Email:</span><input type="email" value="minhtran@gmail.com">
+                    </div>
+                    <div class="detail">
+                        <h4>Current password:</h4><input type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h4>New password:</h4><input type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h4>Confirm new password:</h4><input type="password" name="password">
+                    </div>
+
+                    <ul class="profilebtn">
+                        <li><input class="buttonSend" type="submit" value="Update"></li>
+                        <li><input class="buttonSend" id="cancel" type="submit" value="Cancel"></li>
+
+                    </ul>
+
+
+
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footercontainer">
+                <div class="social-btn">
+                    <img src="images/tumblr.png">
+                    <img src="images/Facebook.png">
+                    <img src="images/twitter.png">
+                    <img src="images/VKlogo.png">
+                </div>
+                <div class="footermenu">
+                    <ul>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="#">Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subcribe">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" size="50" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group-btn">
+                            <button type="button" id="subcribe-btn" >SUBCRIBE</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+
 
 
 
