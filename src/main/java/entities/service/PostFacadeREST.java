@@ -9,6 +9,7 @@ import entities.Category;
 import entities.Comment;
 import entities.Post;
 import entities.PostBody;
+import entities.PostResponse;
 import entities.Rate;
 import entities.User;
 import java.util.ArrayList;
@@ -239,7 +240,39 @@ public class PostFacadeREST extends AbstractFacade<Post> {
         Long id = TokenUtil.decodeToken(token);
         if (id != null) {
             List<Post> posts = super.findAll();
-            GenericEntity<List<Post>> entities = new GenericEntity<List<Post>>(posts) {};
+            List<PostResponse> postResponseList = new ArrayList();
+            for(Post post: posts) {
+                PostResponse postResponse = new PostResponse();
+                postResponse.setPost(post);
+                
+                //Get number of rating
+                List<Rate> ratings = em.createNamedQuery("Rate.findAll").getResultList();
+                List<Rate> postRatings = new ArrayList();
+                for(Rate rate: ratings) {
+                    if (rate.getPostPostid().getPostid() == post.getPostid()) {
+                        postRatings.add(rate);
+                    }
+                }
+                int countRating = postRatings.size();
+                postResponse.setNumberOfLike(countRating);
+                
+                 //Get number of comments
+                List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
+                List<Comment> postComments = new ArrayList();
+                
+                for(Comment comment: comments) {
+                    if (comment.getPostPostid().getPostid() == post.getPostid()) {
+                        postComments.add(comment);
+                    }
+                }
+                int countComment = postComments.size();
+                postResponse.setNumberOfComment(countComment);
+                
+                postResponseList.add(postResponse);
+            }
+            
+            
+            GenericEntity<List<PostResponse>> entities = new GenericEntity<List<PostResponse>>(postResponseList) {};
             return Response.status(Response.Status.OK)
                     .entity(entities)
                     .build();

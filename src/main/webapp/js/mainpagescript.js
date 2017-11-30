@@ -165,11 +165,11 @@ var loadBook = function(category) {
             //refresh HTML
             $("#postList").html("");
             $.each(returnData, function(i, item) {
-                var pictureUrl = item.path;
-                var postid = item.postid;
-                var author = item.bookAuthor;
-                var title = item.bookTitle;
-                var review = item.review;
+                var pictureUrl = item.post.path;
+                var postid = item.post.postid;
+                var author = item.post.bookAuthor;
+                var title = item.post.bookTitle;
+                var review = item.post.review;
 
 
                 //Load book into book list
