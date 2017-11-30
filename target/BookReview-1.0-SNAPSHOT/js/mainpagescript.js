@@ -42,9 +42,10 @@ $(document).ready(function () {
     $('#buttonPosReview').click(postReview);
 });
 
+
+//POST review
 var postReview = function(e) {
   e.preventDefault();
-
 
   var upLoalImgUrl = endPointUrl + 'webresources/photo';
   var postReviewUrl = endPointUrl + 'webresources/posts';
@@ -113,6 +114,7 @@ var postReview = function(e) {
 
 }
 
+//Log out
 var logOut = function(e) {
   e.preventDefault();
   localStorage.setItem("didLogIn", false); //save login state
@@ -122,12 +124,16 @@ var logOut = function(e) {
   window.location.href = "index.html";
 }
 
+
+//Change Title
 var changeTitle = function(tab) {
   $('#title').html(`
     <h2>${tab}</h2>
   `)
 }
 
+
+//Highlight Tab
 var hightLightTab = function(tab) {
   if ($('li').hasClass('tabActive')) {
     $('li').removeClass('tabActive');
@@ -138,6 +144,8 @@ var hightLightTab = function(tab) {
 };
 
 
+
+//GET Books
 var loadBook = function(category) {
   switch (category) {
     case 'all':
@@ -176,6 +184,8 @@ var loadBook = function(category) {
 
 };
 
+
+//HANDLE Error
 var handleError = function(jqXHR, textStatus, errorThrown) {
   alert(jqXHR.responseJSON.error);
   console.log(jqXHR.responseJSON.error);

@@ -27,7 +27,7 @@ $(document).ready(function () {
     $("#buttonSignUp").click(signUp);
 })
 
-
+//Sign In
 var signIn = function (e) {
       e.preventDefault();
       var userName = $('#textUserNameSignIn').val();
@@ -48,6 +48,8 @@ var signIn = function (e) {
       })
 }
 
+
+//Sign up
 var signUp = function (e) {
      e.preventDefault();
       var userName = $('#textUserNameSignUp').val();
@@ -70,6 +72,8 @@ var signUp = function (e) {
       )
 }
 
+
+//HANDLE Error
 var handleError = function(jqXHR, textStatus, errorThrown) {
   alert(jqXHR.responseJSON.error);
   console.log(jqXHR.responseJSON.error);
