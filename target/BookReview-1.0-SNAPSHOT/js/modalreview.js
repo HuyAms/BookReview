@@ -118,7 +118,7 @@ var getBookDetail = function(postId) {
               <h2>${title}</h2>
               <p><b>Author:</b> ${author}<br>
               <b>Publish year:</b> 2017</p>
-              <p>${review}</p>
+              <pre>${review}</pre>
               `
             );
           });
