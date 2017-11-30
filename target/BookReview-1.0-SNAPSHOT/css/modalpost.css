@@ -10,6 +10,13 @@
     font-size: 17px;
     font-weight: bold;
 }
+.categorybook{
+    display: flex;
+    justify-content: flex-start;
+}
+.columnright{
+    margin-left: 200px;
+}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;

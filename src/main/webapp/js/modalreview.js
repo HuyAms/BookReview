@@ -25,6 +25,9 @@ document.addEventListener('click', function (e) {
                 //Load comments
                 getPostComment(postID);
                 break;
+              case 'profile':
+                //load my profile
+                getMyProfile();
               default:
             }
         }
@@ -44,8 +47,58 @@ $(document).ready(function () {
     headers: { 'authorization': token}});
 
     $('#buttonSend').click(postComment);
+
+    //update profileb
+    $('#buttonUpdateProfile').click(updateProfile);
 })
 
+//GET my profile
+var getMyProfile = function() {
+  var url = endPointUrl + "webresources/users/me";
+  $.get(url, function(returnedData) {
+    var email = returnedData.email;
+    var userName = returnedData.username;
+
+    $('#inputProfileName').prop('value', userName);
+    $('#inputProfileEmail').prop('value', email);
+  });
+}
+
+//UPDATE profile
+var updateProfile = function() {
+  var userName = $('#inputProfileName').val();
+  var email = $('#inputProfileEmail').val();
+  var currentPassword = $('#inputCurrentPassword').val();
+  var newPassword = $('#inputNewPassword').val();
+  var confirmPassword = $('#inputConfirmPassword').val();
+
+  if (newPassword != confirmPassword) {
+    alert('New password does not match confirm password');
+  }
+
+  var object =   { email: email, username: userName, oldpassword: currentPassword, newpassword: newPassword};
+  var request = $.param(object);
+
+  var url = endPointUrl + "webresources/users/me?" + request;
+
+  $.ajax({
+    url: url,
+    method: 'PUT',
+    success: function(returnedData) {
+      console.log(returnedData);
+      //clear field
+      var currentPassword = $('#inputCurrentPassword').val('');
+      var newPassword = $('#inputNewPassword').val('');
+      var confirmPassword = $('#inputConfirmPassword').val('');
+
+      //get update profile
+      getMyProfile();
+    }
+  });
+}
+
+
+//GET book detail
 var getBookDetail = function(postId) {
   var url = endPointUrl + "webresources/posts/" + postId;
 
@@ -70,6 +123,8 @@ var getBookDetail = function(postId) {
           });
 }
 
+
+//GET comment
 var getPostComment = function(postId) {
 
   var url = endPointUrl + "webresources/comments/posts/" + postId;
@@ -102,6 +157,8 @@ var getPostComment = function(postId) {
           });
 }
 
+
+//POST comment
 var postComment = function(e) {
   e.preventDefault();
   var comment = $('#inputComment').val();
@@ -122,6 +179,8 @@ var postComment = function(e) {
   )
 }
 
+
+//HANDLE Error
 var handleError = function(jqXHR, textStatus, errorThrown) {
   alert(jqXHR.responseJSON.error);
   console.log(jqXHR.responseJSON.error);

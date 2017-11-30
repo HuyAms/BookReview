@@ -1,63 +1,39 @@
 "use strict"
 
+//default tabs
+let currentTab;
+
 $(document).ready(function () {
   console.log('document ready');
+
+    //set up ajax
     var token = localStorage.getItem('token');
     $.ajaxSetup({ contentType: "application/json; charset=utf-8",
     error: handleError,
     headers: { 'authorization': token}});
 
-    //Load all book by default
-    loadBook('all');
-    hightLightTab('all');
-    changeTitle('all');
+    //handle click
+    $("ul.subnavigation li").click(function(event) {
+      /* Act on the event */
+      var name = $(event.currentTarget).attr('name');
+      hightLightTab(name);
+      currentTab = `#${name}`
+      switch (name) {
+        case 'home':
+          changeTitle(`${name}`);
+          $("div.latestpost").show();
+          $("div.gallery").hide();
+          break;
+        default:
+          changeTitle(`${name} Books`);
+          $("div.latestpost").hide();
+          $("div.gallery").show();
+          loadBook(name);
+      }
+    });
 
-    $("#tabAll").click(function(){
-      loadBook('all');
-      hightLightTab('all');
-      changeTitle('all');
-
-    });
-    $("#tabGuide").click(function(){
-      loadBook('guide');
-      hightLightTab('guide');
-      changeTitle('guide');
-    });
-    $("#tabNovel").click(function(){
-      loadBook('novel');
-      hightLightTab('novel');
-      changeTitle('novel');
-    });
-    $("#tabHorror").click(function(){
-      loadBook('horror');
-      hightLightTab('horror');
-      changeTitle('horror');
-    });
-    $("#tabTravel").click(function(){
-      loadBook('travel');
-      hightLightTab('travel');
-      changeTitle('travel');
-    });
-    $("#tabFiction").click(function(){
-      loadBook('fiction');
-      hightLightTab('fiction');
-      changeTitle('fiction');
-    });
-    $("#tabRomance").click(function(){
-      loadBook('romance');
-      hightLightTab('romance');
-      changeTitle('romance');
-    });
-    $("#tabScience").click(function(){
-      loadBook('science');
-      hightLightTab('science');
-      changeTitle('science');
-    });
-    $("#tabOthers").click(function(){
-      loadBook('others');
-      hightLightTab('others');
-      changeTitle('others');
-    });
+    //open home by default
+    $('#tabHome').click();
 
     //logOut
     $('#logOut').click(logOut);
@@ -66,9 +42,10 @@ $(document).ready(function () {
     $('#buttonPosReview').click(postReview);
 });
 
+
+//POST review
 var postReview = function(e) {
   e.preventDefault();
-
 
   var upLoalImgUrl = endPointUrl + 'webresources/photo';
   var postReviewUrl = endPointUrl + 'webresources/posts';
@@ -137,6 +114,7 @@ var postReview = function(e) {
 
 }
 
+//Log out
 var logOut = function(e) {
   e.preventDefault();
   localStorage.setItem("didLogIn", false); //save login state
@@ -146,12 +124,16 @@ var logOut = function(e) {
   window.location.href = "index.html";
 }
 
+
+//Change Title
 var changeTitle = function(tab) {
   $('#title').html(`
-    <h2>${tab} Books</h2>
+    <h2>${tab}</h2>
   `)
 }
 
+
+//Highlight Tab
 var hightLightTab = function(tab) {
   if ($('li').hasClass('tabActive')) {
     $('li').removeClass('tabActive');
@@ -162,6 +144,8 @@ var hightLightTab = function(tab) {
 };
 
 
+
+//GET Books
 var loadBook = function(category) {
   switch (category) {
     case 'all':
@@ -200,6 +184,8 @@ var loadBook = function(category) {
 
 };
 
+
+//HANDLE Error
 var handleError = function(jqXHR, textStatus, errorThrown) {
   alert(jqXHR.responseJSON.error);
   console.log(jqXHR.responseJSON.error);

@@ -155,19 +155,41 @@ public class UserFacadeREST extends AbstractFacade<User> {
         
         Long id = TokenUtil.decodeToken(token);
         if (id != null) {
-            if(!TextUtil.isEmpty(newPassword)) {
+            if (TextUtil.isEmpty(userName)) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                     .entity(ErrorUtil.badRequest("Username should not be empty"))
+                    .build(); 
+                }
+                
+            if (TextUtil.isEmpty(email)) {
+                return Response.status(Response.Status.BAD_REQUEST)
+                .entity(ErrorUtil.badRequest("Email should not be empty"))
+                .build(); 
+            }
+            
+            
+            System.out.println("password: " + oldPassword);
+            if(!TextUtil.isEmpty(oldPassword)) {
+                if (TextUtil.isEmpty(newPassword)) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(ErrorUtil.badRequest("New password should not be empty"))
+                    .build(); 
+                }
+  
                 //update password
                 User me = super.find(id);
+                System.out.println("Update password");
                 if(!TextUtil.isEmpty(oldPassword)) {
                     if (BCrypt.checkpw(oldPassword, me.getPass())) {
+                        System.out.println("oldPassword currect: " + oldPassword);
                         String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
                         me.setPass(hashedPassword);
                         super.edit(me);
                         return Response.ok(me).build();
                     } else {
-                        return Response.status(Response.Status.UNAUTHORIZED)
-                       .entity(ErrorUtil.unAuthorized("Old password is not correct"))
-                       .build();
+                        System.out.println("oldPassword not currect: " + oldPassword);
+                        return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(ErrorUtil.badRequest("Old password is not correct")).build();
                     }  
                 } else {
                     return Response.status(Response.Status.BAD_REQUEST)
