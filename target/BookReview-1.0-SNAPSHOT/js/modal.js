@@ -27,7 +27,7 @@ document.addEventListener('click', function (e) {
                 break;
               case 'profile':
                 //load my profile
-                //getMyProfile();
+                getMyProfile();
               default:
             }
         }
@@ -157,6 +157,30 @@ const postComment  = () => {
 }
 
 
+//[GET] My profile
+const getMyProfile = () => {
+  const url = endPointUrl + `webresources/users/me`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let username = data.username ;
+      let email = data.email;
+
+      document.querySelector('#inputProfileName').value = username;
+      document.querySelector('#inputProfileEmail').value = email;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
 // $(document).ready(function () {
 //     var token = localStorage.getItem('token');
 //     $.ajaxSetup({ contentType: "application/json; charset=utf-8",
@@ -214,31 +238,3 @@ const postComment  = () => {
 //     }
 //   });
 // }
-
-//POST comment
-// var  = function(e) {
-//   e.preventDefault();
-//   var comment = $('#inputComment').val();
-//
-//   var object =   { content: comment };
-//   var request = $.param(object);
-//
-//   $.post( endPointUrl + 'webresources/comments/posts/' + postID + '?' + request,
-//       function(returnedData){
-//         console.log(returnedData);
-//
-//         //clear input field
-//         $('#inputComment').val('');
-//
-//         //reload comment
-//         get(postID);
-//       }
-//   )
-// }
-
-
-//HANDLE Error
-// var handleError = function(jqXHR, textStatus, errorThrown) {
-//   alert(jqXHR.responseJSON.error);
-//   console.log(jqXHR.responseJSON.error);
-// };
