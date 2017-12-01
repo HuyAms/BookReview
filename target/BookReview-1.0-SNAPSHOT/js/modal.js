@@ -217,36 +217,3 @@ const updateProfile = () => {
     console.log('error: ' + error);
   });
 }
-
-//UPDATE profile
-// var updateProfile = function() {
-//   var userName = $('#inputProfileName').val();
-//   var email = $('#inputProfileEmail').val();
-//   var currentPassword = $('#inputCurrentPassword').val();
-//   var newPassword = $('#inputNewPassword').val();
-//   var confirmPassword = $('#inputConfirmPassword').val();
-//
-//   if (newPassword != confirmPassword) {
-//     alert('New password does not match confirm password');
-//   }
-//
-//   var object =   { email: email, username: userName, oldpassword: currentPassword, newpassword: newPassword};
-//   var request = $.param(object);
-//
-//   var url = endPointUrl + "webresources/users/me?" + request;
-//
-//   $.ajax({
-//     url: url,
-//     method: 'PUT',
-//     success: function(returnedData) {
-//       console.log(returnedData);
-//       //clear field
-//       var currentPassword = $('#inputCurrentPassword').val('');
-//       var newPassword = $('#inputNewPassword').val('');
-//       var confirmPassword = $('#inputConfirmPassword').val('');
-//
-//       //get update profile
-//       getMyProfile();
-//     }
-//   });
-// }

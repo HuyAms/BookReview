@@ -30,8 +30,6 @@ buttonGetStarted.addEventListener('click', function(){
   loginContainer.style.display = 'block';
 });
 
-
-
 const buttonLogin = document.querySelector('#buttonLogin');
 const buttonSignUp = document.querySelector('#buttonSignUp');
 

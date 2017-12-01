@@ -1,16 +1,5 @@
 "use strict";
 
-//default tabs
-// let currentTab;
-
-// const subnavigation = document.querySelectorAll('ul.subnavigation li');
-// subnavigation.addEventListener('click', function(evt){
-//   evt.preventDefault();
-//   console.log('navigation clicked');
-// });
-// const token = localStorage.getItem('token');
-// const headers = new Headers({'authorization':token});
-
 document.querySelector('#tabHome').addEventListener("click", () => {handleNavigation('home')});
 document.querySelector('#tabAll').addEventListener("click", () => {handleNavigation('all')});
 document.querySelector('#tabFiction').addEventListener("click", () => {handleNavigation('fiction')});
@@ -119,51 +108,13 @@ const loadBook = (category) => {
 
 }
 
+//parseJSON
 const json = (res) => {
   return res.json();
 }
 
 //open home tab by default
 document.querySelector('#tabHome').click();
-
-// $(document).ready(function () {
-//   console.log('document ready');
-
-    //set up ajax
-    // var token = localStorage.getItem('token');
-    // $.ajaxSetup({ contentType: "application/json; charset=utf-8",
-    // error: handleError,
-    // headers: { 'authorization': token}});
-
-    //handle click
-    // $("ul.subnavigation li").click(function(event) {
-    //   var name = $(event.currentTarget).attr('name');
-    //   hightLightTab(name);
-    //   currentTab = $(event.currentTarget).attr('id');
-    //   switch (name) {
-    //     case 'home':
-    //       changeTitle(`${name}`);
-    //       $("div.latestpost").show();
-    //       $("div.gallery").hide();
-    //       break;
-    //     default:
-    //       changeTitle(`${name} Books`);
-    //       $("div.latestpost").hide();
-    //       $("div.gallery").show();
-    //       loadBook(name);
-    //   }
-    // });
-
-    //open home by default
-    // $('#tabHome').click();
-
-    //logOut
-    // $('#logOut').click(logOut);
-
-    //post reivew
-    // $('#buttonPosReview').click(postReview);
-//});
-
 
 //POST review
 // var postReview = function(e) {
