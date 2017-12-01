@@ -238,6 +238,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @Produces({MediaType.APPLICATION_JSON})
     public Response findAll(@HeaderParam("authorization") String token) {
         Long id = TokenUtil.decodeToken(token);
+        System.out.println("Token: " + token);
         if (id != null) {
             List<Post> posts = super.findAll();
             List<PostResponse> postResponseList = new ArrayList();
@@ -306,8 +307,40 @@ public class PostFacadeREST extends AbstractFacade<Post> {
             List<Category> filterCategories = em.createNamedQuery("Category.findByCategory").setParameter("category", category).getResultList();
             System.out.println("category: " + filterCategories);
             Category filterCategory = filterCategories.get(0);
+            
+            List<PostResponse> postResponseList = new ArrayList();
             List<Post> posts = (List<Post>) filterCategory.getPostCollection();
-            GenericEntity<List<Post>> entities = new GenericEntity<List<Post>>(posts) {};
+            for(Post post: posts) {
+                PostResponse postResponse = new PostResponse();
+                postResponse.setPost(post);
+                
+                //Get number of rating
+                List<Rate> ratings = em.createNamedQuery("Rate.findAll").getResultList();
+                List<Rate> postRatings = new ArrayList();
+                for(Rate rate: ratings) {
+                    if (rate.getPostPostid().getPostid() == post.getPostid()) {
+                        postRatings.add(rate);
+                    }
+                }
+                int countRating = postRatings.size();
+                postResponse.setNumberOfLike(countRating);
+                
+                 //Get number of comments
+                List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
+                List<Comment> postComments = new ArrayList();
+                
+                for(Comment comment: comments) {
+                    if (comment.getPostPostid().getPostid() == post.getPostid()) {
+                        postComments.add(comment);
+                    }
+                }
+                int countComment = postComments.size();
+                postResponse.setNumberOfComment(countComment);
+                
+                postResponseList.add(postResponse);
+            }
+              
+            GenericEntity<List<PostResponse>> entities = new GenericEntity<List<PostResponse>>(postResponseList) {};
             return Response.status(Response.Status.OK)
                     .entity(entities)
                     .build();

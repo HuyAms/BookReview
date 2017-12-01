@@ -8,6 +8,8 @@
 //   evt.preventDefault();
 //   console.log('navigation clicked');
 // });
+const token = localStorage.getItem('token');
+const headers = new Headers({'authorization':token});
 
 document.querySelector('#tabHome').addEventListener("click", () => {handleNavigation('home')});
 document.querySelector('#tabAll').addEventListener("click", () => {handleNavigation('all')});
@@ -31,19 +33,21 @@ const handleNavigation = function(category) {
     default:
       document.querySelector('.latestpost').style.display = 'none';
       document.querySelector('.gallery').style.display = 'block';
-      // loadBook(category);
+
+      // loadBook
+      loadBook(category);
+
   }
 }
 
 //Highlight Tab
 const hightLightTab = function(tab) {
   const listTab = document.querySelectorAll('li');
-  listTab.forEach((tab, index) => {
+    listTab.forEach((tab, index) => {
     tab.classList.remove('tabActive');
   });
 
   const currentTab = document.querySelector(`li[name=${tab}]`);
-  console.log(currentTab);
   currentTab.classList.add('tabActive');
 }
 
@@ -53,9 +57,68 @@ var changeTitle = (tab) => {
   title.innerHTML = `<h2>${tab}</h2>`;
 }
 
-// const loadBook = function(category) {
-//   const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
-// }
+
+const loadBook = (category) => {
+  let url = "";
+  switch (category) {
+    case 'all':
+       url = endPointUrl + `webresources/posts`;
+      break;
+    default:
+      url = endPointUrl + `webresources/posts/categories?filters=${category}`;
+  }
+
+  console.log('url: ' + url );
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      let listBookHTML = '';
+      //clear list book
+      document.querySelector('#postList').innerHTML = listBookHTML;
+      data.forEach((book) => {
+        const numberOfLike = book.numberOfLike;
+        const numberOfComment = book.numberOfComment;
+        const imgPath = book.post.path;
+        const bookTitle = book.post.bookTitle;
+
+        listBookHTML +=
+        `
+        <div class="thumbnail">
+            <img src="${imgPath}" alt="${bookTitle}">
+
+            <button data-toggle="modal" data-target="gmat">
+                <ul class="likebtn">
+                    <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
+                    <li><p>${numberOfLike}</p></li>
+                    <li><img id="heartbtn" src="images/commentbtn.png" style="margin-left:15px"></li>
+                    <li><p>${numberOfComment}</p></li>
+                </ul>
+            </button>
+        </div>
+        `
+        //set book to list
+        document.querySelector('#postList').innerHTML = listBookHTML;
+
+      })
+  }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+
+}
+
+const json = (res) => {
+  return res.json();
+}
+
 
 // $(document).ready(function () {
 //   console.log('document ready');

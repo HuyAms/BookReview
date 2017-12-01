@@ -44,7 +44,7 @@ buttonLogin.addEventListener('click', (evt) => {
   const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
 
   fetch(url, {
-    method: 'post'
+    method: 'POST'
   })
   .then(json)
   .then((data) => {
@@ -74,7 +74,7 @@ buttonSignUp.addEventListener('click', (evt) => {
   const url = endPointUrl + `webresources/users/register?username=${userName}&&password=${password}&&email=${email}`;
 
   fetch(url, {
-    method: 'post'
+    method: 'POST'
   })
   .then(json)
   .then((data) => {

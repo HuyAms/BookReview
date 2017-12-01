@@ -103,9 +103,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("login")
     public Response logIn(@QueryParam("username") String userName, @QueryParam("password") String password) {
-        System.out.println("username: " + userName);
-        System.out.println("password: " + password);
-       
+    
         if (TextUtil.isEmpty(userName) || TextUtil.isEmpty(password)) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(ErrorUtil.badRequest("Field should not be empty")).build();
@@ -118,10 +116,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                     String userId = user.getUid() + "";
                     String token = TokenUtil.createToken(userId);
                     String jsonToken = JsonUtil.jsonToken("token", token);
-                    System.out.println("username: " + userName);
-                    System.out.println("pass: " + password);
-                    System.out.println("jsonToken: " + jsonToken);
- 
+                  
                     return Response.status(Response.Status.OK).entity(jsonToken).build();
                 } else {
                     return Response.status(Response.Status.UNAUTHORIZED)
