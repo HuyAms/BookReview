@@ -231,3 +231,15 @@ footer{
     margin-left: 10px;
     letter-spacing: 4px;
 }
+
+.emptyList {
+    font-style: italic;
+    font-size: 1.25em;
+    color: darkgray;
+}
+
+.emptyList a:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    color: #1ab188;
+}

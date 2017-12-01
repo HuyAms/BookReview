@@ -77,32 +77,41 @@ const loadBook = (category) => {
       let listBookHTML = '';
       //clear list book
       document.querySelector('#postList').innerHTML = '';
-      data.forEach((book) => {
-        const numberOfLike = book.numberOfLike;
-        const numberOfComment = book.numberOfComment;
-        const imgPath = book.post.path;
-        const bookTitle = book.post.bookTitle;
-        const bookId = book.post.postid;
-
-        listBookHTML +=
+      if (data.length === 0) {
+        listBookHTML =
         `
-        <div class="thumbnail">
-            <img data-toggle="modal" data-target="modalReview" book-id=${bookId} src="${imgPath}" alt="${bookTitle}">
-
-            <button data-toggle="modal" data-target="modalReview" book-id=${bookId}>
-                <ul class="likebtn">
-                    <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
-                    <li><p>${numberOfLike}</p></li>
-                    <li><img id="heartbtn" src="images/commentbtn.png" style="margin-left:15px"></li>
-                    <li><p>${numberOfComment}</p></li>
-                </ul>
-            </button>
+        <div class="emptyList">
+            <p>Sorry, no book available! You can write the first review <a data-toggle="modal" data-target="post">here.</a></p>
         </div>
         `
-        //set book to list
-        document.querySelector('#postList').innerHTML = listBookHTML;
+      } else {
+        data.forEach((book) => {
+          const numberOfLike = book.numberOfLike;
+          const numberOfComment = book.numberOfComment;
+          const imgPath = book.post.path;
+          const bookTitle = book.post.bookTitle;
+          const bookId = book.post.postid;
 
-      })
+          listBookHTML +=
+          `
+          <div class="thumbnail">
+              <img data-toggle="modal" data-target="modalReview" book-id=${bookId} src="${imgPath}" alt="${bookTitle}">
+
+              <button data-toggle="modal" data-target="modalReview" book-id=${bookId}>
+                  <ul class="likebtn">
+                      <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
+                      <li><p>${numberOfLike}</p></li>
+                      <li><img id="heartbtn" src="images/commentbtn.png" style="margin-left:15px"></li>
+                      <li><p>${numberOfComment}</p></li>
+                  </ul>
+              </button>
+          </div>
+          `
+        })
+      }
+
+      //set book to list
+      document.querySelector('#postList').innerHTML = listBookHTML;
   }
   }).catch((error) => {
     console.log('error: ' + error);
