@@ -238,7 +238,6 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @Produces({MediaType.APPLICATION_JSON})
     public Response findAll(@HeaderParam("authorization") String token) {
         Long id = TokenUtil.decodeToken(token);
-        System.out.println("Token: " + token);
         if (id != null) {
             List<Post> posts = super.findAll();
             List<PostResponse> postResponseList = new ArrayList();
