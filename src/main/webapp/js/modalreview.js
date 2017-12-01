@@ -22,7 +22,7 @@ document.addEventListener('click', function (e) {
                 getBookDetail(bookId);
 
                 //Load comments
-                //getPostComment(postID);
+                getComment(bookId);
                 // console.log('bookid: ' + bookId);
                 break;
               case 'profile':
@@ -40,6 +40,8 @@ document.addEventListener('click', function (e) {
     }
 }, false);
 
+
+//[GET] Book Detail
 const getBookDetail = (bookId) => {
   const url = endPointUrl + `webresources/posts/${bookId}`;
 
@@ -55,6 +57,7 @@ const getBookDetail = (bookId) => {
       let bookDetail = '';
       //clear list book
       document.querySelector('#bookReview').innerHTML = bookDetail;
+
       const author = data.bookAuthor;
       const title = data.bookTitle;
       const imgUrl = data.path;
@@ -74,8 +77,55 @@ const getBookDetail = (bookId) => {
   }).catch((error) => {
     console.log('error: ' + error);
   });
-
 }
+
+//[GET] comments
+const getComment = (bookId) => {
+  const url = endPointUrl + `webresources/comments/posts/${bookId}`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let listComment = '';
+      //clear comment list
+      document.querySelector('#commentList').innerHTML = listComment;
+      console.log(data);
+
+      if(data.length === 0) { //No comment
+        document.querySelector('#commentList').innerHTML =
+        `<p>There are no comments yet Be the first to comment.</p>`;
+      } else {
+        data.forEach((comment) => {
+          let username = comment.userUid.username;
+          let content = comment.content;
+          listComment +=
+          `
+          <div class="comment">
+              <div class="sideinfo">
+                 <h4>${username}</h4>
+              </div>
+              <div class="showcomment">
+                  <pre>${content}</pre>
+              </div>
+          </div>
+          `
+        });
+
+        document.querySelector('#commentList').innerHTML = listComment;
+      }
+
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
 
 
 // $(document).ready(function () {
@@ -135,65 +185,6 @@ const getBookDetail = (bookId) => {
 //     }
 //   });
 // }
-
-
-//GET book detail
-// var getBookDetail = function(postId) {
-//   var url = endPointUrl + "webresources/posts/" + postId;
-//
-//   $.get(url,
-//           function(returnData) {
-//             var title = returnData.bookTitle;
-//             var author = returnData.bookAuthor;
-//             var pictureUrl = returnData.path;
-//             var review = returnData.review;
-//             var categories = returnData.categoryCollection;
-//
-//             //Load bookdetail into modal
-//             $('#bookReview').html(
-//               `
-//               <img src="${pictureUrl}" alt="${title}">
-//               <h2>${title}</h2>
-//               <p><b>Author:</b> ${author}<br>
-//               <b>Publish year:</b> 2017</p>
-//               <pre>${review}</pre>
-//               `
-//             );
-//           });
-// }
-
-
-//GET comment
-// var getPostComment = function(postId) {
-//
-//   var url = endPointUrl + "webresources/comments/posts/" + postId;
-//   $.get(url,
-//           function(returnData) {
-//              $('#commentList').html("");
-//
-//              if (returnData.length === 0) {
-//                 $('#commentList').html('<p>There are no comments yet Be the first to comment.</p>');
-//              } else {
-//                $.each(returnData, function(i, item) {
-//                  var comment = item.content;
-//                  var username = item.userUid.username;
-//                  console.log('comment: ' + comment);
-//
-//                 $('#commentList').append(`
-//                   <div class="comment">
-//                       <div class="sideinfo">
-//                           <h4>${username}</h4>
-//                       </div>
-//                       <div class="showcomment">
-//                           <pre>${comment}</pre>
-//                       </div>
-//                   </div>
-//                 `)
-//                });
-//              }
-//           });
-// }
-
 
 //POST comment
 // var postComment = function(e) {
