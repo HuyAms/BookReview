@@ -54,6 +54,13 @@ buttonUpdateProfile.addEventListener("click", (evt) => {
   updateProfile();
 })
 
+//Listen to button submit book
+const buttonPosReview = document.querySelector("#buttonPosReview");
+buttonPosReview.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  postBook();
+})
+
 //[GET] Book Detail
 const getBookDetail = (bookId) => {
   const url = endPointUrl + `webresources/posts/${bookId}`;
@@ -212,6 +219,38 @@ const updateProfile = () => {
       //reload profile
       getMyProfile(bookId);
       alert('Update profile successfully!')
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+//[POST] Book
+const postBook = () => {
+  console.log('postBook');
+
+  //url
+  const upLoalImgUrl = endPointUrl + 'webresources/photo';
+  const postBookUrl = endPointUrl + 'webresources/posts';
+
+  //Upload picture
+  const input = document.querySelector('#imgFile');
+
+  const  imgData = new FormData();
+  const file = input.files[0];
+  imgData.append('file', file);
+
+  fetch(upLoalImgUrl, {
+    method: 'POST',
+    headers: headers,
+    body: imgData
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
     }
   }).catch((error) => {
     console.log('error: ' + error);
