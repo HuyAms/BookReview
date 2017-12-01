@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //default tabs
 // let currentTab;
@@ -8,8 +8,8 @@
 //   evt.preventDefault();
 //   console.log('navigation clicked');
 // });
-const token = localStorage.getItem('token');
-const headers = new Headers({'authorization':token});
+// const token = localStorage.getItem('token');
+// const headers = new Headers({'authorization':token});
 
 document.querySelector('#tabHome').addEventListener("click", () => {handleNavigation('home')});
 document.querySelector('#tabAll').addEventListener("click", () => {handleNavigation('all')});
@@ -64,8 +64,6 @@ const loadBook = (category) => {
       url = endPointUrl + `webresources/posts/categories?filters=${category}`;
   }
 
-  console.log('url: ' + url );
-
   fetch(url, {
     method: 'GET',
     headers: headers
@@ -75,7 +73,6 @@ const loadBook = (category) => {
     if (data.hasOwnProperty('error')) {
       alert(data.error);
     } else {
-      console.log(data);
       let listBookHTML = '';
       //clear list book
       document.querySelector('#postList').innerHTML = listBookHTML;
@@ -84,13 +81,14 @@ const loadBook = (category) => {
         const numberOfComment = book.numberOfComment;
         const imgPath = book.post.path;
         const bookTitle = book.post.bookTitle;
+        const bookId = book.post.postid;
 
         listBookHTML +=
         `
         <div class="thumbnail">
-            <img src="${imgPath}" alt="${bookTitle}">
+            <img data-toggle="modal" data-target="modalReview" book-id=${bookId} src="${imgPath}" alt="${bookTitle}">
 
-            <button data-toggle="modal" data-target="gmat">
+            <button data-toggle="modal" data-target="modalReview" book-id=${bookId}>
                 <ul class="likebtn">
                     <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
                     <li><p>${numberOfLike}</p></li>

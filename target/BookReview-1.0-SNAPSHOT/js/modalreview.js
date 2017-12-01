@@ -1,33 +1,33 @@
-"use strict"
+"use strict";
 
-var postID;
+let bookId;
 
 document.addEventListener('click', function (e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
-
     //Button Read review clicked
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             e.preventDefault();
 
             var m_ID = target.getAttribute('data-target');
-            postID = target.getAttribute('book-id');
-            console.log("open modal with bookID:" + postID);
+            bookId = target.getAttribute('book-id');
 
             // open modal
             document.getElementById(m_ID).classList.add('open');
+
             switch (m_ID) {
               case 'modalReview':
                 //load bookdetail by id
-                getBookDetail(postID);
+                getBookDetail(bookId);
 
                 //Load comments
-                getPostComment(postID);
+                //getPostComment(postID);
+                // console.log('bookid: ' + bookId);
                 break;
               case 'profile':
                 //load my profile
-                getMyProfile();
+                //getMyProfile();
               default:
             }
         }
@@ -39,6 +39,44 @@ document.addEventListener('click', function (e) {
         modal.classList.remove('open');
     }
 }, false);
+
+const getBookDetail = (bookId) => {
+  const url = endPointUrl + `webresources/posts/${bookId}`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let bookDetail = '';
+      //clear list book
+      document.querySelector('#bookReview').innerHTML = bookDetail;
+      const author = data.bookAuthor;
+      const title = data.bookTitle;
+      const imgUrl = data.path;
+      const review = data.review;
+
+      bookDetail =
+      `
+        <img src="${imgUrl}" alt="${title}">
+        <h2>${title}</h2>
+        <p><b>Author:</b> ${author}<br>
+        <b>Publish year:</b> 2017</p>
+        <pre>${review}</pre>
+      `
+      //show book reivew
+      document.querySelector('#bookReview').innerHTML = bookDetail;
+  }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+
+}
+
 
 // $(document).ready(function () {
 //     var token = localStorage.getItem('token');

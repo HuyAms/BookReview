@@ -106,29 +106,17 @@ form {
         display: inline-block;
         padding: 0 5px;
         align-self: center;
-        
+
     }
     .likebtn p{
         margin: 0 0;
         font-size: 15px;
     }
+    
     .thumbnail button{
         padding: 5px 0;
         margin-top: 10px;
         background: none;
     }
-    
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
