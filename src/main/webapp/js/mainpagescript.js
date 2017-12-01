@@ -1,7 +1,40 @@
 "use strict"
 
 //default tabs
-let currentTab;
+// let currentTab;
+
+// const subnavigation = document.querySelectorAll('ul.subnavigation li');
+// subnavigation.addEventListener('click', function(evt){
+//   evt.preventDefault();
+//   console.log('navigation clicked');
+// });
+
+document.querySelector('#tabHome').addEventListener("click", () => {handleNavigation('home')});
+document.querySelector('#tabAll').addEventListener("click", () => {handleNavigation('all')});
+document.querySelector('#tabFiction').addEventListener("click", () => {handleNavigation('fiction')});
+document.querySelector('#tabNovel').addEventListener("click", () => {handleNavigation('novel')});
+document.querySelector('#tabTravel').addEventListener("click", () => {handleNavigation('travel')});
+document.querySelector('#tabGuide').addEventListener("click",() => {handleNavigation('guide')});
+document.querySelector('#tabHorror').addEventListener("click", () => {handleNavigation('horror')});
+document.querySelector('#tabRomance').addEventListener("click", () => {handleNavigation('romance')});
+document.querySelector('#tabScience').addEventListener("click", () => {handleNavigation('science')});
+document.querySelector('#tabOthers').addEventListener("click",() => {handleNavigation('others')});
+
+const handleNavigation = function(tab) {
+  hightLightTab(tab);
+}
+
+//Highlight Tab
+const hightLightTab = function(tab) {
+  const listTab = document.querySelectorAll('li');
+  listTab.forEach((tab, index) => {
+    tab.classList.remove('tabActive');
+  });
+
+  const currentTab = document.querySelector(`li[name=${tab}]`);
+  console.log(currentTab);
+  currentTab.classList.add('tabActive');
+}
 
 // $(document).ready(function () {
 //   console.log('document ready');
@@ -134,16 +167,6 @@ logOutButton.addEventListener('click', function(evt){
 //   `)
 // }
 
-
-//Highlight Tab
-// var hightLightTab = function(tab) {
-//   if ($('li').hasClass('tabActive')) {
-//     $('li').removeClass('tabActive');
-//   }
-
-  //hightLightTab
-//   $(`li[name=${tab}]`).addClass('tabActive');
-// };
 
 
 
