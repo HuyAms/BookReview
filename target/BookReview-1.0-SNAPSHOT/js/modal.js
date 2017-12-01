@@ -47,6 +47,12 @@ buttonComment.addEventListener("click", (evt) => {
   postComment();
 })
 
+//Listen to button post comment
+const buttonUpdateProfile = document.querySelector("#buttonUpdateProfile");
+buttonUpdateProfile.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  updateProfile();
+})
 
 //[GET] Book Detail
 const getBookDetail = (bookId) => {
@@ -146,7 +152,6 @@ const postComment  = () => {
     if (data.hasOwnProperty('error')) {
       alert(data.error);
     } else {
-      console.log(data);
       //reload comment list
       getComment(bookId);
      document.querySelector('#inputComment').value = '';
@@ -155,7 +160,6 @@ const postComment  = () => {
     console.log('error: ' + error);
   });
 }
-
 
 //[GET] My profile
 const getMyProfile = () => {
@@ -181,30 +185,38 @@ const getMyProfile = () => {
   });
 }
 
-// $(document).ready(function () {
-//     var token = localStorage.getItem('token');
-//     $.ajaxSetup({ contentType: "application/json; charset=utf-8",
-//     error: handleError,
-//     headers: { 'authorization': token}});
-//
-//     $('#buttonSend').click();
-//
-//     //update profileb
-//     $('#buttonUpdateProfile').click(updateProfile);
-// })
+//[PUT] My profile
+const updateProfile = () => {
+  let userName = document.querySelector('#inputProfileName').value;
+  let email = document.querySelector('#inputProfileEmail').value;
+  let currentPassword = document.querySelector('#inputCurrentPassword').value;
+  let newPassword = document.querySelector('#inputNewPassword').value;
+  let confirmPassword = document.querySelector('#inputConfirmPassword').value;
 
+  if (newPassword != confirmPassword) {
+    alert('New password does not match confirm password');
+  }
 
-//GET my profile
-// var getMyProfile = function() {
-//   var url = endPointUrl + "webresources/users/me";
-//   $.get(url, function(returnedData) {
-//     var email = returnedData.email;
-//     var userName = returnedData.username;
-//
-//     $('#inputProfileName').prop('value', userName);
-//     $('#inputProfileEmail').prop('value', email);
-//   });
-// }
+  const url = endPointUrl + `webresources/users/me?username=${userName}&&email=${email}&&oldpassword=${currentPassword}&&newpassword=${newPassword}&&`;
+
+  fetch(url, {
+    method: 'PUT',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      //reload profile
+      getMyProfile(bookId);
+      alert('Update profile successfully!')
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
 
 //UPDATE profile
 // var updateProfile = function() {
