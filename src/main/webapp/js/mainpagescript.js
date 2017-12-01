@@ -20,8 +20,16 @@ document.querySelector('#tabRomance').addEventListener("click", () => {handleNav
 document.querySelector('#tabScience').addEventListener("click", () => {handleNavigation('science')});
 document.querySelector('#tabOthers').addEventListener("click",() => {handleNavigation('others')});
 
-const handleNavigation = function(tab) {
-  hightLightTab(tab);
+const handleNavigation = function(category) {
+  hightLightTab(category);
+  changeTitle(category);
+  switch (category) {
+    case 'home':
+
+      break;
+    default:
+      // loadBook(category);
+  }
 }
 
 //Highlight Tab
@@ -35,6 +43,16 @@ const hightLightTab = function(tab) {
   console.log(currentTab);
   currentTab.classList.add('tabActive');
 }
+
+//Change Title
+var changeTitle = (tab) => {
+  const title = document.querySelector('#title');
+  title.innerHTML = `<h2>${tab}</h2>`;
+}
+
+// const loadBook = function(category) {
+//   const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
+// }
 
 // $(document).ready(function () {
 //   console.log('document ready');
