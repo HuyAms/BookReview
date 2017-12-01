@@ -36,11 +36,9 @@ const handleNavigation = function(category) {
 
       // loadBook
       loadBook(category);
-
   }
 }
 
-//Highlight Tab
 const hightLightTab = function(tab) {
   const listTab = document.querySelectorAll('li');
     listTab.forEach((tab, index) => {
@@ -51,12 +49,10 @@ const hightLightTab = function(tab) {
   currentTab.classList.add('tabActive');
 }
 
-//Change Title
 var changeTitle = (tab) => {
   const title = document.querySelector('#title');
   title.innerHTML = `<h2>${tab}</h2>`;
 }
-
 
 const loadBook = (category) => {
   let url = "";
@@ -119,6 +115,8 @@ const json = (res) => {
   return res.json();
 }
 
+//open home tab by default
+document.querySelector('#tabHome').click();
 
 // $(document).ready(function () {
 //   console.log('document ready');

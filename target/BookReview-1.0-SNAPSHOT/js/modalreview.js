@@ -2,43 +2,43 @@
 
 var postID;
 
-// document.addEventListener('click', function (e) {
-//     e = e || window.event;
-//     var target = e.target || e.srcElement;
-//
-//     //Button Read review clicked
-//     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
-//         if (target.hasAttribute('data-target')) {
-//             e.preventDefault();
-//
-//             var m_ID = target.getAttribute('data-target');
-//             postID = target.getAttribute('book-id');
-//             console.log("open modal with bookID:" + postID);
-//
-//             // open modal
-//             document.getElementById(m_ID).classList.add('open');
-//             switch (m_ID) {
-//               case 'modalReview':
-//                 //load bookdetail by id
-//                 getBookDetail(postID);
-//
-//                 //Load comments
-//                 getPostComment(postID);
-//                 break;
-//               case 'profile':
-//                 //load my profile
-//                 getMyProfile();
-//               default:
-//             }
-//         }
-//     }
+document.addEventListener('click', function (e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
 
-    // Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
-//     if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'modal') || target.classList.contains('modal')) {
-//         var modal = document.querySelector('[class="modal open"]');
-//         modal.classList.remove('open');
-//     }
-// }, false);
+    //Button Read review clicked
+    if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
+        if (target.hasAttribute('data-target')) {
+            e.preventDefault();
+
+            var m_ID = target.getAttribute('data-target');
+            postID = target.getAttribute('book-id');
+            console.log("open modal with bookID:" + postID);
+
+            // open modal
+            document.getElementById(m_ID).classList.add('open');
+            switch (m_ID) {
+              case 'modalReview':
+                //load bookdetail by id
+                getBookDetail(postID);
+
+                //Load comments
+                getPostComment(postID);
+                break;
+              case 'profile':
+                //load my profile
+                getMyProfile();
+              default:
+            }
+        }
+    }
+
+    //Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
+    if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'modal') || target.classList.contains('modal')) {
+        var modal = document.querySelector('[class="modal open"]');
+        modal.classList.remove('open');
+    }
+}, false);
 
 // $(document).ready(function () {
 //     var token = localStorage.getItem('token');
