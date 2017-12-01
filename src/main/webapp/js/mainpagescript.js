@@ -54,6 +54,7 @@ var changeTitle = (tab) => {
   title.innerHTML = `<h2>${tab}</h2>`;
 }
 
+//[GET] Book List
 const loadBook = (category) => {
   let url = "";
   switch (category) {
@@ -75,7 +76,7 @@ const loadBook = (category) => {
     } else {
       let listBookHTML = '';
       //clear list book
-      document.querySelector('#postList').innerHTML = listBookHTML;
+      document.querySelector('#postList').innerHTML = '';
       data.forEach((book) => {
         const numberOfLike = book.numberOfLike;
         const numberOfComment = book.numberOfComment;

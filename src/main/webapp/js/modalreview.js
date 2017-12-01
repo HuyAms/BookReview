@@ -23,7 +23,7 @@ document.addEventListener('click', function (e) {
 
                 //Load comments
                 getComment(bookId);
-                // console.log('bookid: ' + bookId);
+
                 break;
               case 'profile':
                 //load my profile
@@ -39,6 +39,13 @@ document.addEventListener('click', function (e) {
         modal.classList.remove('open');
     }
 }, false);
+
+//Listen to button post comment
+const buttonComment = document.querySelector("#buttonComment");
+buttonComment.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  postComment();
+})
 
 
 //[GET] Book Detail
@@ -79,7 +86,7 @@ const getBookDetail = (bookId) => {
   });
 }
 
-//[GET] comments
+//[GET] Comments
 const getComment = (bookId) => {
   const url = endPointUrl + `webresources/comments/posts/${bookId}`;
 
@@ -94,8 +101,7 @@ const getComment = (bookId) => {
     } else {
       let listComment = '';
       //clear comment list
-      document.querySelector('#commentList').innerHTML = listComment;
-      console.log(data);
+      document.querySelector('#commentList').innerHTML = '';
 
       if(data.length === 0) { //No comment
         document.querySelector('#commentList').innerHTML =
@@ -126,6 +132,29 @@ const getComment = (bookId) => {
   });
 }
 
+//[POST] Comment
+const postComment  = () => {
+  let comment = document.querySelector('#inputComment').value;
+  const url = endPointUrl + `webresources/comments/posts/${bookId}?content=${comment}`;
+
+  fetch(url, {
+    method: 'POST',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      //reload comment list
+      getComment(bookId);
+     document.querySelector('#inputComment').value = '';
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
 
 
 // $(document).ready(function () {
@@ -134,7 +163,7 @@ const getComment = (bookId) => {
 //     error: handleError,
 //     headers: { 'authorization': token}});
 //
-//     $('#buttonSend').click(postComment);
+//     $('#buttonSend').click();
 //
 //     //update profileb
 //     $('#buttonUpdateProfile').click(updateProfile);
@@ -187,7 +216,7 @@ const getComment = (bookId) => {
 // }
 
 //POST comment
-// var postComment = function(e) {
+// var  = function(e) {
 //   e.preventDefault();
 //   var comment = $('#inputComment').val();
 //
@@ -202,7 +231,7 @@ const getComment = (bookId) => {
 //         $('#inputComment').val('');
 //
 //         //reload comment
-//         getPostComment(postID);
+//         get(postID);
 //       }
 //   )
 // }
