@@ -25,9 +25,12 @@ const handleNavigation = function(category) {
   changeTitle(category);
   switch (category) {
     case 'home':
-
+      document.querySelector('.gallery').style.display = 'none';
+      document.querySelector('.latestpost').style.display = 'block';
       break;
     default:
+      document.querySelector('.latestpost').style.display = 'none';
+      document.querySelector('.gallery').style.display = 'block';
       // loadBook(category);
   }
 }
