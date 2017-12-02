@@ -25,9 +25,20 @@ const buttonGetStarted = document.querySelector('#buttonGetStarted');
 const pageIntroContainer = document.querySelector('#mainHeader');
 const loginContainer = document.querySelector('.container');
 
+if (localStorage.getItem("didSeeOnBoarding")) {
+  pageIntroContainer.style.display = 'none';
+  loginContainer.style.display = 'block';
+}
+
+if (localStorage.getItem("didLogIn")) {
+  //TODO: Navigate to main page
+  window.location.href = "mainpage.html";
+}
+
 buttonGetStarted.addEventListener('click', function(){
   pageIntroContainer.style.display = 'none';
   loginContainer.style.display = 'block';
+  localStorage.setItem("didSeeOnBoarding", true);
 });
 
 const buttonLogin = document.querySelector('#buttonLogin');
