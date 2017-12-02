@@ -6,7 +6,6 @@ function showcontent(action) {
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
-        console.log(tabcontent.length);
     }
 
     tab = document.getElementsByClassName("tab-group")[0].children;
@@ -30,7 +29,7 @@ if (localStorage.getItem("didSeeOnBoarding")) {
   loginContainer.style.display = 'block';
 }
 
-if (localStorage.getItem("didLogIn")) {
+if (localStorage.getItem("didLogIn") == true) {
   //TODO: Navigate to main page
   window.location.href = "mainpage.html";
 }

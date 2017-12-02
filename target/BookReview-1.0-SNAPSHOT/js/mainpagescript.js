@@ -114,7 +114,7 @@ const json = (res) => {
 }
 
 //open home tab by default
-document.querySelector('#tabHome').click();s
+document.querySelector('#tabHome').click();
 
 //Log out
 const logOutButton = document.querySelector('#logOut');
