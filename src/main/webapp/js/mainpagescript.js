@@ -66,14 +66,7 @@ const loadBook = (category) => {
       let listBookHTML = '';
       //clear list book
       document.querySelector('#postList').innerHTML = '';
-      if (data.length === 0) {
-        listBookHTML =
-        `
-        <div class="emptyList">
-            <p>Sorry, no book available! You can write the first review <a data-toggle="modal" data-target="post">here.</a></p>
-        </div>
-        `
-      } else {
+      if (data.length != 0) {
         data.forEach((book) => {
           const numberOfLike = book.numberOfLike;
           const numberOfComment = book.numberOfComment;
@@ -97,10 +90,10 @@ const loadBook = (category) => {
           </div>
           `
         })
-      }
 
-      //set book to list
-      document.querySelector('#postList').innerHTML = listBookHTML;
+        //set book to list
+        document.querySelector('#postList').innerHTML = listBookHTML;
+      }
   }
   }).catch((error) => {
     console.log('error: ' + error);
