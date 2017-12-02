@@ -36,6 +36,7 @@ const hightLightTab = function(tab) {
 
   const currentTab = document.querySelector(`li[name=${tab}]`);
   currentTab.classList.add('tabActive');
+  localStorage.setItem('currentTab', tab);
 }
 
 var changeTitle = (tab) => {
@@ -77,7 +78,7 @@ const loadBook = (category) => {
           listBookHTML +=
           `
           <div class="thumbnail">
-              <img data-toggle="modal" data-target="modalReview" book-id=${bookId} src="${imgPath}" alt="${bookTitle}">
+              <img data-toggle="modal" data-target="modalReview" book-id=${bookId} src="${imgPath}" alt="${bookTitle}" />
 
               <button data-toggle="modal" data-target="modalReview" book-id=${bookId}>
                   <ul class="likebtn">

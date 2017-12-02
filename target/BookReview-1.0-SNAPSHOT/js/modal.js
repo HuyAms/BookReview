@@ -283,6 +283,9 @@ const postBook = () => {
           alert(data.error);
         } else {
           console.log(data);
+          document.querySelector('#buttonCloseModal').click();
+          document.querySelector('#formBookUpload').reset();
+          loadBook(localStorage.getItem('currentTab'));
         }
       }).catch((error) => {
         console.log('error: ' + error);
