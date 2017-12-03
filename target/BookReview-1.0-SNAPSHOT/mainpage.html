@@ -7,15 +7,12 @@
           <link rel="stylesheet" href="./css/mainpage.css">
           <link rel="stylesheet" href="./css/modalreview.css">
           <link rel="stylesheet" href="./css/modalpost.css">
-          <link rel="stylesheet" href="./css/profile.css">
           <link rel="stylesheet" href="./css/latestpost.css">
+          <link rel="stylesheet" href="./css/profile.css">
+          <link href="https://fonts.googleapis.com/css?family=BenchNine:300|Quicksand:400,700" rel="stylesheet">
     </head>
 
-    <style>
-
-    </style>
     <body>
-
         <nav class="navbar">
            <div class="navcontent">
 <!--
@@ -100,6 +97,11 @@
                         <div class="briefcontent">
                         "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
                         </div>
+                        <!--likebutton-->
+                        <div class="likebtn">
+                            <img id="heartbtn" src="images/Like_Button/liked.png" onclick="changeimage(this)">
+                            <p id="like">123</p>
+                        </div>
                         <div class="source">
                             <cite class="citeAuthor">By Sadie Trombetta</cite>
                             <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
@@ -154,9 +156,17 @@
                 <div id="title"><h2>Fiction books</h2></div>
                     <div id="postList" class="booklist">
 
-                        <!-- <div class="thumbnail">
+                        <div class="thumbnail">
                             <img src="./images/gmat.jpeg" alt="gmat">
-                            <button class="btn" data-toggle="modal" data-target="gmat">READ REVIEW</button>
+
+                            <button data-toggle="modal" data-target="gmat">
+                                <ul class="likebtn">
+                                    <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
+                                    <li><p>123</p></li>
+                                    <li><img id="heartbtn" src="images/commentbtn.png" style="margin-left:15px"></li>
+                                    <li><p>123</p></li>
+                                </ul>
+                            </button>
                         </div>
 
                         <div class="thumbnail">
@@ -178,10 +188,15 @@
                         <div class="thumbnail">
                             <img src="./images/javascript-and-jquery-book.png" alt="JS">
                             <button class="btn">READ REVIEW</button>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
+
+                <div class="emptyList">
+                    <p>Sorry, no book available! You can write the first review <a data-toggle="modal" data-target="post">here.</a></p>
+                </div>
             </div>
+
           </div>
 
 
@@ -217,9 +232,8 @@
                             <div>
                                 <textarea id="inputComment" maxlength="250" style="height:100px" placeholder="Write your comment here"></textarea>
                             </div>
-                            <input id="buttonSend" class="buttonSend" type="submit" value="Send">
+                            <input id="buttonComment" class="buttonSend" type="submit" value="Send">
                         </form>
-
                 </div>
 
                 <div class="sharecomment">
@@ -252,7 +266,7 @@
                     </div>
                 </div>
 
-                <button class="modal__close" data-dismiss="modal">&#10005;</button>
+                <button id="buttonCloseModal" class="modal__close" data-dismiss="modal">&#10005;</button>
 
                 </div>
 
@@ -262,8 +276,8 @@
 
         <div class="modal" id="post">
             <div class="modal-window">
-                <header id="header"><h2>Write a post</h2></header>
-                <form action="#">
+                <header id="header"><h2>WRITE A POST</h2></header>
+                <form id='formBookUpload' action="#">
                     <span class="title">Title:</span><input id="inputBookTitle" type="text" name="title" placeholder="Book's title">
                     <span class="title">Author:</span><input id="inputBookAuthor" type="text" name="author" placeholder="Author's name">
 
@@ -394,12 +408,8 @@
         </footer>
 
 
-
-
-
-
          <script type="text/javascript" src="js/config.js"></script>
-         <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
          <script type="text/javascript" src="./js/mainpagescript.js"></script>
-         <script type="text/javascript" src="./js/modalreview.js"></script>
+         <script type="text/javascript" src="./js/modal.js"></script>
+         <script type="text/javascript" src="./js/like.js"></script>
     </body>

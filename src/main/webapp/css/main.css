@@ -12,17 +12,22 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin: 0;
 
 }
-.container{
+.container, header{
     position: absolute;
-    top: 70%;
+    top: 65%;
     right: 70%;
     /*transform: translateX(-50%) translateY(-50%);*/
     transform: translate(50%, -50%);
 }
 
-.form {
+.container {
+  display: none;
+}
+
+.form{
 
   background:rgba(255, 255, 255,0.4);
   padding: 40px;
@@ -70,7 +75,7 @@ li:hover {
 a {
   text-decoration:none;
   display:block;
-    color: #1ab188;
+  color: #1ab188;
   -webkit-transition: .5s ease;
   transition: .5s ease;
   padding:15px;
@@ -99,6 +104,43 @@ h1 {
   position:relative;
   margin-bottom:20px;
 }
+
+header {
+    width: 50%;
+    height: 75%;
+    padding: 10% 0;
+    top: 50%;
+}
+
+header h1 {
+    margin:5% 5%;
+    font-size: 80px;
+    border: 2px #1ab188 solid;
+    padding-left: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: #1ab188
+}
+
+#slogan {
+    font-size: 2.5em;
+    font-style: italic;
+    margin: 0;
+    text-align: center;
+    font-family: 'BenchNine', sans-serif;
+
+}
+
+header p {
+    text-align: center;
+    font-size: 2em;
+    font-family: 'BenchNine', sans-serif;
+    margin:0;
+}
+
+#buttonGetStarted {
+    margin-top: 5%;
+}
+
 
 /*
 label {
@@ -213,13 +255,18 @@ textarea {
 
 */
 @media only screen and (max-width: 480px) {
-    .container {
+    .container, header {
         transform: translate(0%,-50%);
         left: 0;
         width: 100%;
     }
     .form {
         padding: 40px 10px;
+    }
+    header {
+        background-color: white;
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -232,5 +279,38 @@ textarea {
 @media only screen and (max-width: 768px) and (min-width: 581px) {
     .container {
         transform: translate(60%,-50%);
+    }
+    header p {
+        font-size: 1.25em;
+    }
+
+    header h1 {
+        font-size: 50px;
+    }
+
+    #slogan {
+        font-size: 1.75em;
+    }
+    header {
+        top: 65%;
+        right: 65%;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    header p {
+        font-size: 1.75em;
+    }
+
+    header h1 {
+        font-size: 70px;
+    }
+
+    #slogan {
+        font-size: 2.1em;
+    }
+    header {
+        top: 55%;
+        right: 70%;
     }
 }

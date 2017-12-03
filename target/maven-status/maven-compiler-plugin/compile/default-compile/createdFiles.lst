@@ -1,5 +1,6 @@
 entities\Post.class
 entities\Comment_.class
+entities\PostResponse.class
 entities\service\CommentFacadeREST$1.class
 entities\Post_.class
 entities\service\AbstractFacade.class
@@ -8,6 +9,7 @@ entities\Test.class
 server\CORSFilter.class
 entities\service\PostFacadeREST$1.class
 utilities\TextUtil.class
+entities\TokenResponse.class
 entities\Comment.class
 entities\User.class
 utilities\ServerPayloadUtil.class

@@ -324,6 +324,11 @@ Query params:
 Response payload:
 | key |	type | description |
 | --- | --- | --- |
+| numberOfLike | Integer ||
+| numberOfComment | Integer | |
+| post | post | |
+
+**post** in details:
 | bookAuthor | string ||
 | bookTitle | string | |
 | categoryCollection | category[] |  |
@@ -354,57 +359,58 @@ Sample header:
 ```
 Sample response:
 ```json
-{
-        {
-        "bookAuthor": "JK",
-        "bookTitle": "HP",
-        "categoryCollection": [
-            {
-                "category": "science",
-                "categoryid": 1
-            },
-            {
-                "category": "action",
-                "categoryid": 2
-            },
-            {
-                "category": "self-help",
-                "categoryid": 7
+[
+    {
+        "numberOfComment": 0,
+        "numberOfLike": 0,
+        "post": {
+            "bookAuthor": "JK",
+            "bookTitle": "HarryPotter",
+            "categoryCollection": [
+                {
+                    "category": "fiction",
+                    "categoryid": 1
+                },
+                {
+                    "category": "novel",
+                    "categoryid": 2
+                }
+            ],
+            "path": "./images/uploaded/1512040998121hp.jpg",
+            "postid": 8,
+            "review": "This book is great",
+            "timestamp": "2017-11-30T13:23:18+02:00",
+            "userUid": {
+                "email": "tuanle@gmail.com",
+                "uid": 4,
+                "username": "tuanl"
             }
-        ],
-        "path": "url",
-        "postid": 17,
-        "review": "This book is great",
-        "timestamp": "2017-11-25T16:40:53+02:00",
-        "userUid": {
-            "email": "h@gmail.com",
-            "uid": 4,
-            "username": "huy"
         }
     },
     {
-        "bookAuthor": "JK",
-        "bookTitle": "Harry Potter",
-        "categoryCollection": [
-            {
-                "category": "mystery",
-                "categoryid": 4
-            },
-            {
-                "category": "action",
-                "categoryid": 2
+        "numberOfComment": 1,
+        "numberOfLike": 20,
+        "post": {
+            "bookAuthor": "Java",
+            "bookTitle": "HuyTrinh",
+            "categoryCollection": [
+                {
+                    "category": "others",
+                    "categoryid": 1
+                },
+            ],
+            "path": "./images/uploaded/1512041001005java.jpg",
+            "postid": 9,
+            "review": "This book is great",
+            "timestamp": "2017-11-30T13:23:21+02:00",
+            "userUid": {
+                "email": "huytrinh@gmail.com",
+                "uid": 4,
+                "username": "huyt123"
             }
-        ],
-        "path": "D://picture/hp.jpeg",
-        "postid": 18,
-        "review": "This book is great",
-        "timestamp": "2017-11-25T17:23:19.373+02:00",
-        "userUid": {
-            "email": "h@gmail.com",
-            "uid": 4,
-            "username": "huy"
         }
     }
+]
 }
 ```
 ####  GET /webresources/posts/{id}
@@ -1008,7 +1014,7 @@ Sample header:
 	"authorization":"HERE IS THE TOKEN"
 }
 ```
-
+s
 Sample request:
 ```json
 {

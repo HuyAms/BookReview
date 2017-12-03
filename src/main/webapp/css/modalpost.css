@@ -4,6 +4,9 @@
 #header h2{
     margin-top: 0;
     padding: 0 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .title{
@@ -15,7 +18,7 @@
     justify-content: flex-start;
 }
 .columnright{
-    margin-left: 200px;
+    margin-left: 500px;
 }
 input[type=text], select, textarea {
     width: 100%;
@@ -64,7 +67,7 @@ input[type=text], select, textarea {
 
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #1ab188;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

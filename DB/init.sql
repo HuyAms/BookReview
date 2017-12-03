@@ -53,3 +53,11 @@ INSERT INTO `POST` VALUE (NULL, "CSS and HTML", "author1", "./images/gmat.jpeg",
 INSERT INTO `POST` VALUE (NULL, "Book Marketing", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
 INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
 
+INSERT INTO `RATE` VALUE (NULL, 1, 1);
+INSERT INTO `RATE` VALUE (NULL, 1, 2);
+INSERT INTO `RATE` VALUE (NULL, 1, 3);
+INSERT INTO `RATE` VALUE (NULL, 2, 1);
+INSERT INTO `RATE` VALUE (NULL, 2, 2);
+
+
+
