@@ -1,6 +1,6 @@
-function showcontent(action) {
+const showcontent =(action) => {
 
-    var i, tabcontent, tab;
+    let i, tabcontent, tab;
 
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
