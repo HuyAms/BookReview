@@ -46,13 +46,13 @@
         </nav>
 
 
-        <div class="jumbotron">
+        <header class="jumbotron">
             <h1>WELCOME TO BOOK HOUSE</h1>
             <p>Meet your next favourite book</p>
-        </div>
+        </header>
 
-        <div class="maincontent">
-            <div class="subnav-top">
+        <main class="maincontent">
+            <nav class="subnav-top">
 <!--
                     <ul class="subnavigation">
                         <li class="tab" id="defaultOpen" onclick="showcontent('fiction')"><a href="#">Fiction</a></li>
@@ -72,7 +72,7 @@
                         <li id="tabScience" name="science"><a href="#">Science</a></li>
                         <li id="tabOthers" name="others"><a href="#">Others</a></li>
                     </ul>
-            </div> <!--navigation>
+            </nav> <!--navigation>
 
 
         <!-- search book
@@ -87,11 +87,11 @@
 -->
  <!--latestpost-->
 
-<div class="latestpost">
-                <div id="news1" class="news">
-                    <div class="image">
+            <section class="latestpost">
+                <article id="news1" class="news">
+                    <figure class="image">
                         <img src="images/news1.jpeg">
-                    </div>
+                    </figure>
                     <div class="postcontent">
                         <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
                         <div class="briefcontent">
@@ -109,12 +109,12 @@
                     </div>
 
 
-                </div>
+                </article>
 
-                <div id="news2" class="news">
-                    <div class="image">
+                <article id="news2" class="news">
+                    <figure class="image">
                         <img src="images/booksvocabulary.jpg">
-                    </div>
+                    </figure>
                     <div class="postcontent">
                         <h3>25 Splendiferous words you should add to your daily vocabulary</h3>
                         <div class="briefcontent">
@@ -127,12 +127,12 @@
                     </div>
 
 
-                </div>
+                </article>
 
-                <div id="news3" class="news">
-                    <div class="image">
+                <article id="news3" class="news">
+                    <figure class="image">
                         <img src="images/womenbook.jpg">
-                    </div>
+                    </figure>
                     <div class="postcontent">
                         <h3>17 books by women from 2017 that you need to read</h3>
                         <div class="briefcontent">
@@ -145,15 +145,15 @@
                     </div>
 
 
-                </div>
-            </div>
+                </article>
+            </section>
 
 
     <!--Booklist-->
 
-        <div class="gallery">
-            <div class="book fiction">
-                <div id="title"><h2>Fiction books</h2></div>
+        <section class="gallery">
+            <section class="book fiction">
+                <header id="title"><h2>Fiction books</h2></header>
                     <div id="postList" class="booklist">
 
                         <div class="thumbnail">
@@ -190,25 +190,25 @@
                             <button class="btn">READ REVIEW</button>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <div class="emptyList">
                     <p>Sorry, no book available! You can write the first review <a data-toggle="modal" data-target="post">here.</a></p>
                 </div>
-            </div>
+            </section>
 
-          </div>
+          </main>
 
 
 
 <!-- /*modal pop up review*/-->
-        <div class="modalreview">
+        <section class="modalreview">
 
-            <div class="modal" id="modalReview">
+            <article class="modal" id="modalReview">
                 <div class="modal-window">
 
 
-                <div id="bookReview" class="reviewpost">
+                <details id="bookReview" class="reviewpost">
                     <!-- <img src="./images/gmat.jpeg" alt="gmat">
                     <h2>The official guide for GMAT 2017</h2>
                     <p>Author: publish company<br>
@@ -217,7 +217,7 @@
                     This is a review This is a review This is a review This is a review This is a review This is a review This is a review This is a review
                    This is a review This is a review This is a review This is a review This is a review This is a review This is a review
                  This is a review This is a review This is a review This is a review This is a review This is a review This is a review</p> -->
-                </div>
+                </details>
 <!--
                 <div id="reviewContent class="reviewpost>
                   <img class="imgModal" src="./images/CRM_book.jpeg" alt="gmat">
@@ -270,12 +270,12 @@
 
                 </div>
 
-            </div>
-        </div>
+            </article>
+        </section>
         <!-- /*modal pop up write a post*/-->
 
-        <div class="modal" id="post">
-            <div class="modal-window">
+        <section class="modal" id="post">
+            <article class="modal-window">
                 <header id="header"><h2>WRITE A POST</h2></header>
                 <form id='formBookUpload' action="#">
                     <span class="title">Title:</span><input id="inputBookTitle" type="text" name="title" placeholder="Book's title">
@@ -334,12 +334,12 @@
                     <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
                 </form>
 
-            </div>
-        </div>
+            </article>
+        </section>
 
         <!-- /*modal pop up profile*/-->
-        <div class="modal" id="profile">
-            <div class="modal-window">
+        <section class="modal" id="profile">
+            <article class="modal-window">
                 <header id="header"><h2>Your profile</h2></header>
                 <form action="#" class="updateform">
                     <div class="detail">
@@ -367,8 +367,8 @@
 
 
                 </form>
-            </div>
-        </div>
+            </article>
+        </section>
 
         <footer>
             <div class="footercontainer">
