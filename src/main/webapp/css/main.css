@@ -17,9 +17,8 @@ body {
 }
 .container, header{
     position: absolute;
-    top: 65%;
+    top: 50%;
     right: 70%;
-    /*transform: translateX(-50%) translateY(-50%);*/
     transform: translate(50%, -50%);
 }
 
@@ -28,7 +27,6 @@ body {
 }
 
 .form{
-
   background:rgba(255, 255, 255,0.4);
   padding: 40px;
   min-width:400px;
@@ -106,10 +104,11 @@ h1 {
 }
 
 header {
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
     width: 50%;
-    height: 75%;
-    padding: 10% 0;
-    top: 50%;
+    height: auto;
 }
 
 header h1 {
@@ -255,24 +254,57 @@ textarea {
 
 */
 @media only screen and (max-width: 480px) {
-    .container, header {
+    .container{
         transform: translate(0%,-50%);
         left: 0;
         width: 100%;
     }
     .form {
         padding: 40px 10px;
+        min-width: 300px;
     }
+    
     header {
-        background-color: white;
-        margin: 0;
-        padding: 0;
+        height: 100%;
+        width: 100%;
+        transform: translate(0, -50%);
+        left: 0;
+        background:rgba(255, 255, 255,0.6);
+        overflow: auto;
+        vertical-align: middle;
+    }
+    #slogan {
+        font-size: 1.5em;
+    }
+    header p {
+        padding: 0 2%;
+        font-size: 1.5em;
+    }
+    header h1 {
+        font-size: 55px;
     }
 }
 
 @media only screen and (max-width: 580px) and (min-width: 481px) {
     .container {
-        transform: translate(65%,-50%);
+        right: 50%;
+    }
+    #slogan {
+        font-size: 1.8em;
+    }
+    header p {
+        padding: 0 2%;
+        font-size: 1.8em;
+    }
+    header {
+        width: 100%;
+        height: 100%;
+        transform: translate(0, -50%);
+        left: 0;
+        background:rgba(255, 255, 255,0.6);
+    }
+    header h1 {
+        font-size: 60px;
     }
 }
 
@@ -281,19 +313,19 @@ textarea {
         transform: translate(60%,-50%);
     }
     header p {
-        font-size: 1.25em;
+        font-size: 1.5em;
     }
 
     header h1 {
-        font-size: 50px;
+        font-size: 65px;
     }
 
     #slogan {
-        font-size: 1.75em;
+        font-size: 1.8em;
     }
     header {
-        top: 65%;
-        right: 65%;
+        right: 63%;
+        width: 65%;
     }
 }
 
@@ -307,10 +339,10 @@ textarea {
     }
 
     #slogan {
-        font-size: 2.1em;
+        font-size: 2.25em;
     }
     header {
-        top: 55%;
-        right: 70%;
+        right: 67%;
+        width: 55%;
     }
 }
