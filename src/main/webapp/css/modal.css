@@ -1,0 +1,108 @@
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  padding-top: 2em;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.modal-content {
+  margin: auto;
+  padding: 20px;
+  display: block;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add Animation - Zoom in the Modal */
+
+.modal-content {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
+}
+
+/*highlight input*/
+
+input[type=text], input[type=email], input[type=password], textarea !important {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  /*padding: 5px 0px 5px 5px;
+  margin: 10px 1px 6px 0px;*/
+  border: 1px solid #DDDDDD;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus !important {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  /*padding: 10px 0px 10px 10px;*/
+  /*margin: 5px 1px 3px 0px;*/
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+/* The Close Button */
+
+.closeModal {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.closeModal:hover, .closeModal:focus {
+  color: #179b78;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 960px) {
+  .modal-content {
+    overflow: auto;
+    padding-bottom: 5em;
+    width: 80%;
+  }
+}

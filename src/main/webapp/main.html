@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/news.css">
   <link rel="stylesheet" href="css/newslayout.css">
   <link rel="stylesheet" href="css/topnavnew.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/modalPost.css">
 </head>
 
 <body>
@@ -240,7 +242,64 @@
       </article>
     </section>
 
-      
+    <!-- Post Modal -->
+    <section class="modal postModal">
+
+      <!-- The Close Button -->
+      <span class="closeModal closePostModal">&times;</span>
+
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <h2 id="modalHeader">WRITE A POST</h2>
+        <form id='postForm' action="#">
+          <span class="title">Title:</span><input id="inputBookTitle" type="text" name="title" placeholder="Book's title">
+          <span class="title">Author:</span><input id="inputBookAuthor" type="text" name="author" placeholder="Author's name">
+          <span class="title">Category:</span>
+
+          <div class="categorybook">
+            <label class="checkbox">Fiction
+           <input name="fiction" type="checkbox">
+           <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Novel
+           <input name="novel" type="checkbox">
+           <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Travel
+           <input name="travel" type="checkbox">
+           <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Guide
+           <input name="guide" type="checkbox">
+           <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Horror
+             <input name="horror" type="checkbox">
+             <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Romance
+             <input name="romance" type="checkbox">
+             <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Science
+             <input name="science" type="checkbox">
+             <span class="checkmark"></span>
+         </label>
+            <label class="checkbox">Others
+             <input name="others" type="checkbox">
+             <span class="checkmark"></span>
+         </label>
+          </div>
+
+          <textarea id="inputReview" style="height:200px" placeholder="Write your post here"></textarea>
+
+          <span class="title">Add book's cover:</span>
+          <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
+          <input class="buttonSend" type="submit" value="Submit">
+        </form>
+      </div>
+    </section>
+            
 
     <footer role="contentinfo">
       <p>
@@ -251,5 +310,6 @@
 </body>
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/topnav.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
 
 </html>
