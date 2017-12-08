@@ -259,6 +259,45 @@ ul.social a.twitter:hover {
   transform: scale(1.3);
   transition-duration: 0.5s;
 }
+/* --------------------------------------------------
+   go to top button
+-----------------------------------------------------*/
+
+#goToTopBtn {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 20px;
+  /* Place the button at the bottom of the page */
+  right: 20px;
+  /* Place the button 30px from the right */
+  z-index: 99;
+  /* Make sure it does not overlap */
+  background: none;
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  cursor: pointer;
+  /* Add a mouse pointer on hover */
+  opacity: 0.3;
+  transition-duration: 0.5s;
+  /*padding: 15px; /* Some padding */
+  /*background-color: #58cda7; /* Set a background color */
+  /*color: white; /* Text color */
+  /*border-radius: 10px; /* Rounded corners */
+}
+
+#goToTopBtn img {
+  width: 50px;
+  height: 50px;
+}
+
+#goToTopBtn:hover {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
 
 /* --------------------------------------------------
    spotLight  styles
@@ -382,3 +421,18 @@ footer p {
   }
 }
 
+/* --------------------------------------------------
+   book category navigation styles
+-----------------------------------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #goToTopBtn {
+    display: none;
+  }
+  /* --------------------------------------------------
+   top navigation styles
+-----------------------------------------------------*/
+  /*nav.mainNav ul li a {
+    font-size: 1.4em;
+  }*/
+}
