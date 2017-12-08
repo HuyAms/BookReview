@@ -4,12 +4,13 @@ body {
     margin:0;
     box-sizing: border-box;
     background-color: #f7f7f7;
+   
 }
 
 .navbar {
       margin-bottom: 0;
       background-color: #179b78;
-
+        clear: both;
       border: 0;
       font-size: 12px !important;
       line-height: 1.42857143 !important;
@@ -20,6 +21,7 @@ body {
     position: fixed;
     right: 0;
     left:0;
+    top:0;
   }
 .navcontent{
     width: 970px;
@@ -82,15 +84,19 @@ body {
 }
 
 .jumbotron {
-      background-image: url(../images/bookbg.jpg);
+      background-image: url(../images/jumbotronbg.jpg);
+    background-size: cover;
       padding: 70px 25px;
       font-family: sans-serif;
-
+    margin-top: 30px;
+    
 }
+
 h1{
     text-align: center;
     font-weight: 500;
     font-size: 63px;
+    margin-top: 85px;
 }
 .jumbotron p{
     font-size: 30px;

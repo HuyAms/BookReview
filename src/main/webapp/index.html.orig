@@ -85,7 +85,11 @@
                     </form>
                 </div>
             </div>
+<<<<<<< HEAD
+          </div>
+=======
          </div>
+>>>>>>> 61d9d56b127589ed2f0609a0ccb6658f482557aa
     </section>
 
          <script type="text/javascript" src="js/config.js"></script>
