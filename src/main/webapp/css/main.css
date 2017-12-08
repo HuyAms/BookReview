@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    background: url(../images/book.jpg) no-repeat center center fixed;;
+    background: url(../images/book.jpg) no-repeat center center fixed;
     font-family: 'Titillium Web', sans-serif;
     -webkit-background-size: cover;
     -moz-background-size: cover;

@@ -61,3 +61,4 @@ INSERT INTO `RATE` VALUE (NULL, 2, 2);
 
 
 
+

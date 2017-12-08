@@ -4,6 +4,9 @@
 #header h2{
     margin-top: 0;
     padding: 0 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .title{
@@ -15,7 +18,7 @@
     justify-content: flex-start;
 }
 .columnright{
-    margin-left: 200px;
+    margin-left: 500px;
 }
 input[type=text], select, textarea {
     width: 100%;
