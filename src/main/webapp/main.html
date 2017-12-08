@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book House</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mainlayout.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/newslayout.css">
+  <link rel="stylesheet" href="css/topnavnew.css">
+</head>
+
+<body>
+
+  <!--
+  <section class="navigation" role="navigation">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="#!">Book House</a>
+      </div>
+      <nav class="mainNav">
+        <div class="nav-mobile show-hide" data-target="nav-list"><a id="nav-toggle" href="#!"><span></span></a></div>
+
+        <ul class="nav-list" style="display:none;">
+          <li>
+            <a href="#!">Home</a>
+          </li>
+          <li>
+            <a href="#!">Forum</a>
+          </li>
+          <li>
+            <a href="#!">About</a>
+          </li>
+          <li>
+            <a href="#!" class="submenu show-hide" data-target="profile">Hi Huy</a>
+            <ul class="nav-dropdown profile" style="display:none">
+              <li>
+                <a href="#!" class="profileModalTrigger">My Profile</a>
+              </li>
+              <li>
+                <a href="#!">Log out</a>
+              </li>
+              </ul>
+          </li>
+        </ul>
+
+      </nav>
+    </div>
+  </section>
+-->
+  <input type="checkbox" class="toggle-nav" id="toggle-nav">
+
+  <div class="mobile-bar">
+
+    <label for="toggle-nav">
+    <a id="nav-toggle" href="#!"><span></span></a></label>
+
+  </div>
+  <main class="container">
+
+    <nav class="header">
+
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">About</a></li>
+        <li class="submenu" data-target="profile">
+          <a href="#" data-target="profile">Hi Huy</a>
+          <ul class="nav-dropdown profile">
+            <li>
+              <a href="#!" class="profileModalTrigger">My Profile</a>
+            </li>
+            <li>
+              <a href="#!">Log out</a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+
+    <header role="banner">
+      <h1>Welcome to book house</h1>
+      <h2>Meet your next favourite book</h2>
+    </header>
+
+    <main role="main" class="main">
+      <section class="gallery">
+
+        <nav class="bookNav">
+          <ul>
+            <li id="tabNews" name="news"><a>News</a></li>
+            <li id="tabAll" name="all"><a>All</a></li>
+            <li id="tabFiction" name="fiction"><a>Fiction</a></li>
+            <li id="tabNovel" name="novel"><a>Novel</a></li>
+            <li id="tabTravel" name="travel"><a>Travel</a></li>
+            <li id="tabGuide" name="guide"><a>Guide</a></li>
+            <li id="tabHorror" name="horror"><a>Horror</a></li>
+            <li id="tabRomance" name="romance"><a>Romance</a></li>
+            <li id="tabScience" name="science"><a>Science</a></li>
+            <li id="tabOthers" name="others"><a>Others</a></li>
+          </ul>
+        </nav>
+
+        <article class="news">
+          <section>
+            <div>
+              <img src="images/news1.jpg" class="newImg">
+            </div>
+            <div class="postcontent">
+              <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+              <div class="briefcontent">
+                <p>"Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78">Read&nbsp;more</i></p>
+              </div>
+              <div class="source">
+                <cite class="citeAuthor">By Huy Trinh</cite>
+                <time datetime="2017-11-28T21:12:08.403Z">11 hours ago</time>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="images/booksvocabulary.jpg" class="newImg">
+            </div>
+            <div class="postcontent">
+              <h3>25 Splendiferous words you should add to your daily vocabulary</h3>
+              <div class="briefcontent">
+                <p>"If you're a sesquipedalian ( or just a plain old logophile), then you know the power of a prodigious vocabulary. Sometimes it's about adding to your stockpile of words, so you always have the perfect verbiage for any" <i style="color: #179b78">Read&nbsp;more</i></p>
+              </div>
+              <div class="source">
+                <cite class="citeAuthor">By Minh Tran</cite>
+                <time datetime="2017-11-28T21:12:08.403Z">11 hours ago</time>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="images/womenbook.jpg" class="newImg">
+            </div>
+            <div class="postcontent">
+              <h3>17 books by women from 2017 that you need to read</h3>
+              <div class="briefcontent">
+                <p>"Like clockwork, with each year’s end comes that time when we book-lovers take stock of all the books we’ve read throughout the year: the good, the not-so-good, and the rare few (OK, if you’re anything like me, the not-so-rare many) that
+                  " <i style="color: #179b78">Read&nbsp;more</i> </p>
+              </div>
+              <div class="source">
+                <cite class="citeAuthor">By Tuan Le</cite>
+                <time datetime="2017-11-28T21:12:08.403Z">11 hours ago</time>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="bookList">
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg bookModalTrigger" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+          <section class="book">
+            <img src="./images/gmat.jpeg" alt="gmat" class="bookImg" />
+            <p>Harry Potter and the cursed child</p>
+            <p>by <span>JK Rowling</span></p>
+          </section>
+        </article>
+
+        <!-- Post button -->
+        <a href="#" class="button postModalTrigger">Write a post</a>
+      </section>
+
+      <aside role="complementary" class="sidebar">
+        <section class="intro">
+          <blockquote>
+            <p><q>Book House seeks to keep you up to date on the most books out there. A good book will keep you fascinated for days. Our website for your whole life.</q></p>
+          </blockquote>
+        </section>
+        <ul class="social">
+          <li><a href="https://www.facebook.com/" target="_blank" title="Facebook" class="facebook">Follow us on Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" title="Twitter" class="twitter">Follow us on Twitter</a></li>
+        </ul>
+        <section class="events">
+          <h3>Upcoming Events</h3>
+          <p>Join us on Thursday, December 7th at 7pm as Anand Taneja discusses Jinnealogy: Time, Islam, and Ecological Thought in the Medieval Ruins of Delhi at Book Culture on 112th. Anand will be joined in conversation by Debashree Mukherjee. This event
+            is co-sponsored by the Columbia University Center for International History.</p>
+        </section>
+      </aside>
+    </main>
+
+    <section class="spotLight">
+      <article>
+        <h2>Featured News</h2>
+        <h3>100 Likes</h3>
+        <div class="img-wrap"><img src="./images/gmat.jpeg" alt="gmat"></div>
+        <h4>Harry Potter and the cursed child <br /><span>by JK Rowling</span></h4>
+        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book left off, with the middle-aged Harry watching his
+          son board the Hogwarts Express.</p>
+        <a href="#" class="button">Read more</a>
+      </article>
+      <article>
+        <h2>Featured News</h2>
+        <h3>55 Comments</h3>
+        <div class="img-wrap"><img src="./images/gmat.jpeg" alt="gmat"></div>
+        <h4>Harry Potter and the cursed child <br /><span>by JK Rowling</span></h4>
+        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book left off, with the middle-aged Harry watching his
+          son board the Hogwarts Express.</p>
+        <a href="#" class="button">Read more</a>
+      </article>
+      <article>
+        <h2>Featured News</h2>
+        <h3>1000 Views</h3>
+        <div class="img-wrap"><img src="./images/gmat.jpeg" alt="gmat"></div>
+        <h4>Harry Potter and the cursed child <br /><span>by JK Rowling</span></h4>
+        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book left off, with the middle-aged Harry watching his
+          son board the Hogwarts Express.</p>
+        <a href="#" class="button">Read more</a>
+      </article>
+    </section>
+
+      
+
+    <footer role="contentinfo">
+      <p>
+        &copy;2017 Huy Trinh | Minh Tran | Tuan Le.
+      </p>
+    </footer>
+  </main>
+</body>
+<script type="text/javascript" src="js/mainpage.js"></script>
+<script type="text/javascript" src="js/topnav.js"></script>
+
+</html>
