@@ -17,6 +17,7 @@
     * GET /webresources/posts
     * GET /webresources/posts/{id}
     * GET /webresources/posts/categories
+    * PUT /webresources/posts/{id}/view
 * Comment
     * GET /webresources/comments/posts/{postsId}    
     * POST /webresources/comments/posts/{postId}
@@ -644,6 +645,75 @@ Sample response:
     }
 }
 ```
+####  PUT /webresources/posts/{id}/view
+Add 1 view to post
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Request body:
+| key |	type | description |
+| --- | --- | --- |
+| EMPTY |   |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+
+Sample response:
+```json
+{
+    "bookAuthor": "JK",
+    "bookTitle": "huy",
+    "categoryCollection": [
+        {
+            "category": "others",
+            "categoryid": 8
+        }
+    ],
+    "path": "D://picture/hp.jpeg",
+    "postid": 10,
+    "review": "This book is great",
+    "timestamp": "2017-12-09T12:53:49+02:00",
+    "userUid": {
+        "email": "patrick@gmail.com",
+        "uid": 3,
+        "username": "patrick123"
+    },
+    "view": 5
+}
+```
+
 ####  DELETE /webresources/posts/{id}
 Delete a post based on id
 

@@ -182,7 +182,32 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                     .build();
         }
     }
-
+    
+    @PUT
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("{id}/view")
+    public Response postView(@HeaderParam("authorization") String token, @PathParam("id") Long id) {
+        Long userId = TokenUtil.decodeToken(token);
+        if (id != null) {
+            Post post = super.find(id);
+            if (post == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("Cannot find the post with that id"))
+                    .build();
+            } else {
+                long view = post.getView();
+                post.setView(view + 1);
+                super.edit(post);
+                return Response.ok(post).build();
+            }
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                     .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+        
+    }
+   
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
