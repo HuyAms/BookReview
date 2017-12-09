@@ -30,7 +30,6 @@ const handleNavigation = function(category) {
   }
 }
 
-
 const hightLightTab = function(tab) {
   const listTab = document.querySelectorAll('.bookNav ul li');
     listTab.forEach((tab, index) => {

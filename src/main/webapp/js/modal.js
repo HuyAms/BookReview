@@ -16,6 +16,7 @@ postTrigger.addEventListener('click', (evt) => {
 })
 profileTrigger.addEventListener('click', (evt) => {
     profileModal.style.display = "block";
+    getMyProfile();
 })
 bookTrigger.addEventListener('click', (evt) => {
     bookModal.style.display = "block";
@@ -42,6 +43,40 @@ window.onclick = function(event) {
     if (event.target == postModal || event.target == profileModal || event.target == bookModal) {
         postModal.style.display = "none";
         profileModal.style.display = "none";
-        bookModal.style.display = "none";    
+        bookModal.style.display = "none";
     }
+}
+
+/*
+====================MY PROFILE =========================
+*/
+//[GET] My profile
+const getMyProfile = () => {
+  const url = endPointUrl + `webresources/users/me`;
+  console.log(endPointUrl);
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    console.log(data);
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let username = data.username ;
+      let email = data.email;
+
+
+      document.querySelector('#inputProfileName').value = username;
+      document.querySelector('#inputProfileEmail').value = email;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+const json = (res) => {
+  return res.json();
 }

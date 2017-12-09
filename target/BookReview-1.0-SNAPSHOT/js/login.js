@@ -101,7 +101,6 @@ buttonSignUp.addEventListener('click', (evt) => {
   });
 });
 
-
 const json = (res) => {
   return res.json();
 }
