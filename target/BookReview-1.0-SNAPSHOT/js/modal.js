@@ -1,31 +1,33 @@
 "use strict"
 
 // Get the modals
-var postModal = document.querySelector('.postModal');
-var profileModal = document.querySelector('.profileModal');
-var bookModal = document.querySelector('.bookModal');
+let postModal = document.querySelector('.postModal');
+let profileModal = document.querySelector('.profileModal');
+let bookModal = document.querySelector('.bookModal');
 
 // Get the triggers
-var postTrigger = document.querySelector('.postModalTrigger');
-var profileTrigger = document.querySelector('.profileModalTrigger');
-var bookTrigger = document.querySelector('.bookModalTrigger');
+let postTrigger = document.querySelector('.postModalTrigger');
+let profileTrigger = document.querySelector('.profileModalTrigger');
+// let bookTrigger = document.querySelector('.bookModalTrigger');
 
 //Show modals when click on triggers
 postTrigger.addEventListener('click', (evt) => {
     postModal.style.display = "block";
 })
+
 profileTrigger.addEventListener('click', (evt) => {
     profileModal.style.display = "block";
     getMyProfile();
 })
-bookTrigger.addEventListener('click', (evt) => {
-    bookModal.style.display = "block";
-})
+
+// bookTrigger.addEventListener('click', (evt) => {
+//     bookModal.style.display = "block";
+// })
 
 // Get the <span> element that closes the modal
-var closePost = document.querySelector('.closePostModal');
-var closeProfile = document.querySelector('.closeProfileModal');
-var closeBook = document.querySelector('.closeBookModal');
+let closePost = document.querySelector('.closePostModal');
+let closeProfile = document.querySelector('.closeProfileModal');
+let closeBook = document.querySelector('.closeBookModal');
 
 // When the user clicks on(x), close the modal
 closePost.addEventListener('click', (evt) => {

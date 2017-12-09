@@ -76,12 +76,11 @@ const loadBook = (category) => {
           const bookTitle = book.post.bookTitle;
           const bookId = book.post.postid;
           const bookAuthor = book.post.bookAuthor;
-          console.log('imagepath: ' + imgPath);
 
           listBookHTML +=
           `
           <section class="book">
-            <img src="${imgPath}" alt="${bookTitle}" class="bookImg bookModalTrigger" />
+            <img src="${imgPath}" alt="${bookTitle}" class="bookImg bookModalTrigger" bookId="${bookId}"/>
             <p>${bookTitle}</p>
             <p>by <span>${bookAuthor}</span></p>
           </section>
@@ -90,13 +89,27 @@ const loadBook = (category) => {
 
         //set book to list
         document.querySelector('#postList').innerHTML = listBookHTML;
+
+        //set click on book
+        let bookModal = document.querySelector('.bookModal');
+        let bookTrigger = document.querySelectorAll('.bookModalTrigger');
+        bookTrigger.forEach((item, index) => {
+          item.addEventListener('click', (evt) => {
+              bookModal.style.display = "block";
+              let bookId = evt.target.getAttribute('bookId');
+              // getBookDetail(bookId);
+              console.log('bookId: ' + bookId);
+          })
+        })
       }
   }
   }).catch((error) => {
     console.log('error: ' + error);
   });
-
 }
+
+//====================Book Detail=========================
+//[GET] Book Detail
 
 
 //====================Logout=========================
