@@ -115,6 +115,88 @@ const updateProfile = () => {
   });
 }
 
+/*
+====================Post Book =========================
+*/
+//Listen to button submit book
+const buttonPosReview = document.querySelector("#buttonPosReview");
+buttonPosReview.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  console.log('clicked');
+  postBook();
+})
+//[POST] Book
+const postBook = () => {
+  //url
+  const upLoalImgUrl = endPointUrl + 'webresources/photo';
+  const postBookUrl = endPointUrl + 'webresources/posts';
+
+  //Upload picture
+  const input = document.querySelector('#imgFile');
+
+  const  imgData = new FormData();
+  const file = input.files[0];
+  imgData.append('file', file);
+
+  //[POST] PHOTO
+  fetch(upLoalImgUrl, {
+    method: 'POST',
+    headers: headers,
+    body: imgData
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      //Get book info
+      const title = document.querySelector('#inputBookTitle').value;
+      const author = document.querySelector('#inputBookAuthor').value;
+      const review = document.querySelector('#inputReview').value;
+      const imgUrl = data.url;
+
+      //Get checkbox
+      let categories = [];
+      const checkboxes = document.querySelectorAll('form input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          categories.push(checkbox.getAttribute('name'));
+        }
+      });
+
+      //Create request body
+      const object =   { title: title, author : author, path : imgUrl, review: review, categories: categories};
+      const postRequest = JSON.stringify(object);
+
+      const postBodyHeaders = new Headers({'authorization':token, 'Content-Type':'application/json'});
+
+      //[POST] Book
+      fetch(postBookUrl, {
+        method: 'POST',
+        headers: postBodyHeaders,
+        body: postRequest
+      })
+      .then(json)
+      .then((data) => {
+        if (data.hasOwnProperty('error')) {
+          alert(data.error);
+        } else {
+          console.log(data);
+          document.querySelector('.closePostModal').click();
+          document.querySelector('#postForm').reset();
+          loadBook(localStorage.getItem('currentTab'));
+        }
+      }).catch((error) => {
+        console.log('error: ' + error);
+      });
+    }
+
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
 
 /*
 ====================LIKE BUTTON CHANGE ON CLICK =========================
