@@ -75,10 +75,6 @@ const getMyProfile = () => {
   });
 }
 
-const json = (res) => {
-  return res.json();
-}
-
 //[PUT] My profile
 document.querySelector('#buttonUpdateProfile').addEventListener('click', (evt) =>{
   evt.preventDefault();

@@ -52,6 +52,17 @@ INSERT INTO `POST` VALUE (NULL, "Clean Code", "author1", "./images/gmat.jpeg","r
 INSERT INTO `POST` VALUE (NULL, "CSS and HTML", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2);
 INSERT INTO `POST` VALUE (NULL, "Book Marketing", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
 INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+
+INSERT INTO JOIN_POST_CATEGORY VALUE (1, 1);
+INSERT INTO JOIN_POST_CATEGORY VALUE (4, 2);
+INSERT INTO JOIN_POST_CATEGORY VALUE (5, 2);
+INSERT INTO JOIN_POST_CATEGORY VALUE (1, 2);
+INSERT INTO JOIN_POST_CATEGORY VALUE (3, 3);
+INSERT INTO JOIN_POST_CATEGORY VALUE (2, 3);
+INSERT INTO JOIN_POST_CATEGORY VALUE (1, 5);
+INSERT INTO JOIN_POST_CATEGORY VALUE (1, 6);
 
 INSERT INTO `RATE` VALUE (NULL, 1, 1);
 INSERT INTO `RATE` VALUE (NULL, 1, 2);
