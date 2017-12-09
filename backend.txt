@@ -17,6 +17,7 @@
     * GET /webresources/posts
     * GET /webresources/posts/{id}
     * GET /webresources/posts/categories
+    * GET /webresources/posts/mostView
     * PUT /webresources/posts/{id}/view
 * Comment
     * GET /webresources/comments/posts/{postsId}    
@@ -558,6 +559,70 @@ Sample response:
         "uid": 4,
         "username": "huy"
     }
+}
+```
+
+#### GET /webresources/posts/mostView
+Get most viewed book
+
+Header payload:
+| key |	type | description |
+| --- | --- | --- |
+| authorization | string | Server Token  |
+
+Query params:
+| key |	type | description |
+| --- | --- | --- |
+| filters | string  |   |
+
+Response payload:
+| key |	type | description |
+| --- | --- | --- |
+| bookAuthor | string ||
+| bookTitle | string | |
+| categoryCollection | category[] |  |
+| path | string |  |
+| postid | string |  |
+| review | string |  |
+| timestamp | datetime |  |
+| userUid | user |  |
+
+**category** in details:
+| key |	type | description |
+| --- | --- | --- |
+| category | string ||
+| categoryid | string | |
+
+**user** in details:
+| key |	type | description |
+| --- | --- | --- |
+| email | string ||
+| uid | string | |
+| username | string | |
+
+Sample header:
+```json
+{
+	"authorization":"HERE IS THE TOKEN"
+}
+```
+
+Sample response:
+```json
+{
+    "bookAuthor": "author1",
+    "bookTitle": "JavaScript",
+    "categoryCollection": [],
+    "path": "./images/gmat.jpeg",
+    "postid": 6,
+    "review": "review1",
+    "timestamp": "2013-08-05T18:19:03+03:00",
+    "userUid": {
+        "email": "user1@gmailcom",
+        "uid": 1,
+        "username": "user1"
+    },
+    "view": 899
 }
 ```
 

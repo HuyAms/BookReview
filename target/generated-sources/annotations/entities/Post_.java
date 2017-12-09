@@ -11,11 +11,12 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-12-09T03:54:47")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-12-09T13:43:09")
 @StaticMetamodel(Post.class)
 public class Post_ { 
 
     public static volatile SingularAttribute<Post, String> path;
+    public static volatile SingularAttribute<Post, Long> view;
     public static volatile ListAttribute<Post, Category> categoryCollection;
     public static volatile CollectionAttribute<Post, Rate> rateCollection;
     public static volatile SingularAttribute<Post, String> review;

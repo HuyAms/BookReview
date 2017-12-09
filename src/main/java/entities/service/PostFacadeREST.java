@@ -21,6 +21,7 @@ import javax.ejb.Stateless;
 import javax.persistence.CascadeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -253,6 +254,24 @@ public class PostFacadeREST extends AbstractFacade<Post> {
             } else {
                 return Response.ok(post).build();
             } 
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @GET
+    @Path("mostView")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findMostView(@HeaderParam("authorization") String token) {
+        
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Query query = em.createQuery( "Select p " + "from Post p " + "ORDER BY p.view DESC " );
+            List<Post> post = (List<Post>)query.getResultList();
+            Post mostViewedPost = post.get(0);
+            return Response.ok(mostViewedPost).build(); 
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity(ErrorUtil.unAuthorized("Invalid token"))
