@@ -65,6 +65,8 @@ public class Post implements Serializable {
     private String review;
     @Column(name = "TIMESTAMP")
     private Date timestamp;
+    @Column(name = "VIEW")
+    private Long view;
     @ManyToMany(mappedBy = "postCollection")
     private List<Category> categoryCollection = new ArrayList();
     @JoinColumn(name = "USER_UID", referencedColumnName = "UID")
@@ -117,6 +119,14 @@ public class Post implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Long getView() {
+        return view;
+    }
+
+    public void setView(Long view) {
+        this.view = view;
     }
 
     public String getReview() {

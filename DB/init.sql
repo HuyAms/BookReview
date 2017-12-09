@@ -10,7 +10,7 @@ CREATE TABLE `COMMENT` (COMMENTID BIGINT NOT NULL AUTO_INCREMENT, CONTENT VARCHA
 `TIMESTAMP` DATETIME, USER_UID BIGINT, POST_POSTID BIGINT, PRIMARY KEY (COMMENTID));
 
 CREATE TABLE `POST` (POSTID BIGINT NOT NULL AUTO_INCREMENT, BOOK_TITLE VARCHAR(255), BOOK_AUTHOR VARCHAR(255), PATH VARCHAR(255), REVIEW VARCHAR(255),
-`TIMESTAMP` DATETIME, USER_UID BIGINT, PRIMARY KEY (POSTID));
+`TIMESTAMP` DATETIME, USER_UID BIGINT, VIEW BIGINT, PRIMARY KEY (POSTID));
 
 CREATE TABLE `CATEGORY` (CATEGORYID BIGINT NOT NULL AUTO_INCREMENT, CATEGORY VARCHAR(255), PRIMARY KEY (CATEGORYID));
 
@@ -47,13 +47,13 @@ INSERT INTO `CATEGORY` VALUE (NULL, "romance");
 INSERT INTO `CATEGORY` VALUE (NULL, "science");
 INSERT INTO `CATEGORY` VALUE (NULL, "others");
 
-INSERT INTO `POST` VALUE (NULL, "GMAT", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2);
-INSERT INTO `POST` VALUE (NULL, "Clean Code", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
-INSERT INTO `POST` VALUE (NULL, "CSS and HTML", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2);
-INSERT INTO `POST` VALUE (NULL, "Book Marketing", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
-INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
-INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
-INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1);
+INSERT INTO `POST` VALUE (NULL, "GMAT", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2, 556);
+INSERT INTO `POST` VALUE (NULL, "Clean Code", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1, 152);
+INSERT INTO `POST` VALUE (NULL, "CSS and HTML", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 2, 126);
+INSERT INTO `POST` VALUE (NULL, "Book Marketing", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1, 98);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1, 69);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1, 369);
+INSERT INTO `POST` VALUE (NULL, "JavaScript", "author1", "./images/gmat.jpeg","review1",'2013-08-05 18:19:03', 1, 125);
 
 INSERT INTO JOIN_POST_CATEGORY VALUE (1, 1);
 INSERT INTO JOIN_POST_CATEGORY VALUE (4, 2);

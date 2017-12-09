@@ -132,6 +132,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                 post.setPath(path);
                 post.setReview(review);
                 post.setTimestamp(new Date());
+                post.setView(0l);
                
                 
                 //Category
