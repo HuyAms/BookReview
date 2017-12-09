@@ -53,7 +53,6 @@ window.onclick = function(event) {
 //[GET] My profile
 const getMyProfile = () => {
   const url = endPointUrl + `webresources/users/me`;
-  console.log(endPointUrl);
 
   fetch(url, {
     method: 'GET',
@@ -61,7 +60,6 @@ const getMyProfile = () => {
   })
   .then(json)
   .then((data) => {
-    console.log(data);
     if (data.hasOwnProperty('error')) {
       alert(data.error);
     } else {
@@ -79,4 +77,42 @@ const getMyProfile = () => {
 
 const json = (res) => {
   return res.json();
+}
+
+//[PUT] My profile
+document.querySelector('#buttonUpdateProfile').addEventListener('click', (evt) =>{
+  evt.preventDefault();
+  updateProfile();
+});
+
+const updateProfile = () => {
+  let userName = document.querySelector('#inputProfileName').value;
+  let email = document.querySelector('#inputProfileEmail').value;
+  let currentPassword = document.querySelector('#inputCurrentPassword').value;
+  let newPassword = document.querySelector('#inputNewPassword').value;
+  let confirmPassword = document.querySelector('#inputConfirmPassword').value;
+
+  if (newPassword != confirmPassword) {
+    alert('New password does not match confirm password');
+  }
+
+  const url = endPointUrl + `webresources/users/me?username=${userName}&&email=${email}&&oldpassword=${currentPassword}&&newpassword=${newPassword}&&`;
+
+  fetch(url, {
+    method: 'PUT',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      //reload profile
+      getMyProfile();
+      alert('Update profile successfully!')
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
 }
