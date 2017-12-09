@@ -28,7 +28,22 @@
     border-right: 1px gray solid;
 }
 .bookModal article #bookCover {
-    width: 30%;
+    width: 50%;
+}
+
+.bookModal #Info {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+
+.bookModal #Info #views {
+    align-self: flex-end;
+}
+
+.bookModal #Info p {
+    text-align: right;
+    margin-bottom: 0;
 }
 
 #bookCover img {
@@ -81,6 +96,15 @@
     color: #179b78;
 }
 
+.bookModal #commentSection #comments {
+    margin-top: 20px;
+}
+
+.bookModal #commentSection #comments #commentsCounts {
+    margin-bottom: 0;
+    margin-left: 30px;
+}
+
 .buttonComment {
   border: 0;
   outline: none;
@@ -108,7 +132,7 @@
 .bookModal #commentSection #commentList {
     display: flex;
     flex-flow: column wrap;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .bookModal #commentSection .wholeComment, #wholeReview {
@@ -148,13 +172,30 @@
     margin-top: 10px;
 }
 
-
-#viewsIcon, #likesIcon, #commentsIcon {
+.bookModal .icon {
     float: left;
 }
 
-#viewsCounts, #likesCounts, #commentsCounts {
+#viewsCounts {
     margin-left: 30px;
+    margin-bottom: 0;
+}
+
+.bookModal #Additional {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.bookModal #Additional #likes {
+    align-self: center;
+}
+
+.bookModal #Additional #likesCounts {
+    font-size: 40px;
+    padding: 0px 0;
+    margin-left: 60px;
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 960px) {

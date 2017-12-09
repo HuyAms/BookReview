@@ -150,7 +150,7 @@ const getBookDetail = (bookId) => {
       //show book reivew
       document.querySelector('#modalHeader').innerHTML = title;
       document.querySelector('#bookCover').innerHTML = `<img src="${imgUrl}" alt="gmat">`;
-      document.querySelector('#bookInfo').innerHTML = `<p>Author: ${author}<br> Publish year: 2017</p>`;
+      document.querySelector('#bookAuthor').innerHTML = `Book author: ${author}`;
       document.querySelector('#viewsCounts').innerHTML = view;
       document.querySelector('#reviewAuthor').innerHTML = user;
       document.querySelector('#reviewContent').innerHTML = review;
