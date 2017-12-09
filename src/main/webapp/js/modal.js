@@ -121,11 +121,10 @@ const updateProfile = () => {
 */
 
 function changeIcon(obj) {
-    console.log(obj.src);
-    if (obj.src == "./images/Like_Button/liked.png") {
-        obj.src = "./images/Like_Button/unliked.png";
+    if (obj.src.indexOf("images/Like_Button/liked.png") != -1) {
+        obj.src = "images/Like_Button/unliked.png";
     }
     else {
-        obj.src = "./images/Like_Button/liked.png";
+        obj.src = "images/Like_Button/liked.png";
     }
 }

@@ -194,6 +194,10 @@
     width: 50%;
 }
 
+.bookModal #likeIcon:hover {
+    cursor: pointer;
+}
+
 .bookModal #Additional #likes {
     align-self: center;
 }
