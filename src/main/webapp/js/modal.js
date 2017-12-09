@@ -8,7 +8,7 @@ let bookModal = document.querySelector('.bookModal');
 // Get the triggers
 let postTrigger = document.querySelector('.postModalTrigger');
 let profileTrigger = document.querySelector('.profileModalTrigger');
-// let bookTrigger = document.querySelector('.bookModalTrigger');
+   let bookTrigger = document.querySelector('.bookModalTrigger');
 
 //Show modals when click on triggers
 postTrigger.addEventListener('click', (evt) => {
@@ -20,9 +20,9 @@ profileTrigger.addEventListener('click', (evt) => {
     getMyProfile();
 })
 
-// bookTrigger.addEventListener('click', (evt) => {
-//     bookModal.style.display = "block";
-// })
+   bookTrigger.addEventListener('click', (evt) => {
+       bookModal.style.display = "block";
+   })
 
 // Get the <span> element that closes the modal
 let closePost = document.querySelector('.closePostModal');
