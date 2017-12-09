@@ -117,6 +117,7 @@ const loadBook = (category) => {
             bookModal.style.display = "block";
             bookId = evt.target.getAttribute('bookId');
             getBookDetail(bookId);
+            putBookView(bookId);
             getComment(bookId);
             getRating(bookId)
           })
@@ -176,6 +177,25 @@ const getRating = (bookId) => {
     } else {
       let rating = data.rating;
       document.querySelector('#likesCounts').innerHTML = rating;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+
+//[PUT] Book View
+const putBookView = (bookId) => {
+  const url = endPointUrl + `webresources/posts/${bookId}/view`;
+
+  fetch(url, {
+    method: 'PUT',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log("view: " + data.view);
     }
   }).catch((error) => {
     console.log('error: ' + error);

@@ -28,30 +28,30 @@
     border-right: 1px gray solid;
 }
 .bookModal article #bookCover {
-    width: 50%;
+    width: 45%;
+    margin-right: 5px;
 }
 
 .bookModal #Info {
     display: flex;
-    flex-direction: column;
-    height: 50%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 1px lightslategray solid;
+    width: 100%;
 }
 
 .bookModal #wholeReview {
     width: 100%;
 }
 
-.bookModal #Info #views {
-    align-self: flex-end;
-}
-
-.bookModal #Info p {
+.bookModal #Additional #bookAuthor {
     text-align: right;
     margin-bottom: 0;
 }
 
 #bookCover img {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 100%;
 }
 
 .bookModal #reviewContent {
@@ -106,7 +106,7 @@
 
 .bookModal #commentSection #comments #commentsCounts {
     margin-bottom: 0;
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 .buttonComment {
@@ -183,30 +183,26 @@
     float: left;
 }
 
-#viewsCounts {
-    margin-left: 30px;
-    margin-bottom: 0;
-}
 
 .bookModal #Additional {
     display: flex;
     flex-direction: column;
     width: 50%;
+    justify-content: space-between;
+    margin-left: 5px;
 }
 
 .bookModal #likeIcon:hover {
     cursor: pointer;
 }
 
-.bookModal #Additional #likes {
-    align-self: center;
-}
-
-.bookModal #Additional #likesCounts {
-    font-size: 40px;
+.bookModal #Additional #Info p {
+    font-size: 1em;
     padding: 0px 0;
-    margin-left: 60px;
+    margin-left: 40px;
     margin-bottom: 0;
+    font-style: italic;
+    color: lightslategray;
 }
 
 @media only screen and (max-width: 960px) {
@@ -223,5 +219,18 @@
         width: 100%;
         padding-left: 0;
         margin-top: 50px;
+    }
+}
+@media only screen and (max-width: 720px) {
+    .bookModal .modal-content {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .bookModal .modal-content {
+        width: 100%;
+        padding: 10px;
+        min-width: 300px;
     }
 }

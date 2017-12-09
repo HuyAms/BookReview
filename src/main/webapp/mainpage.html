@@ -205,8 +205,7 @@
         <h3>55 Comments</h3>
         <div class="img-wrap"><img src="./images/gmat.jpeg" alt="gmat"></div>
         <h4>Harry Potter and the cursed child <br /><span>by JK Rowling</span></h4>
-        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book left off, with the middle-aged Harry watching his
-          son board the Hogwarts Express.</p>
+        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book.</p>
         <a href="#" class="button">Read more</a>
       </article>
       <article>
@@ -214,8 +213,7 @@
         <h3>1000 Views</h3>
         <div class="img-wrap"><img src="./images/gmat.jpeg" alt="gmat"></div>
         <h4>Harry Potter and the cursed child <br /><span>by JK Rowling</span></h4>
-        <p>Jack Thorne’s play, based on a new story by himself, Rowling and John Tiffany, strikes a clever balance between recognisable Pottery and a new departure. It begins where the final (seventh) book left off, with the middle-aged Harry watching his
-          son board the Hogwarts Express.</p>
+        <p>Jack Thorne’s play.</p>
         <a href="#" class="button">Read more</a>
       </article>
     </section>
@@ -280,7 +278,7 @@
 
           <span class="title">Add book's cover:</span>
           <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
-          <input class="buttonSend" type="submit" value="Submit">
+          <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
         </form>
       </div>
     </section>
@@ -327,16 +325,16 @@
             <div id="bookCover"><img src="./images/gmat.jpeg" alt="gmat"></div>
             <section id="Additional">
               <div id="Info">
-                <p id="bookAuthor">Book author: publish company</p>
                 <div id="views">
-                    <img src="./images/viewIcon.png" class="icon" height="20px" width="20px">
+                    <img src="./images/viewIcon.png" class="icon" height="30px" width="30px">
                     <p id="viewsCounts">150 views</p>
                 </div>
+                <div id="likes">
+                    <img src="images/Like_Button/unliked.png" class="icon" id="likeIcon" height="30px" width="30px" onclick="changeIcon(this)">
+                    <p id="likesCounts">50 likes</p>
               </div>
-             <div id="likes">
-                <img src="images/Like_Button/unliked.png" class="icon" id="likeIcon" height="50px" width="50px" onclick="changeIcon(this)">
-                <p id="likesCounts">50 likes</p>
-                </div>
+              </div>
+              <p id="bookAuthor">Book author: publish company</p>
 
             </section>
 
@@ -344,6 +342,7 @@
               <p id="reviewAuthor">Author A</p>
               <p id="reviewTime">06/12/17 22:20</p>
               <p id="reviewContent">Huy dep trai</p>
+
             </section>
           </article>
 
@@ -354,8 +353,8 @@
               <input id="buttonComment" class="buttonComment" type="submit" value="Send">
             </form>
             <div id="comments">
-                <img src="./images/commentbtn.png" class="icon" height="20px" width="20px">
-                <p id="commentsCounts">10 comments</p>
+              <img src="./images/commentbtn.png" class="icon" height="30px" width="30px">
+              <p id="commentsCounts">10 comments</p>
             </div>
             <div id="commentList">
               <div class="wholeComment">
@@ -400,7 +399,7 @@
                 <p class="commentContent">zebra
                 </p>
               </div>
-                
+
             </div>
 
           </section>
@@ -416,7 +415,7 @@
     </footer>
   </main>
 </body>
- <script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/topnav.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
