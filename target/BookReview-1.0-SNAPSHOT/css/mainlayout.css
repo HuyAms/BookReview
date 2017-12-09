@@ -1,0 +1,287 @@
+/* --------------------------------------------------
+   flexbox layout styles
+-----------------------------------------------------*/
+
+body {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   top navigation styles
+-----------------------------------------------------*/
+
+/*nav.mainNav ul {
+  display: flex;
+}
+
+nav.mainNav li {
+  display: flex;
+  align-items: center;
+}
+
+nav.mainNav li.me {
+  margin-left: auto;
+}*/
+
+/* --------------------------------------------------
+   book category navigation styles
+-----------------------------------------------------*/
+
+.bookNav ul {
+  display: flex;
+  justify-content: flex-start;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.bookNav li {
+  display: flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------
+   header styles
+-----------------------------------------------------*/
+
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------------------------------------
+   main content styles
+-----------------------------------------------------*/
+
+.main {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2em;
+  justify-content: center;
+}
+
+.sidebar {
+  flex: 1;
+  order: 0;
+  margin-right: 2em;
+  padding: 1.5em;
+}
+
+.gallery {
+  flex: 3;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookList {
+  min-width: 12em;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 1em;
+  padding-left: 2em;
+  flex-wrap: wrap;
+}
+
+.bookList>section {
+  width: 12em;
+  min-width: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 2em;
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+
+.book img {
+  width: 8em;
+  height: 12em;
+  display: block;
+  object-fit: cover;
+}
+
+.gallery a.button {
+  width: 10em;
+  min-width: 10em;
+  align-self: flex-end;
+  margin-right: 5em;
+}
+
+/* --------------------------------------------------
+   sidebar styles
+-----------------------------------------------------*/
+
+.social {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* --------------------------------------------------
+   spotLight  styles
+-----------------------------------------------------*/
+
+.spotLight {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 2em;
+  margin-bottom: 2em;
+  flex-direction: row;
+}
+
+.spotLight>article {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.spotLight h3:first-of-type {
+  align-self: center;
+}
+
+.spotLight div.img-wrap {
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+
+/* --------------------------------------------------
+   footer  styles
+-----------------------------------------------------*/
+
+footer {
+  display: flex;
+  min-height: 4em;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------------------------------------
+   Smaller screen styles
+-----------------------------------------------------*/
+
+@media only screen and (max-width: 720px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  nav.mainNav {
+    order: 1;
+  }
+  header {
+    order: 2;
+  }
+  main {
+    order: 3;
+  }
+  .spotLight {
+    order: 4;
+  }
+  footer {
+    order: 5;
+  }
+  /* --------------------------------------------------
+   top navigation styles
+-----------------------------------------------------*/
+  /*nav.mainNav ul {
+    flex-direction: column;
+  }
+  nav.mainNav li.me {
+    margin-left: 0;
+  }*/
+  /* --------------------------------------------------
+	   book category navigation styles
+	-----------------------------------------------------*/
+  .gallery {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2em;
+  }
+  article.news, article.news>section {
+    padding-top: 0;
+  }
+  .bookNav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .bookNav ul li {
+    flex: 1;
+    width: 100%;
+  }
+  .bookNav ul li a {
+    text-align: center;
+  }
+  /* --------------------------------------------------
+   main content styles
+-----------------------------------------------------*/
+  .bookList {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .bookList>section {
+    align-items: center;
+  }
+  /* --------------------------------------------------
+ spotlight content styles
+-----------------------------------------------------*/
+  .spotLight {
+    flex-direction: column;
+    align-items: center;
+  }
+  .spotLight>article {
+    margin-bottom: 2em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  header {
+    order: 1;
+  }
+  main {
+    order: 2;
+  }
+  /*nav.mainNav {
+    order: 3;
+  }*/
+  footer {
+    order: 4;
+  }
+  /* --------------------------------------------------
+     main content styles
+  -----------------------------------------------------*/
+  .gallery {
+    order: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .sidebar {
+    order: 0;
+  }
+  nav.bookNav {
+    order: 1;
+    margin-bottom: 2em;
+  }
+  .bookList {
+    order: 3;
+  }
+  .news {
+    order: 3;
+  }
+  .gallery a.button {
+    align-self: center;
+    margin: 0;
+    order: 2;
+    margin-bottom: 2em;
+  }
+}

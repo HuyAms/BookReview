@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>MainPage</title>
+          <link rel="stylesheet" href="./css/mainpage.css">
+          <link rel="stylesheet" href="./css/modalreview.css">
+          <link rel="stylesheet" href="./css/modalpost.css">
+          <link rel="stylesheet" href="./css/latestpost.css">
+          <link rel="stylesheet" href="./css/profile.css">
+          <link href="https://fonts.googleapis.com/css?family=BenchNine:300|Quicksand:400,700" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar">
+           <div class="navcontent">
+<!--
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+-->
+<!--                <div class="collapse navbar-collapse" id="myNavbar">-->
+                    <ul >
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">HI USER</a>
+                            <div class="dropdown-content">
+                                <a id="yourProfile" data-toggle="modal" data-target="profile">YOUR PROFILE</a>
+                                <a id="logOut" href="#">LOG OUT</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="post" id="writepost">WRITE A POST</a>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+<!--            </div>
+-->
+        </nav>
+
+
+        <header class="jumbotron">
+            <h1>WELCOME TO BOOK HOUSE</h1>
+            <p>Meet your next favourite book</p>
+        </header>
+
+        <main class="maincontent">
+            <nav class="subnav-top">
+<!--
+                    <ul class="subnavigation">
+                        <li class="tab" id="defaultOpen" onclick="showcontent('fiction')"><a href="#">Fiction</a></li>
+                        <li class="tab" onclick="showcontent('nonfiction')"><a href="#">Non fiction</a></li>
+                        <li class="tab" onclick="showcontent('academic')"><a href="#">Academic book</a></li>
+                    </ul> -->
+
+                    <ul class="subnavigation">
+                        <li id="tabHome" name="home"><a href="#">Home</a></li>
+                        <li id="tabAll" name="all"><a href="#">All</a></li>
+                        <li id="tabFiction" name="fiction"><a href="#">Fiction</a></li>
+                        <li id="tabNovel" name="novel"><a href="#">Novel</a></li>
+                        <li id="tabTravel" name="travel"><a href="#">Travel</a></li>
+                        <li id="tabGuide" name="guide"><a href="#">Guide</a></li>
+                        <li id="tabHorror" name="horror"><a href="#">Horror</a></li>
+                        <li id="tabRomance" name="romance"><a href="#">Romance</a></li>
+                        <li id="tabScience" name="science"><a href="#">Science</a></li>
+                        <li id="tabOthers" name="others"><a href="#">Others</a></li>
+                    </ul>
+            </nav> <!--navigation>
+
+
+        <!-- search book
+                        <div class="input-group">
+                             <input type="text" class="form-control" placeholder="Search book..">
+                             <span class="input-group-btn">
+                                 <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                             </span>
+                        </div><br>
+-->
+ <!--latestpost-->
+
+            <section class="latestpost">
+                <article id="news1" class="news">
+                    <figure class="image">
+                        <img src="images/news1.jpeg">
+                    </figure>
+                    <div class="postcontent">
+                        <h3>Harry Potter explained by someone who has never seen or read it will legit make you LOL</h3>
+                        <div class="briefcontent">
+                        "Sometimes, logging onto Twitter can be like walking onto a minefield filled with nasty trolls, hate bombs, and one bad news story after the other. But every once in awhile, the Twitterverse gives users something to" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <!--likebutton-->
+                        <div class="likebtn">
+                            
+                                <img id="heartbtn" src="images/Like_Button/liked.png" onclick="changeimage(this)">
+                                <p id="like">123</p>
+                            
+                            
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Sadie Trombetta</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </article>
+
+                <article id="news2" class="news">
+                    <figure class="image">
+                        <img src="images/booksvocabulary.jpg">
+                    </figure>
+                    <div class="postcontent">
+                        <h3>25 Splendiferous words you should add to your daily vocabulary</h3>
+                        <div class="briefcontent">
+                        "If you're a sesquipedalian ( or just a plain old logophile), then you know the power of a prodigious vocabulary. Sometimes it's about adding to your stockpile of words, so you always have the perfect verbiage for any" <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By Charlotte Ahlin</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">11 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </article>
+
+                <article id="news3" class="news">
+                    <figure class="image">
+                        <img src="images/womenbook.jpg">
+                    </figure>
+                    <div class="postcontent">
+                        <h3>17 books by women from 2017 that you need to read</h3>
+                        <div class="briefcontent">
+                        "Like clockwork, with each year’s end comes that time when we book-lovers take stock of all the books we’ve read throughout the year: the good, the not-so-good, and the rare few (OK, if you’re anything like me, the not-so-rare many) that " <i style="color: #179b78" >Read more</i>
+                        </div>
+                        <div class="source">
+                            <cite class="citeAuthor">By E.CE Miller</cite>
+                            <time datetime="2017-11-28T21:12:08.403Z">12 hours ago</time>
+                        </div>
+                    </div>
+
+
+                </article>
+            </section>
+
+
+    <!--Booklist-->
+
+        <section class="gallery">
+            <section class="book fiction">
+                <header id="title"><h2>Fiction books</h2></header>
+                    <div id="postList" class="booklist">
+
+                        <div class="thumbnail">
+                            <img src="./images/gmat.jpeg" alt="gmat">
+
+                            <button data-toggle="modal" data-target="gmat">
+                                <ul class="likebtn">
+                                    <li><img id="heartbtn" src="images/Like_Button/liked.png"></li>
+                                    <li><p>123</p></li>
+                                    <li><img id="heartbtn" src="images/commentbtn.png" style="margin-left:15px"></li>
+                                    <li><p>123</p></li>
+                                </ul>
+                            </button>
+                        </div>
+
+                        <div class="thumbnail">
+                            <img src="./images/clean_code.jpg" alt="CleanCode">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/html-css-book.jpg" alt="HTML&CSS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/CRM_book.jpeg" alt="CRM">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/book-marketing-for-dummies.jpg" alt="marketing">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./images/javascript-and-jquery-book.png" alt="JS">
+                            <button class="btn">READ REVIEW</button>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="emptyList">
+                    <p>Sorry, no book available! You can write the first review <a data-toggle="modal" data-target="post">here.</a></p>
+                </div>
+            </section>
+
+          </main>
+
+
+
+<!-- /*modal pop up review*/-->
+        <section class="modalreview">
+
+            <article class="modal" id="modalReview">
+                <div class="modal-window">
+
+
+                <details id="bookReview" class="reviewpost">
+                    <!-- <img src="./images/gmat.jpeg" alt="gmat">
+                    <h2>The official guide for GMAT 2017</h2>
+                    <p>Author: publish company<br>
+                    Publish year: 2017</p>
+                    <p>This is a review This is a review This is a review This is a review This is a review This is a review This is a review This is a review
+                    This is a review This is a review This is a review This is a review This is a review This is a review This is a review This is a review
+                   This is a review This is a review This is a review This is a review This is a review This is a review This is a review
+                 This is a review This is a review This is a review This is a review This is a review This is a review This is a review</p> -->
+                </details>
+<!--
+                <div id="reviewContent class="reviewpost>
+                  <img class="imgModal" src="./images/CRM_book.jpeg" alt="gmat">
+                  <h2>The officail guild for GMAT 2017</h2>
+                  <p>Author: publish company <br> Publish year: 2017</p>
+                  <p>This is a review</p>
+                </div> -->
+
+                <div class="writecomment">
+                        <h2>Share your thought</h2>
+                        <form>
+                            <div>
+                                <textarea id="inputComment" maxlength="250" style="height:100px" placeholder="Write your comment here"></textarea>
+                            </div>
+                            <input id="buttonComment" class="buttonSend" type="submit" value="Send">
+                        </form>
+                </div>
+
+                <div class="sharecomment">
+                    <h2>Comments:</h2>
+                    <div id="commentList" class="listcomment">
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>Username</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>This is useful post. Thank you</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>name name</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>I will buy this book. Thank you</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="sideinfo">
+                                <h4>zebra</h4>
+                            </div>
+                            <div class="showcomment">
+                                <p>I will have exam next month. I hope I could have high grade like yours. This book is really helpful for me</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="buttonCloseModal" class="modal__close" data-dismiss="modal">&#10005;</button>
+
+                </div>
+
+            </article>
+        </section>
+        <!-- /*modal pop up write a post*/-->
+
+        <section class="modal" id="post">
+            <article class="modal-window">
+                <header id="header"><h2>WRITE A POST</h2></header>
+                <form id='formBookUpload' action="#">
+                    <span class="title">Title:</span><input id="inputBookTitle" type="text" name="title" placeholder="Book's title">
+                    <span class="title">Author:</span><input id="inputBookAuthor" type="text" name="author" placeholder="Author's name">
+
+                    <span class="title">
+                        Category:
+                    </span>
+                    <div class="categorybook">
+                        <div class="columnleft">
+                            <label class="checkbox">Fiction
+                                <input name="fiction" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Novel
+                                <input name="novel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Travel
+                                <input name="travel" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Guide
+                                <input name="guide" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+                        <div class="columnright">
+                            <label class="checkbox">Horror
+                                <input name="horror" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Romance
+                                <input name="romance" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Science
+                                <input name="science" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkbox">Others
+                                <input name="others" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <textarea id="inputReview" style="height:200px" placeholder="Write your post here"></textarea>
+                    <span class="title">
+                        Add book's cover:
+                    </span>
+                    <input id="imgFile" type="file" accept="image/*" value="Add book cover picture">
+
+                    <input id="buttonPosReview" class="buttonSend" type="submit" value="Submit">
+                </form>
+
+            </article>
+        </section>
+
+        <!-- /*modal pop up profile*/-->
+        <section class="modal" id="profile">
+            <article class="modal-window">
+                <header id="header"><h2>Your profile</h2></header>
+                <form action="#" class="updateform">
+                    <div class="detail">
+                        <span class="title">Username:</span><input id="inputProfileName" type="text">
+                    </div>
+                    <div class="detail">
+                        <span class="title">Email:</span><input id="inputProfileEmail" type="email">
+                    </div>
+                    <div class="detail">
+                        <h4>Current password:</h4><input id="inputCurrentPassword" type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h4>New password:</h4><input id="inputNewPassword" type="password" name="password">
+                    </div>
+                    <div class="detail">
+                        <h4>Confirm new password:</h4><input id="inputConfirmPassword" type="password" name="password">
+                    </div>
+
+                    <ul class="profilebtn">
+                        <li><input id="buttonUpdateProfile" class="buttonSend" type="submit" value="Update"></li>
+                        <li><input class="buttonSend" id="cancel" type="submit" value="Cancel"></li>
+
+                    </ul>
+
+
+
+                </form>
+            </article>
+        </section>
+
+        <footer>
+            <div class="footercontainer">
+                <div class="social-btn">
+                    <img src="images/tumblr.png">
+                    <img src="images/Facebook.png">
+                    <img src="images/twitter.png">
+                    <img src="images/VKlogo.png">
+                </div>
+                <div class="footermenu">
+                    <ul>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="#">Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subcribe">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" size="50" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group-btn">
+                            <button type="button" id="subcribe-btn" >SUBCRIBE</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+         <script type="text/javascript" src="js/config.js"></script>
+         <script type="text/javascript" src="./js/mainpagescript.js"></script>
+         <script type="text/javascript" src="./js/modal.js"></script>
+         <script type="text/javascript" src="./js/like.js"></script>
+    </body>

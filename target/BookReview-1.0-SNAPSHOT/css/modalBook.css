@@ -1,0 +1,175 @@
+.bookModal #modalHeader {
+    text-align: center;
+    color: #1ab188;
+    font-size: 2em;
+    margin-bottom: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.bookModal .modal-content {
+    width: 80%;
+}
+
+.bookModal .postContent {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+}
+
+.bookModal article {
+    width: 55%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-right: 20px;
+    border-right: 1px gray solid;
+}
+.bookModal article #bookCover {
+    width: 30%;
+}
+
+#bookCover img {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.bookModal #reviewContent {
+    text-indent: 30px;
+    text-align: justify;
+}
+
+
+.bookModal article h2 {
+    text-align: center;
+    color: #1ab188;;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2em;
+    margin-bottom: 12px;
+    font-weight: 500;
+    width: 70%;
+}
+
+.bookModal #commentSection {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.bookModal #commentSection form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.bookModal #commentSection textarea {
+    width: 75%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    resize: vertical;
+}
+
+.bookModal #commentSection h2, #commentUser {
+    font-size: 18px;
+    font-weight: bold;
+    color: #179b78;
+}
+
+.buttonComment {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  width: 20%;
+  height: 40px;
+  align-self: center;
+}
+
+.buttonComment:hover {
+    cursor: pointer;
+    background: #179b78;
+}
+
+#commentList {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 20px;
+}
+
+#wholeComment, #wholeReview {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 10px;
+    background-color:azure
+}
+
+#commentUser, #reviewAuthor {
+    width: 50%;
+    text-align: left;
+}
+
+#reviewAuthor {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: bold;
+    color: #179b78;
+    
+}
+
+#commentTime, #reviewTime {
+    width: 50%;
+    text-align: right;
+    margin: 0;
+    font-size: 0.9em;
+    font-style: italic;
+    color: lightslategray
+}
+
+#commentContent {
+    margin: 0;
+    margin-top: 10px;
+}
+
+
+#viewsIcon, #likesIcon, #commentsIcon {
+    float: left;
+}
+
+#viewsCounts, #likesCounts, #commentsCounts {
+    margin-left: 30px;
+}
+
+@media only screen and (max-width: 960px) {
+    .modal-content {
+        overflow: auto;
+        padding-bottom: 5em;
+    }
+    .bookModal article {
+        width: 100%;
+        padding-right: 0;
+        border-right: none;
+    }
+    .bookModal #commentSection {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 50px;
+    }
+}

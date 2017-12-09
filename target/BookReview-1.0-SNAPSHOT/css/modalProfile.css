@@ -1,0 +1,60 @@
+.profileModal #modalHeader {
+    text-align: center;
+    color: #179b78;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2em;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.profileModal .title{
+    font-size: 17px;
+    font-weight: bold;
+    color: #179b78;
+}
+
+.profileModal form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+}
+
+.buttonUpdate {
+  margin-top: 12px;
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  width: 100%;
+  align-self: center;
+}
+
+.buttonUpdate:hover {
+    cursor: pointer;
+    background: #179b78;
+}
+
+.profileModal input[type=text], input[type=email], input[type=password], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.profileModal input[type=file] {
+    margin-top: 6px;
+}
