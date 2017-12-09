@@ -114,3 +114,18 @@ const updateProfile = () => {
     console.log('error: ' + error);
   });
 }
+
+
+/*
+====================LIKE BUTTON CHANGE ON CLICK =========================
+*/
+
+function changeIcon(obj) {
+    console.log(obj.src);
+    if (obj.src == "../images/Like_Button/liked.png") {
+        obj.src = "../images/Like_Button/unliked.png";
+    }
+    else {
+        obj.src = "../images/Like_Button/liked.png";
+    }
+}
