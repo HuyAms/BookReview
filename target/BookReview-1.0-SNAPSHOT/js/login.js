@@ -40,6 +40,9 @@ buttonGetStarted.addEventListener('click', function(){
   localStorage.setItem("didSeeOnBoarding", true);
 });
 
+
+
+//====================Login and register =========================
 const buttonLogin = document.querySelector('#buttonLogin');
 const buttonSignUp = document.querySelector('#buttonSignUp');
 

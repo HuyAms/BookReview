@@ -27,6 +27,8 @@ $(document).ready(function () {
     $("#buttonSignUp").click(signUp);
 })
 
+//====================Login/register and logout =========================
+
 //Sign In
 var signIn = function (e) {
       e.preventDefault();

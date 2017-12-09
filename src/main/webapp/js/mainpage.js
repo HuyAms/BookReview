@@ -43,3 +43,14 @@ const hightLightTab = function(tab) {
 
 //open home tab by default
 document.querySelector('#tabNews').click();
+
+//====================Logout=========================
+document.querySelector('#buttonLogout').addEventListener('click', (evt) => {
+  evt.preventDefault();
+  console.log('log out clicked');
+  localStorage.setItem("didLogIn", false); //save login state
+  localStorage.removeItem('token'); //remove token
+
+  //TODO: Navigate to main page
+  window.location.href = "index.html";
+})
