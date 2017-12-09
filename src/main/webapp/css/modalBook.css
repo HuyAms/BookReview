@@ -23,7 +23,7 @@
     width: 55%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    align-content: flex-start;
     padding-right: 20px;
     border-right: 1px gray solid;
 }
@@ -35,6 +35,10 @@
     display: flex;
     flex-direction: column;
     height: 50%;
+}
+
+.bookModal #wholeReview {
+    width: 100%;
 }
 
 .bookModal #Info #views {
@@ -131,8 +135,10 @@
 
 .bookModal #commentSection #commentList {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     margin-top: 0;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 
 .bookModal #commentSection .wholeComment, #wholeReview {
@@ -142,7 +148,8 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     padding: 10px;
-    background-color:azure
+    background-color:azure;
+    width: 100%;
 }
 
 .bookModal #commentSection .commentUser, #reviewAuthor {
