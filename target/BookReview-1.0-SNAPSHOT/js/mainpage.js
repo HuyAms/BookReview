@@ -64,6 +64,8 @@ const hightLightTab = function(tab) {
 //open home tab by default
 document.querySelector('#tabNews').click();
 
+let bookId;
+
 //====================Book=========================
 //[GET] Book List
 const loadBook = (category) => {
@@ -113,7 +115,7 @@ const loadBook = (category) => {
         bookTrigger.forEach((item, index) => {
           item.addEventListener('click', (evt) => {
             bookModal.style.display = "block";
-            let bookId = evt.target.getAttribute('bookId');
+            bookId = evt.target.getAttribute('bookId');
             getBookDetail(bookId);
             getComment(bookId);
             getRating(bookId)
@@ -130,7 +132,6 @@ const loadBook = (category) => {
 //[GET] Book Detail
 const getBookDetail = (bookId) => {
   const url = endPointUrl + `webresources/posts/${bookId}`;
-  console.log('getBookDetail: ' + bookId);
   fetch(url, {
     method: 'GET',
     headers: headers
@@ -145,7 +146,6 @@ const getBookDetail = (bookId) => {
       const view = data.view;
       const user = data.userUid.username;
       const timestamp = data.timestamp;
-      console.log(data);
 
       //show book reivew
       document.querySelector('#modalHeader').innerHTML = title;
@@ -163,6 +163,25 @@ const getBookDetail = (bookId) => {
   });
 }
 
+//[GET] Book Rating
+const getRating = (bookId) => {
+  const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let rating = data.rating;
+      document.querySelector('#likesCounts').innerHTML = rating;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+//====================Comment=========================
 //[GET] Comments
 const getComment = (bookId) => {
   const url = endPointUrl + `webresources/comments/posts/${bookId}`;
@@ -177,9 +196,9 @@ const getComment = (bookId) => {
       let listComment = '';
       //clear comment list
       document.querySelector('#commentList').innerHTML = '';
-
       if (data.length === 0) { //No comment
         document.querySelector('#commentList').innerHTML = `<p>There are no comments yet Be the first to comment.</p>`;
+        document.querySelector('#commentsCounts').innerHTML = 0;
       } else {
         document.querySelector('#commentsCounts').innerHTML = data.length;
         data.forEach((comment) => {
@@ -205,19 +224,27 @@ const getComment = (bookId) => {
   });
 }
 
-//[GET] Book Rating
-const getRating = (bookId) => {
-  const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
+//[POST] Comments
+const buttonComment = document.querySelector("#buttonComment");
+buttonComment.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  postComment();
+})
+
+const postComment = () => {
+  let comment = document.querySelector('#inputComment').value;
+  const url = endPointUrl + `webresources/comments/posts/${bookId}?content=${comment}`;
 
   fetch(url, {
-    method: 'GET',
+    method: 'POST',
     headers: headers
   }).then(json).then((data) => {
     if (data.hasOwnProperty('error')) {
       alert(data.error);
     } else {
-      let rating = data.rating;
-      document.querySelector('#likesCounts').innerHTML = rating;
+      //reload comment list
+      getComment(bookId);
+      document.querySelector('#inputComment').value = '';
     }
   }).catch((error) => {
     console.log('error: ' + error);
