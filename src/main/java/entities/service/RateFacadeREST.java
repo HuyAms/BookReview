@@ -174,9 +174,12 @@ public class RateFacadeREST extends AbstractFacade<Rate> {
             List<Rate> rates = (List<Rate>)query.getResultList();
             System.out.println(rates);
             if (rates.size() == 0) {
-                return Response.status(Response.Status.NOT_FOUND)
-                    .entity(ErrorUtil.notFound("You have not liked this post"))
-                    .build();
+          
+                Rate rate = new Rate();
+                return Response.ok(rate).build(); 
+//                return Response.status(Response.Status.NOT_FOUND)
+//                    .entity(ErrorUtil.notFound("You have not liked this post"))
+//                    .build();
             } else {
                 return Response.ok(rates.get(0)).build(); 
             }

@@ -116,7 +116,6 @@ const loadBook = (category) => {
             evt.preventDefault();
             document.querySelector('.bookModal').style.display = "block";
             bookId = evt.target.getAttribute('bookId');
-            console.log('openmodal bookId: ' + bookId);
             getBookDetail(bookId);
             putBookView(bookId);
             getComment(bookId);
@@ -139,7 +138,6 @@ buttonReadMore.forEach((item, index) => {
     evt.preventDefault();
     document.querySelector('.bookModal').style.display = "block";
     bookId = evt.target.getAttribute('bookId');
-    console.log('openmodal bookId: ' + bookId);
     getBookDetail(bookId);
     putBookView(bookId);
     getComment(bookId);
@@ -266,7 +264,6 @@ const getMostCommentBook = () => {
         if (data.hasOwnProperty('error')) {
           alert(data.error);
         } else {
-          console.log(data);
           console.log('length: ' + data.length);
           document.querySelector('#mostCommentCount').innerHTML = data.length + ' Comments';
         }
@@ -432,10 +429,15 @@ const getMyRating = (bookId) => {
     headers: headers
   }).then(json).then((data) => {
     if (data.hasOwnProperty('error')) {
-      document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/unliked.png');
+        alert(data.error);
     } else {
-      document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/liked.png');
-      myRatingId = data.rateid;
+      if (data.hasOwnProperty('rateid')){
+        document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/liked.png');
+        myRatingId = data.rateid;
+      } else {
+        document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/unliked.png');
+      }
+
     }
   }).catch((error) => {
     console.log('error: ' + error);
