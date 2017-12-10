@@ -62,7 +62,12 @@ header {
   margin-bottom: 2em;
   justify-content: center;
 }
-
+.tophead{
+        display: flex;
+    }
+.welcome{
+        display:flex;
+    }
 .sidebar {
   order: 0;
   flex: 1;
@@ -155,7 +160,7 @@ header {
 
 .spotLight div.img-wrap {
   align-self: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 1.5em;
   width: 50%;
 }
 
@@ -189,6 +194,12 @@ footer {
     flex-direction: column;
     width: 100%;
   }
+    .tophead{
+    display: none;
+}
+    .welcome{
+    display: none;
+}
   nav.mainNav {
     order: 1;
   }
@@ -289,6 +300,8 @@ footer {
     }
   }
   @media only screen and (max-width: 480px) {
+    
+
     header {
       order: 1;
     }
