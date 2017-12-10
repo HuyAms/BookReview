@@ -119,7 +119,8 @@ const loadBook = (category) => {
             getBookDetail(bookId);
             putBookView(bookId);
             getComment(bookId);
-            getRating(bookId)
+            getRating(bookId);
+            getMyRating(bookId);
           })
         })
       }
@@ -163,26 +164,6 @@ const getBookDetail = (bookId) => {
     console.log('error: ' + error);
   });
 }
-
-//[GET] Book Rating
-const getRating = (bookId) => {
-  const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
-
-  fetch(url, {
-    method: 'GET',
-    headers: headers
-  }).then(json).then((data) => {
-    if (data.hasOwnProperty('error')) {
-      alert(data.error);
-    } else {
-      let rating = data.rating;
-      document.querySelector('#likesCounts').innerHTML = rating;
-    }
-  }).catch((error) => {
-    console.log('error: ' + error);
-  });
-}
-
 
 //[PUT] Book View
 const putBookView = (bookId) => {
@@ -270,6 +251,98 @@ const postComment = () => {
     console.log('error: ' + error);
   });
 }
+
+/*
+====================Rating =========================
+*/
+//[GET] Book Rating
+const getRating = (bookId) => {
+  const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let rating = data.rating;
+      document.querySelector('#likesCounts').innerHTML = rating;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+//[GET] My rating for book
+let myRatingId='';
+const getMyRating = (bookId) => {
+  const url = endPointUrl + `webresources/ratings/me/posts/${bookId}`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/unliked.png');
+    } else {
+      document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/liked.png');
+      myRatingId = data.rateid;
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+
+document.querySelector('#likeIcon').addEventListener('click', (evt) => {
+  evt.preventDefault();
+  let src = evt.target.getAttribute('src');
+
+  if (src.indexOf("images/Like_Button/liked.png") != -1) {
+    document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/unliked.png');
+    if (myRatingId != '') {
+      //[DELETE] Rating
+      const url = endPointUrl + `webresources/ratings/${myRatingId}`;
+
+      fetch(url, {
+        method: 'DELETE',
+        headers: headers
+      }).then(json).then((data) => {
+        if (data.hasOwnProperty('error')) {
+          alert(data.error);
+        } else {
+          //reload rating list
+          getRating(bookId);
+          getMyRating(bookId);
+        }
+      }).catch((error) => {
+        console.log('error: ' + error);
+      });
+    }
+  } else {
+    document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/liked.png');
+
+     //[POST] Rating
+      const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
+
+      fetch(url, {
+        method: 'POST',
+        headers: headers
+      }).then(json).then((data) => {
+        if (data.hasOwnProperty('error')) {
+          alert(data.error);
+        } else {
+          //reload rating list
+          getRating(bookId);
+          getMyRating(bookId);
+        }
+      }).catch((error) => {
+        console.log('error: ' + error);
+      });
+
+  }
+})
 
 //====================Logout=========================
 document.querySelector('#buttonLogout').addEventListener('click', (evt) => {

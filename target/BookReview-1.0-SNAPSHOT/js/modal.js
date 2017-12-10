@@ -198,15 +198,12 @@ const postBook = () => {
 }
 
 
-/*
-====================LIKE BUTTON CHANGE ON CLICK =========================
-*/
-
-function changeIcon(obj) {
-    if (obj.src.indexOf("images/Like_Button/liked.png") != -1) {
-        obj.src = "images/Like_Button/unliked.png";
-    }
-    else {
-        obj.src = "images/Like_Button/liked.png";
-    }
-}
+// function changeIcon(obj) {
+//     if (obj.src.indexOf("images/Like_Button/liked.png") != -1) {
+//         obj.src = "images/Like_Button/unliked.png";
+//         document.querySelector('#likeIcon').setAttribute('')
+//     }
+//     else {
+//         obj.src = "images/Like_Button/liked.png";
+//     }
+// }

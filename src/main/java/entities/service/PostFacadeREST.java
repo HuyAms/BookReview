@@ -54,22 +54,6 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     public PostFacadeREST() {
         super(Post.class);
     }
-    
-    @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
-    @Path("test")
-    public void test(
-            @QueryParam("title") String title, 
-            @QueryParam("author") String author, 
-            @QueryParam("path") String path
-    ) {
-                System.out.println("title: " + title);
-                System.out.println("author: " + author);
-                System.out.println("path: " + path);
-          
-    }
-   
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})

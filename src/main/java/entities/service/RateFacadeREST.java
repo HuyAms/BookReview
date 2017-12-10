@@ -5,6 +5,7 @@
  */
 package entities.service;
 
+import entities.Category;
 import entities.Post;
 import entities.Rate;
 import entities.User;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -52,40 +54,35 @@ public class RateFacadeREST extends AbstractFacade<Rate> {
         Long userId = TokenUtil.decodeToken(token);
         if (userId != null) {
             Rate newRate = new Rate();
+            System.out.println("postId: " + postId);
             Post post = em.find(Post.class, postId);
             User user = em.find(User.class, userId);
+            System.out.println("post: " + post);
             
-            if (postId == null) {
+            if (post == null) {
                 return Response.status(Response.Status.NOT_FOUND)
-                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .entity(ErrorUtil.notFound("Cannot find the post with that id"))
                     .build();
             }
             
-            if (userId == null) {
+            if (user == null) {
                 return Response.status(Response.Status.NOT_FOUND)
-                    .entity(ErrorUtil.notFound("Invalid token"))
+                    .entity(ErrorUtil.notFound("Cannot find user with that id"))
                     .build();
             }
             
-            List<Rate> ratings = em.createNamedQuery("Rate.findAll").getResultList();
-            boolean hasRated = false;
-            for(Rate rate: ratings) {
-                if (rate.getUserUid().getUid() == userId) {
-                    hasRated = true;
-                }
-            }
-            
-            if (!hasRated) {
+            Query query = em.createQuery( "Select r " + "from Rate r "  + "WHERE r.userUid.uid = " + userId + " AND r.postPostid.postid = " + postId);
+            List<Rate> rates = (List<Rate>)query.getResultList();
+            if (rates.size() == 0) {
                 newRate.setUserUid(user);
                 newRate.setPostPostid(post);
           
                 em.persist(newRate);
             
                 return Response.ok(newRate).build();
+            } else {
+                return Response.status(Response.Status.BAD_REQUEST).entity(ErrorUtil.badRequest("User has rated this post")).build();
             }
-            
-            return Response.status(Response.Status.BAD_REQUEST).entity(ErrorUtil.badRequest("User has rated this post")).build();
-            
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity(ErrorUtil.unAuthorized("Invalid token"))
@@ -167,17 +164,27 @@ public class RateFacadeREST extends AbstractFacade<Rate> {
     }
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Rate find(@PathParam("id") Long id) {
-        return super.find(id);
-    }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Rate> findAll() {
-        return super.findAll();
+    @Path("me/posts/{postId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response find(@HeaderParam("authorization") String token, @PathParam("postId") Long postId) {
+        Long id = TokenUtil.decodeToken(token);
+        if (id != null) {
+            System.out.println("PathPAram: " + id);
+            Query query = em.createQuery( "Select r " + "from Rate r "  + "WHERE r.userUid.uid = " + id + " AND r.postPostid.postid = " + postId);
+            List<Rate> rates = (List<Rate>)query.getResultList();
+            System.out.println(rates);
+            if (rates.size() == 0) {
+                return Response.status(Response.Status.NOT_FOUND)
+                    .entity(ErrorUtil.notFound("You have not liked this post"))
+                    .build();
+            } else {
+                return Response.ok(rates.get(0)).build(); 
+            }
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
     }
 
     @GET

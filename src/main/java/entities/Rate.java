@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Rate.findAll", query = "SELECT r FROM Rate r")
-    , @NamedQuery(name = "Rate.findByRateid", query = "SELECT r FROM Rate r WHERE r.rateid = :rateid")})
+    ,@NamedQuery(name = "Rate.findByRateid", query = "SELECT r FROM Rate r WHERE r.rateid = :rateid")})
 //    , @NamedQuery(name = "Rate.findByRating", query = "SELECT r FROM Rate r WHERE r.rating = :rating")})
 public class Rate implements Serializable {
 
