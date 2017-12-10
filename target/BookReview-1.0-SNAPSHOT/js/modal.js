@@ -8,7 +8,7 @@ let bookModal = document.querySelector('.bookModal');
 // Get the triggers
 let postTrigger = document.querySelector('.postModalTrigger');
 let profileTrigger = document.querySelector('.profileModalTrigger');
-   let bookTrigger = document.querySelector('.bookModalTrigger');
+// let bookTrigger = document.querySelector('.bookModalTrigger');
 
 //Show modals when click on triggers
 postTrigger.addEventListener('click', (evt) => {
@@ -20,9 +20,9 @@ profileTrigger.addEventListener('click', (evt) => {
     getMyProfile();
 })
 
-   bookTrigger.addEventListener('click', (evt) => {
-       bookModal.style.display = "block";
-   })
+   // bookTrigger.addEventListener('click', (evt) => {
+   //     bookModal.style.display = "block";
+   // })
 
 // Get the <span> element that closes the modal
 let closePost = document.querySelector('.closePostModal');
@@ -38,14 +38,15 @@ closeProfile.addEventListener('click', (evt) => {
 })
 closeBook.addEventListener('click', (evt) => {
     bookModal.style.display = "none";
+    console.log('close');
 })
 
 //When the user clicks outside, close the modal
 window.onclick = function(event) {
     if (event.target == postModal || event.target == profileModal || event.target == bookModal) {
-        postModal.style.display = "none";
-        profileModal.style.display = "none";
-        bookModal.style.display = "none";
+        document.querySelector('.postModal').style.display = "none";
+        document.querySelector('.profileModal').style.display = "none";
+        document.querySelector('.bookModal').style.display = "none";
     }
 }
 
@@ -196,14 +197,3 @@ const postBook = () => {
     console.log('error: ' + error);
   });
 }
-
-
-// function changeIcon(obj) {
-//     if (obj.src.indexOf("images/Like_Button/liked.png") != -1) {
-//         obj.src = "images/Like_Button/unliked.png";
-//         document.querySelector('#likeIcon').setAttribute('')
-//     }
-//     else {
-//         obj.src = "images/Like_Button/liked.png";
-//     }
-// }

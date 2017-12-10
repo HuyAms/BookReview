@@ -35,6 +35,8 @@ document.querySelector('#tabOthers').addEventListener("click", () => {
 const handleNavigation = (category) => {
   hightLightTab(category);
   getMostViewedBook();
+  getMostRatedBook();
+  getMostCommentBook();
   switch (category) {
     case 'news':
       document.querySelector('.bookList').style.display = 'none';
@@ -108,12 +110,13 @@ const loadBook = (category) => {
         document.querySelector('#postList').innerHTML = listBookHTML;
 
         //set click on book
-        let bookModal = document.querySelector('.bookModal');
         let bookTrigger = document.querySelectorAll('.bookModalTrigger');
         bookTrigger.forEach((item, index) => {
           item.addEventListener('click', (evt) => {
-            bookModal.style.display = "block";
+            evt.preventDefault();
+            document.querySelector('.bookModal').style.display = "block";
             bookId = evt.target.getAttribute('bookId');
+            console.log('openmodal bookId: ' + bookId);
             getBookDetail(bookId);
             putBookView(bookId);
             getComment(bookId);
@@ -128,9 +131,25 @@ const loadBook = (category) => {
   });
 }
 
+//====================Spot light=========================
+  //set click on spotlight button
+let buttonReadMore = document.querySelectorAll('.spotLight a');
+buttonReadMore.forEach((item, index) => {
+  item.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    document.querySelector('.bookModal').style.display = "block";
+    bookId = evt.target.getAttribute('bookId');
+    console.log('openmodal bookId: ' + bookId);
+    getBookDetail(bookId);
+    putBookView(bookId);
+    getComment(bookId);
+    getRating(bookId);
+    getMyRating(bookId);
+  })
+})
+
 //[GET] Most Viewd book
-const getMostViewedBook = (category) => {
-  console.log('get mosted viewd');
+const getMostViewedBook = () => {
   const url = endPointUrl + `webresources/posts/mostView`;
   fetch(url, {
     method: 'GET',
@@ -139,7 +158,6 @@ const getMostViewedBook = (category) => {
     if (data.hasOwnProperty('error')) {
       alert(data.error);
     } else {
-      console.log(data);
       const id = data.postid;
       const author = data.bookAuthor;
       const title = data.bookTitle;
@@ -155,21 +173,107 @@ const getMostViewedBook = (category) => {
 
       let buttonMostViewed = document.querySelector('#buttonMostViewed');
       buttonMostViewed.setAttribute('bookId', id);
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+//[GET] Most Rated book
+const getMostRatedBook = () => {
+  const url = endPointUrl + `webresources/posts/mostRate`;
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      const id = data.postid;
+      const author = data.bookAuthor;
+      const title = data.bookTitle;
+      const imgUrl = data.path;
+      const review = data.review;
+      const view = data.view;
+
+      //show book reivew
+      document.querySelector('#mostRatedCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostRatedTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
+      document.querySelector('#mostRatedReview').innerHTML = review;
+
+      let buttonMostViewed = document.querySelector('#buttonMostRated');
+      buttonMostViewed.setAttribute('bookId', id);
 
       //set click on book
-      let bookModal = document.querySelector('.bookModal');
-      let bookTrigger = document.querySelectorAll('.bookModalTrigger');
-      bookTrigger.forEach((item, index) => {
-        item.addEventListener('click', (evt) => {
-          bookModal.style.display = "block";
-          bookId = evt.target.getAttribute('bookId');
-          getBookDetail(bookId);
-          putBookView(bookId);
-          getComment(bookId);
-          getRating(bookId);
-          getMyRating(bookId);
-        })
-      })
+      // let bookModal = document.querySelector('.bookModal');
+      // let bookTrigger = document.querySelectorAll('.bookModalTrigger');
+
+      //[GET] Book Rating Count
+      const ratingUrl = endPointUrl + `webresources/ratings/posts/${id}`;
+
+      fetch(ratingUrl, {
+        method: 'GET',
+        headers: headers
+      }).then(json).then((data) => {
+        if (data.hasOwnProperty('error')) {
+          alert(data.error);
+        } else {
+          let rating = data.rating;
+          document.querySelector('#mostRatedCount').innerHTML = rating + ' Likes';
+        }
+      }).catch((error) => {
+        console.log('error: ' + error);
+      });
+
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+//[GET] Most Comment Book
+const getMostCommentBook = () => {
+  const url = endPointUrl + `webresources/posts/mostComment`;
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      const id = data.postid;
+      const author = data.bookAuthor;
+      const title = data.bookTitle;
+      const imgUrl = data.path;
+      const review = data.review;
+      const view = data.view;
+
+      //show book reivew
+      document.querySelector('#mostCommentCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostCommentTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
+      document.querySelector('#mostCommentReview').innerHTML = review;
+
+      let buttonMostViewed = document.querySelector('#buttonMostComment');
+      buttonMostViewed.setAttribute('bookId', id);
+
+      //[GET] Book Comment Count
+      const commentUrl = endPointUrl + `webresources/comments/posts/${id}`;
+
+      fetch(commentUrl, {
+        method: 'GET',
+        headers: headers
+      }).then(json).then((data) => {
+        if (data.hasOwnProperty('error')) {
+          alert(data.error);
+        } else {
+          console.log(data);
+          console.log('length: ' + data.length);
+          document.querySelector('#mostCommentCount').innerHTML = data.length + ' Comments';
+        }
+      }).catch((error) => {
+        console.log('error: ' + error);
+      });
+
     }
   }).catch((error) => {
     console.log('error: ' + error);
