@@ -40,7 +40,26 @@ img, object, embed {
   max-width: 100%;
   height: auto;
 }
-
+.tophead{
+    min-height: 200px;
+    text-align: center;
+    background-color: #179b78;
+    display: flex;
+    align-items: center;
+}
+.meetfavourite{
+    position: relative;
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+#motto{
+    font-family: 'Playball',cursive;
+    font-size: 80px;
+    color: white;
+    
+}
 .button {
   font-family: Lato, Arial, sans-serif;
   font-weight: 700;
@@ -139,20 +158,51 @@ nav.mainNav ul li:hover {
 header {
   margin-bottom: 2em;
   width: 100%;
-  min-height: 400px;
-  background-image: url(../images/coffee-booksnew.jpg);
+  min-height: 500px;
+  background-image:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url(../images/bookflower.jpg);
+    
   background-size: cover;
 }
 
 header h1 {
-  font-size: 4em;
+  font-size: 6em;
   font-weight: 500;
   margin-bottom: 2em;
-  margin: 0 15px 0 30px;
+  margin: 0px 15px 15px 30px;
   line-height: 100px;
   text-align: center;
+   font-family: 'Playball',cursive;
+    color: white;
+   
 }
-
+.welcome{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    border-bottom: 2px solid #179b78;
+    border-top: 2px solid #179b78;
+}
+.welcome h3{
+    margin: 20px 40px;
+    font-size: 2em;
+    
+    font-family: 'Raleway', sans-serif;
+    
+}
+.quote{
+    margin: 40px 0;
+    min-height: 50px;
+    padding: 20px;
+    background-color: rgba(208, 225, 225, 0.3);
+    
+}
+.quote h3{
+    font-family: 'Playball',cursive;
+    font-size: 1.7em;
+}
+.quote p{
+    float: right;
+}
 header h2 {
   font-size: 2em;
   font-weight: 400;
