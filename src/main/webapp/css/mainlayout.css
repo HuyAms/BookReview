@@ -143,6 +143,12 @@ header {
   justify-content: flex-start;
 }
 
+.spotLight>article>p {
+    max-height: 250px;
+    min-height: 250px;
+    overflow-y: hidden;
+}
+
 .spotLight h3:first-of-type {
   align-self: center;
 }
@@ -285,4 +291,5 @@ footer {
     order: 2;
     margin-bottom: 2em;
   }
+    
 }
