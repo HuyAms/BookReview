@@ -65,14 +65,12 @@ header {
 }
 
 .sidebar {
-  flex: 1;
   order: 0;
   margin-right: 2em;
   padding: 1.5em;
 }
 
 .gallery {
-  flex: 3;
   order: 1;
   display: flex;
   flex-direction: column;
@@ -222,7 +220,7 @@ footer {
 	   book category navigation styles
 	-----------------------------------------------------*/
   .gallery {
-    flex-direction: row;
+    flex-flow: row wrap;
     align-items: flex-start;
     padding: 2em;
   }
@@ -247,7 +245,6 @@ footer {
 -----------------------------------------------------*/
   .bookList {
     justify-content: center;
-    align-items: center;
     padding: 0;
   }
   .bookList>section {
@@ -272,18 +269,20 @@ footer {
 }
 
 @media only screen and (max-width: 720px) and (min-width:481px) {
-    .gallery {
+    .main {
         flex-flow: column wrap;
-        width: 100%;
+    }
+    .gallery {
+        justify-content: flex-end;
     }
     .bookNav {
-        height: 100%;
+        width: 20%;
     }
     .gallery article {
         width: 80%;
     }
-    .bookList>p {
-        margin-left: 1em;
+    .bookList p{
+        padding-left: 20px;
     }
 }
 
