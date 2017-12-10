@@ -166,7 +166,7 @@ a {
 
 
 
-@media (min-width: 730px) {
+@media (min-width: 720px) {
     .tophead{
         display: flex;
     }
