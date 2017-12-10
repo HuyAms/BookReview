@@ -110,3 +110,18 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
     width: 80%;
   }
 }
+
+@media only screen and (max-width: 720px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .modal-content {
+        width: 100%;
+        padding: 10px;
+        padding-top: 30px;
+        min-width: 300px;
+    }
+}

@@ -37,7 +37,7 @@ nav.mainNav li.me {
 
 .bookNav li {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 /* --------------------------------------------------
@@ -141,6 +141,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .spotLight>article>p {

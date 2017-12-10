@@ -262,6 +262,46 @@ public class PostFacadeREST extends AbstractFacade<Post> {
                     .build();
         }
     }
+    
+    @GET
+    @Path("mostRate")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findMostRate(@HeaderParam("authorization") String token) {
+        
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Query query = em.createQuery("select p FROM Post p order by size(p.rateCollection) DESC" );
+            System.out.println(query.getResultList());
+            List<Post> post = (List<Post>)query.getResultList();
+//            System.out.println(post);
+            Post mostRatePost = post.get(0);
+            return Response.ok(mostRatePost).build(); 
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
+    
+    @GET
+    @Path("mostComment")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findMostComment(@HeaderParam("authorization") String token) {
+        
+        Long userId = TokenUtil.decodeToken(token);
+        if (userId != null) {
+            Query query = em.createQuery("select p FROM Post p order by size(p.commentCollection) DESC" );
+            System.out.println(query.getResultList());
+            List<Post> post = (List<Post>)query.getResultList();
+//            System.out.println(post);
+            Post mostRatePost = post.get(0);
+            return Response.ok(mostRatePost).build(); 
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(ErrorUtil.unAuthorized("Invalid token"))
+                    .build();
+        }
+    }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
