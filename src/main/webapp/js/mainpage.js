@@ -32,8 +32,9 @@ document.querySelector('#tabOthers').addEventListener("click", () => {
   handleNavigation('others')
 });
 
-const handleNavigation = function(category) {
+const handleNavigation = (category) => {
   hightLightTab(category);
+  getMostViewedBook();
   switch (category) {
     case 'news':
       document.querySelector('.bookList').style.display = 'none';
@@ -50,7 +51,7 @@ const handleNavigation = function(category) {
   }
 }
 
-const hightLightTab = function(tab) {
+const hightLightTab = (tab) => {
   const listTab = document.querySelectorAll('.bookNav ul li');
   listTab.forEach((tab, index) => {
     tab.classList.remove('tabActive');
@@ -60,9 +61,6 @@ const hightLightTab = function(tab) {
   currentTab.classList.add('tabActive');
   localStorage.setItem('currentTab', tab);
 }
-
-//open home tab by default
-document.querySelector('#tabNews').click();
 
 let bookId;
 
@@ -124,6 +122,54 @@ const loadBook = (category) => {
           })
         })
       }
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
+
+//[GET] Most Viewd book
+const getMostViewedBook = (category) => {
+  console.log('get mosted viewd');
+  const url = endPointUrl + `webresources/posts/mostView`;
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  }).then(json).then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      console.log(data);
+      const id = data.postid;
+      const author = data.bookAuthor;
+      const title = data.bookTitle;
+      const imgUrl = data.path;
+      const review = data.review;
+      const view = data.view;
+
+      //show book reivew
+      document.querySelector('#mostViewedCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostViewedCount').innerHTML = view + ' Views';
+      document.querySelector('#mostViewedTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
+      document.querySelector('#mostViewedReview').innerHTML = review;
+
+      let buttonMostViewed = document.querySelector('#buttonMostViewed');
+      buttonMostViewed.setAttribute('bookId', id);
+
+      //set click on book
+      let bookModal = document.querySelector('.bookModal');
+      let bookTrigger = document.querySelectorAll('.bookModalTrigger');
+      bookTrigger.forEach((item, index) => {
+        item.addEventListener('click', (evt) => {
+          bookModal.style.display = "block";
+          bookId = evt.target.getAttribute('bookId');
+          getBookDetail(bookId);
+          putBookView(bookId);
+          getComment(bookId);
+          getRating(bookId);
+          getMyRating(bookId);
+        })
+      })
     }
   }).catch((error) => {
     console.log('error: ' + error);
@@ -252,9 +298,7 @@ const postComment = () => {
   });
 }
 
-/*
-====================Rating =========================
-*/
+/* ====================Rating ========================= */
 //[GET] Book Rating
 const getRating = (bookId) => {
   const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
@@ -275,7 +319,7 @@ const getRating = (bookId) => {
 }
 
 //[GET] My rating for book
-let myRatingId='';
+let myRatingId = '';
 const getMyRating = (bookId) => {
   const url = endPointUrl + `webresources/ratings/me/posts/${bookId}`;
 
@@ -284,9 +328,9 @@ const getMyRating = (bookId) => {
     headers: headers
   }).then(json).then((data) => {
     if (data.hasOwnProperty('error')) {
-      document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/unliked.png');
+      document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/unliked.png');
     } else {
-      document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/liked.png');
+      document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/liked.png');
       myRatingId = data.rateid;
     }
   }).catch((error) => {
@@ -294,13 +338,12 @@ const getMyRating = (bookId) => {
   });
 }
 
-
 document.querySelector('#likeIcon').addEventListener('click', (evt) => {
   evt.preventDefault();
   let src = evt.target.getAttribute('src');
 
   if (src.indexOf("images/Like_Button/liked.png") != -1) {
-    document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/unliked.png');
+    document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/unliked.png');
     if (myRatingId != '') {
       //[DELETE] Rating
       const url = endPointUrl + `webresources/ratings/${myRatingId}`;
@@ -321,25 +364,25 @@ document.querySelector('#likeIcon').addEventListener('click', (evt) => {
       });
     }
   } else {
-    document.querySelector('#likeIcon').setAttribute('src','images/Like_Button/liked.png');
+    document.querySelector('#likeIcon').setAttribute('src', 'images/Like_Button/liked.png');
 
-     //[POST] Rating
-      const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
+    //[POST] Rating
+    const url = endPointUrl + `webresources/ratings/posts/${bookId}`;
 
-      fetch(url, {
-        method: 'POST',
-        headers: headers
-      }).then(json).then((data) => {
-        if (data.hasOwnProperty('error')) {
-          alert(data.error);
-        } else {
-          //reload rating list
-          getRating(bookId);
-          getMyRating(bookId);
-        }
-      }).catch((error) => {
-        console.log('error: ' + error);
-      });
+    fetch(url, {
+      method: 'POST',
+      headers: headers
+    }).then(json).then((data) => {
+      if (data.hasOwnProperty('error')) {
+        alert(data.error);
+      } else {
+        //reload rating list
+        getRating(bookId);
+        getMyRating(bookId);
+      }
+    }).catch((error) => {
+      console.log('error: ' + error);
+    });
 
   }
 })
@@ -358,3 +401,6 @@ document.querySelector('#buttonLogout').addEventListener('click', (evt) => {
 const json = (res) => {
   return res.json();
 }
+
+//open home tab by default
+document.querySelector('#tabNews').click();
