@@ -1,4 +1,6 @@
-
+.tophead{
+        display: none;
+    }
 .navigation {
   height: 70px;
   background: #179b78;
