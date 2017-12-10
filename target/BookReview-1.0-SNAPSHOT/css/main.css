@@ -225,6 +225,12 @@ header h2 {
   margin-bottom: .5em;
 }
 
+.bookList>p {
+    color: lightslategray;
+    font-style: italic;
+    font-size: 1em;
+}
+
 section.book p {
   margin-bottom: .4em;
 }
