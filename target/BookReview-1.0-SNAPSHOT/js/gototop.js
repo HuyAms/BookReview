@@ -1,7 +1,5 @@
-let mq;
-
 window.onresize = () => {
-  mq = window.matchMedia( "(max-width: 480px)" );
+  let  mq = window.matchMedia( "(max-width: 480px)" );
   if (mq.matches) {
     document.getElementById("goToTopBtn").style.display = "none";
   }
@@ -11,12 +9,10 @@ window.onresize = () => {
 window.onscroll = () => {scrollFunction()};
 
 function scrollFunction() {
-  if (!mq.matches) {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("goToTopBtn").style.display = "block";
-    } else {
-        document.getElementById("goToTopBtn").style.display = "none";
-    }
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("goToTopBtn").style.display = "block";
+  } else {
+      document.getElementById("goToTopBtn").style.display = "none";
   }
 }
 
