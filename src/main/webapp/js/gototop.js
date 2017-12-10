@@ -1,10 +1,3 @@
-window.onresize = () => {
-  let  mq = window.matchMedia( "(max-width: 480px)" );
-  if (mq.matches) {
-    document.getElementById("goToTopBtn").style.display = "none";
-  }
-}
-
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = () => {scrollFunction()};
 

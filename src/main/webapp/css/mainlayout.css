@@ -158,6 +158,10 @@ header {
   margin-bottom: 0.5em;
 }
 
+.spotLight a {
+  margin-top: auto;
+}
+
 /* --------------------------------------------------
    footer  styles
 -----------------------------------------------------*/
@@ -291,5 +295,5 @@ footer {
     order: 2;
     margin-bottom: 2em;
   }
-    
+
 }
