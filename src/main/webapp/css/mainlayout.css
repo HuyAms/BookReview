@@ -59,6 +59,7 @@ header {
 .main {
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 2em;
   justify-content: center;
 }
@@ -211,13 +212,14 @@ footer {
   }
   .sidebar {
     margin-right: 0;
+    min-width: 100%;
   }
   .spotLight {
     order: 4;
   }
   footer {
     order: 5;
-  }
+  } 
   /* --------------------------------------------------
    top navigation styles
 -----------------------------------------------------*/
@@ -276,7 +278,7 @@ footer {
     max-height: 200px;
     min-height: 200px;
     overflow-y: hidden;
-    }
+  }
 }
 
 @media only screen and (max-width: 720px) and (min-width:481px) {
@@ -289,16 +291,13 @@ footer {
     .bookNav {
         width: 20%;
     }
-    .aside {
-        min-width: 100%;
-    }
     .gallery article {
       width: 80%;
     }
     .bookList>p {
       margin-left: 1em;
     }
-  }
+}
   @media only screen and (max-width: 480px) {
     
 
@@ -311,39 +310,38 @@ footer {
     /*nav.mainNav {
     order: 3;
   }*/
-    footer {
-      order: 4;
-    }
-    /* --------------------------------------------------
+  footer {
+    order: 4;
+  }
+  /* --------------------------------------------------
      main content styles
   -----------------------------------------------------*/
-    .gallery {
-      order: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .sidebar {
-      order: 0;
-    }
-    nav.bookNav {
-      order: 1;
-      margin-bottom: 2em;
-    }
-    .bookList {
-      order: 3;
-    }
-    .news {
-      order: 3;
-    }
-    .gallery a.button {
-      align-self: center;
-      margin: 0;
-      order: 2;
-      margin-bottom: 2em;
-    }
-    .book img {
-      align-self: center;
-    }
+  .gallery {
+    order: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .sidebar {
+    order: 0;
+  }
+  nav.bookNav {
+    order: 1;
+    margin-bottom: 2em;
+  }
+  .bookList {
+    order: 3;
+  }
+  .news {
+    order: 3;
+  }
+  .gallery a.button {
+    align-self: center;
+    margin: 0;
+    order: 2;
+    margin-bottom: 2em;
+  }
+  .book img {
+    align-self: center;
   }
 }
