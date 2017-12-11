@@ -1,3 +1,4 @@
+
 /* --------------------------------------------------
   Handle book category navigation
 -----------------------------------------------------*/
@@ -32,7 +33,7 @@ document.querySelector('#tabOthers').addEventListener("click", () => {
   handleNavigation('others')
 });
 
-const handleNavigation = (category) => {
+const handleNavigation = (category) => {    
   hightLightTab(category);
   getMostViewedBook();
   getMostRatedBook();
@@ -528,7 +529,7 @@ document.querySelector('#likeIcon').addEventListener('click', (evt) => {
 document.querySelector('#buttonLogout').addEventListener('click', (evt) => {
   evt.preventDefault();
   console.log('log out clicked');
-  localStorage.setItem("didLogIn", false); //save login state
+  localStorage.removeItem("didLogIn"); //save login state
   localStorage.removeItem('token'); //remove token
 
   //TODO: Navigate to main page
@@ -539,5 +540,14 @@ const json = (res) => {
   return res.json();
 }
 
-//open home tab by default
-document.querySelector('#tabNews').click();
+
+if (!localStorage.getItem("didLogIn")) {
+  //TODO: Navigate to main page
+  window.location.href = "index.html";
+    console.log("go to login");
+} else {
+    //open home tab by default
+   document.querySelector('#tabNews').click(); 
+}
+
+
