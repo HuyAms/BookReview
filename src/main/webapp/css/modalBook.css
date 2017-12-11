@@ -217,3 +217,12 @@
         margin-top: 50px;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .bookModal .modal-content {
+        width: 100%;
+        padding: 10px;
+        padding-top: 30px;
+        min-width: 300px;
+    }
+}
