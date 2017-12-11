@@ -60,7 +60,6 @@ public class Post implements Serializable {
     @Size(max = 255)
     @Column(name = "PATH")
     private String path;
-    @Size(max = 255)
     @Column(name = "REVIEW")
     private String review;
     @Column(name = "TIMESTAMP")

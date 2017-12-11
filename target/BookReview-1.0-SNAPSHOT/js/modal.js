@@ -187,6 +187,7 @@ const postBook = () => {
           document.querySelector('.closePostModal').click();
           document.querySelector('#postForm').reset();
           loadBook(localStorage.getItem('currentTab'));
+          alert('Congratulations, your book is now shared with everyone!');
         }
       }).catch((error) => {
         console.log('error: ' + error);

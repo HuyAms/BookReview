@@ -389,7 +389,7 @@ const getComment = (bookId) => {
           <div class="wholeComment">
             <h3 class="commentUser">${username}</h3>
             <p class="commentTime">${t.getDate()}/${t.getMonth()}/${t.getFullYear()} ${t.getHours()}:${t.getMinutes()}</p>
-            <pre class="commentContent">${content}</pre>
+            <p class="commentContent">${content}</p>
           </div>
           `
         });

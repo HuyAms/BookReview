@@ -29,7 +29,7 @@ if (localStorage.getItem("didSeeOnBoarding")) {
   loginContainer.style.display = 'block';
 }
 
-if (localStorage.getItem("didLogIn") == true) {
+if (localStorage.getItem("didLogIn")) {
   //TODO: Navigate to main page
   window.location.href = "mainpage.html";
 }

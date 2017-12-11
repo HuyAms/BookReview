@@ -40,11 +40,11 @@
     width: 100%;
 }
 
-#bookTitle {
-  font-family: "Open Sans", sans-serif;
-  font-weight: normal;
-  margin-bottom: 1em;
-  font-size: 18px;
+#bookTitle {  
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  margin-top: 1em;
+  font-size: 25px;
   line-height: 30px;
 }
 
@@ -146,7 +146,8 @@
     flex-flow: row wrap;
     margin-top: 0;
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    padding: 0.1em;
 }
 
 .bookModal #commentSection .wholeComment, #wholeReview {
@@ -196,7 +197,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-left: 5px;
 }
 

@@ -163,8 +163,7 @@ header {
   margin-bottom: 2em;
   width: 100%;
   min-height: 500px;
-  background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookflower.jpg);
-    
+  background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookcover_l.jpg);  
   background-size: cover;
 }
 
@@ -435,9 +434,9 @@ footer {
 }
 
 footer p {
-  font-size: .8em;
+  font-size: 1.2em;
   margin: 0;
-  color: black;
+  color: slategray;
 }
 
 /* --------------------------------------------------
@@ -482,6 +481,10 @@ footer p {
   .bookList>section p {
     text-align: center;
   }
+    header {
+    background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookcover_m.jpg);  
+    background-size: cover;
+    }
   /* --------------------------------------------------
  spotlight content styles
 -----------------------------------------------------*/
@@ -497,6 +500,10 @@ footer p {
 @media only screen and (max-width: 480px) {
   #goToTopBtn {
     display: none;
+  }
+  header {
+    background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookcover_l.jpg);  
+    background-size: cover;   
   }
   /* --------------------------------------------------
    top navigation styles
