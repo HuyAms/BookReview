@@ -1,0 +1,58 @@
+.aboutModal .modal-content {
+    width: 80%;
+}
+
+.aboutModal #modalHeader {
+    text-align: center;
+    color: #1ab188;
+    font-size: 2em;
+    margin-bottom: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+}
+
+.memberList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background-color: white;
+    padding: 20px;
+}
+
+.memberCard {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
+    background-color: white;
+    margin: 10px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.memberCard:hover {
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.4);
+}
+
+.memberCard img {
+    width: 300px;
+    height: 300px;
+}
+
+.memberInfo {
+    padding: 10px 16px;
+    height: 50px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.memberQuote {
+    margin: 20px;
+    margin-top: 50px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #179b78;
+    font-style: italic;
+}

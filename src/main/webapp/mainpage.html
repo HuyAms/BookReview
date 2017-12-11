@@ -7,8 +7,8 @@
   <title>Book House</title>
   
   <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/mainlayout.css">
   <link rel="stylesheet" href="css/news.css">
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/modalPost.css">
   <link rel="stylesheet" href="css/modalProfile.css">
   <link rel="stylesheet" href="css/modalBook.css">
+  <link rel="stylesheet" href="css/modalAbout.css">
 </head>
 
 <body>
@@ -27,42 +28,7 @@
 
     </div>
     </section>
-  <!--
-  <section class="navigation" role="navigation">
-    <div class="nav-container">
-      <div class="brand">
-        <a href="#!">Book House</a>
-      </div>
-      <nav class="mainNav">
-        <div class="nav-mobile show-hide" data-target="nav-list"><a id="nav-toggle" href="#!"><span></span></a></div>
-
-        <ul class="nav-list" style="display:none;">
-          <li>
-            <a href="#!">Home</a>
-          </li>
-          <li>
-            <a href="#!">Forum</a>
-          </li>
-          <li>
-            <a href="#!">About</a>
-          </li>
-          <li>
-            <a href="#!" class="submenu show-hide" data-target="profile">Hi Huy</a>
-            <ul class="nav-dropdown profile" style="display:none">
-              <li>
-                <a href="#!" class="profileModalTrigger">My Profile</a>
-              </li>
-              <li>
-                <a href="#!">Log out</a>
-              </li>
-              </ul>
-          </li>
-        </ul>
-
-      </nav>
-    </div>
-  </section>
--->
+    
   <input type="checkbox" class="toggle-nav" id="toggle-nav">
 
   <div class="mobile-bar">
@@ -78,7 +44,7 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Forum</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#" class="aboutModalTrigger">About</a></li>
         <li class="submenu" data-target="profile">
           <a href="#" id="userNameNav" data-target="profile">username</a>
           <ul class="nav-dropdown profile">
@@ -197,8 +163,7 @@
         </ul>
         <section class="events">
           <h3>Upcoming Events</h3>
-          <p>Join us on Thursday, December 7th at 7pm as Anand Taneja discusses Jinnealogy: Time, Islam, and Ecological Thought in the Medieval Ruins of Delhi at Book Culture on 112th. Anand will be joined in conversation by Debashree Mukherjee. This event
-            is co-sponsored by the Columbia University Center for International History.</p>
+          <p>Join us on Tuesday, December 12th at 9am as THM will release their latest product: BOOK HOUSE - a social network for bookaholics. The event is hosted in Reef ETYB303 of Metropolia. This project is mentored by Aarne Klemetti, Ilkka Kylmäniemi, Patrick Ausderau, Ulla Sederlöf and Jaakko Pitkänen.</p>
         </section>
       </aside>
     </main>
@@ -376,6 +341,33 @@
       </div>
     </section>
 
+    <!-- About Modal -->
+    <section class="modal aboutModal">
+
+      <!-- The Close Button -->
+      <span class="closeModal closeAboutModal">&times;</span>
+
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <h2 id="modalHeader">About us</h2>
+        <section class="memberList">
+            <div class="memberCard">
+                <img src="images/T.JPG">
+                <h3 class="memberInfo"> TUAN LE</h3>
+            </div>
+             <div class="memberCard">
+                <img src="images/H.JPG">
+                <h3 class="memberInfo"> HUY TRINH</h3>
+            </div>
+            <div class="memberCard">
+                <img src="images/M.JPG">
+                <h3 class="memberInfo"> MINH TRAN</h3>
+            </div>
+            <p class="memberQuote">"We developers from THM thank you for trying our platform! We will keep trying hard to carry this project further"</p>
+        </section>    
+      </div>
+    </section>      
+    
 
     <footer role="contentinfo">
       <p>

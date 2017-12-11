@@ -4,11 +4,13 @@
 let postModal = document.querySelector('.postModal');
 let profileModal = document.querySelector('.profileModal');
 let bookModal = document.querySelector('.bookModal');
+let aboutModal = document.querySelector('.aboutModal');
 
 // Get the triggers
 let postTrigger = document.querySelector('.postModalTrigger');
 let profileTrigger = document.querySelector('.profileModalTrigger');
 // let bookTrigger = document.querySelector('.bookModalTrigger');
+let aboutTrigger = document.querySelector('.aboutModalTrigger');
 
 //Show modals when click on triggers
 postTrigger.addEventListener('click', (evt) => {
@@ -23,11 +25,14 @@ profileTrigger.addEventListener('click', (evt) => {
    // bookTrigger.addEventListener('click', (evt) => {
    //     bookModal.style.display = "block";
    // })
+aboutTrigger.addEventListener('click', (evt) => {
+    aboutModal.style.display = "block";
 
 // Get the <span> element that closes the modal
 let closePost = document.querySelector('.closePostModal');
 let closeProfile = document.querySelector('.closeProfileModal');
 let closeBook = document.querySelector('.closeBookModal');
+let closeAbout = document.querySelector('.closeAboutModal');
 
 // When the user clicks on(x), close the modal
 closePost.addEventListener('click', (evt) => {
@@ -40,13 +45,17 @@ closeBook.addEventListener('click', (evt) => {
     bookModal.style.display = "none";
     console.log('close');
 })
+closeAbout.addEventListener('click', (evt) => {
+    aboutModal.style.display = "none";
+})
 
 //When the user clicks outside, close the modal
 window.onclick = function(event) {
-    if (event.target == postModal || event.target == profileModal || event.target == bookModal) {
+    if (event.target == postModal || event.target == profileModal || event.target == bookModal || event.target == aboutModal) {
         document.querySelector('.postModal').style.display = "none";
         document.querySelector('.profileModal').style.display = "none";
         document.querySelector('.bookModal').style.display = "none";
+        document.querySelector('.aboutModal').style.display = "none";
     }
 }
 
