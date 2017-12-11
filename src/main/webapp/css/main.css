@@ -147,6 +147,7 @@ nav.mainNav ul li:hover {
   display: block;
   border-color: #179b78;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .bookNav ul li:hover {
@@ -163,7 +164,7 @@ header {
   margin-bottom: 2em;
   width: 100%;
   min-height: 500px;
-  background-image:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(../images/bookflower.jpg);
+  background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookflower.jpg);
     
   background-size: cover;
 }
@@ -191,13 +192,14 @@ header h1 {
     font-size: 2em;
     color:aliceblue;
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
     
 }
 .quote{
     margin: 40px 0;
     min-height: 50px;
     padding: 20px;
-    background-color: rgba(208, 225, 225, 0.3);
+    background-color: rgba(225, 225, 225, 0.7);
     
 }
 .quote h3{
@@ -276,7 +278,7 @@ aside h3 {
   font-size: 1.6em;
   margin-top: 2em;
   margin-bottom: .4em;
-    font: 48px/50px 'Playball', sans-serif;
+  font: 48px/50px 'Playball', sans-serif;
 }
 
 aside p {
@@ -374,7 +376,8 @@ ul.social a.twitter:hover {
   font-weight: 100;
   line-height: 45px;
   padding-left: 1.2em;
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .spotLight>article {
@@ -396,13 +399,13 @@ ul.social a.twitter:hover {
   font-size: 1.5em;
   padding: 0 0.8em;
   margin-bottom: 1em;
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .spotLight h4 span {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #666;
-  font-weight: lighter;
   font-style: italic; 
 }
 

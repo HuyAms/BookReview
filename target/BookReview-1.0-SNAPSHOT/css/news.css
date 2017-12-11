@@ -3,9 +3,10 @@
 }
 
 .postcontent h3 {
-  font-size: 1.5em;
-  font-family: proxima-nova, Helvetica, sans-serif;
-  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   margin: 0;
   margin-bottom: 0.5em;
 }
@@ -13,10 +14,17 @@
 .postcontent p {
   margin-bottom: 2em;
   line-height: 1.5;
+  color: #6f6f6f;
+  text-align: justify;
 }
 
 .citeAuthor {
-  font-weight: 600;
-  letter-spacing: .12em;
+  font-weight: bold;
+  letter-spacing: .1em;
   text-transform: uppercase;
+   font-family: 'Raleway', sans-serif;
+}
+time{
+    font-family: 'Raleway', sans-serif;
+    font-style: italic
 }

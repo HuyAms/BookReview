@@ -153,7 +153,8 @@ header {
   max-height: 250px;
   min-height: 250px;
   overflow-y: hidden;
-    color: #6f6f6f;
+  color: #6f6f6f;
+  text-align: justify;
 }
 
 .spotLight h3:first-of-type {

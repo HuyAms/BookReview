@@ -7,14 +7,14 @@ html {
 }
 
 body {
-  font-family: Lato, Arial, sans-serif;
+  
   font-weight: 500;
   font-style: normal;
   background: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Lato, Arial, sans-serif;
+  
   font-weight: 200;
 }
 
@@ -26,9 +26,12 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 p {
-  font-family: Cardo, Georgia, Times, serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   margin-bottom: 1em;
+    font-size: 18px;
+    line-height: 30px;
+ 
 }
 
 a:focus {
@@ -143,6 +146,8 @@ nav.mainNav ul li:hover {
   padding: .25em .25em;
   display: block;
   border-color: #179b78;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .bookNav ul li:hover {
@@ -159,7 +164,7 @@ header {
   margin-bottom: 2em;
   width: 100%;
   min-height: 500px;
-  background-image:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url(../images/bookflower.jpg);
+  background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../images/bookflower.jpg);
     
   background-size: cover;
 }
@@ -185,15 +190,16 @@ header h1 {
 .welcome h3{
     margin: 20px 40px;
     font-size: 2em;
-    
+    color:aliceblue;
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
     
 }
 .quote{
     margin: 40px 0;
     min-height: 50px;
     padding: 20px;
-    background-color: rgba(208, 225, 225, 0.3);
+    background-color: rgba(225, 225, 225, 0.7);
     
 }
 .quote h3{
@@ -272,13 +278,15 @@ aside h3 {
   font-size: 1.6em;
   margin-top: 2em;
   margin-bottom: .4em;
+  font: 48px/50px 'Playball', sans-serif;
 }
 
 aside p {
-  font-family: Lato, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 2;
+      color: #6f6f6f;
+  font-size: 18px;
+  line-height: 30px;
   font-style: normal;
+   
 }
 
 ul.social {
@@ -368,6 +376,8 @@ ul.social a.twitter:hover {
   font-weight: 100;
   line-height: 45px;
   padding-left: 1.2em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .spotLight>article {
@@ -382,18 +392,20 @@ ul.social a.twitter:hover {
 .spotLight h3 {
   font-size: 1.5em;
   margin-bottom: 0.5em;
+    font-family: "Open Sans", sans-serif;
 }
 
 .spotLight h4 {
   font-size: 1.5em;
   padding: 0 0.8em;
   margin-bottom: 1em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .spotLight h4 span {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #666;
-  font-weight: lighter;
   font-style: italic; 
 }
 
@@ -411,6 +423,7 @@ ul.social a.twitter:hover {
 
 .spotLight .button {
     line-height: 2;
+    font-family: 'Raleway', sans-serif;
 }
 
 /* --------------------------------------------------

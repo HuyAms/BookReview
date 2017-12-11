@@ -59,10 +59,16 @@ header {
 .main {
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 2em;
   justify-content: center;
 }
-
+.tophead{
+        display: flex;
+    }
+.welcome{
+        display:flex;
+    }
 .sidebar {
   order: 0;
   flex: 1;
@@ -147,6 +153,8 @@ header {
   max-height: 250px;
   min-height: 250px;
   overflow-y: hidden;
+  color: #6f6f6f;
+  text-align: justify;
 }
 
 .spotLight h3:first-of-type {
@@ -155,7 +163,7 @@ header {
 
 .spotLight div.img-wrap {
   align-self: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 1.5em;
   width: 50%;
 }
 
@@ -189,6 +197,12 @@ footer {
     flex-direction: column;
     width: 100%;
   }
+    .tophead{
+    display: none;
+}
+    .welcome{
+    display: none;
+}
   nav.mainNav {
     order: 1;
   }
@@ -200,13 +214,14 @@ footer {
   }
   .sidebar {
     margin-right: 0;
+    min-width: 100%;
   }
   .spotLight {
     order: 4;
   }
   footer {
     order: 5;
-  }
+  } 
   /* --------------------------------------------------
    top navigation styles
 -----------------------------------------------------*/
@@ -269,34 +284,32 @@ footer {
 }
 
 @media only screen and (max-width: 720px) and (min-width:481px) {
-  .main {
-    flex-flow: column wrap;
-  }
-  .gallery {
-    justify-content: flex-end;
-  }
-  .bookNav {
-    width: 20%;
-  }
-  .aside {
-    min-width: 100%;
-  }
-  .gallery article {
-    width: 80%;
-  }
-  .bookList>p {
-    margin-left: 1em;
-  }
+    .main {
+        flex-flow: column wrap;
+    }
+    .gallery {
+        justify-content: flex-end;
+    }
+    .bookNav {
+        width: 20%;
+    }
+    .gallery article {
+      width: 80%;
+    }
+    .bookList>p {
+      margin-left: 1em;
+    }
 }
+  @media only screen and (max-width: 480px) {
+    
 
-@media only screen and (max-width: 480px) {
-  header {
-    order: 1;
-  }
-  main {
-    order: 2;
-  }
-  /*nav.mainNav {
+    header {
+      order: 1;
+    }
+    main {
+      order: 2;
+    }
+    /*nav.mainNav {
     order: 3;
   }*/
   footer {

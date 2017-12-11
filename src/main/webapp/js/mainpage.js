@@ -37,6 +37,7 @@ const handleNavigation = (category) => {
   getMostViewedBook();
   getMostRatedBook();
   getMostCommentBook();
+  getMe();
   switch (category) {
     case 'news':
       document.querySelector('.bookList').style.display = 'none';
@@ -53,6 +54,7 @@ const handleNavigation = (category) => {
   }
 }
 
+
 const hightLightTab = (tab) => {
   const listTab = document.querySelectorAll('.bookNav ul li');
   listTab.forEach((tab, index) => {
@@ -65,6 +67,29 @@ const hightLightTab = (tab) => {
 }
 
 let bookId;
+//====================Get Username=========================
+//[GET] Me
+const getMe = () => {
+  const url = endPointUrl + `webresources/users/me`;
+
+  fetch(url, {
+    method: 'GET',
+    headers: headers
+  })
+  .then(json)
+  .then((data) => {
+    if (data.hasOwnProperty('error')) {
+      alert(data.error);
+    } else {
+      let username = data.username ;
+
+      document.querySelector('#userNameNav').innerHTML = username;
+      
+    }
+  }).catch((error) => {
+    console.log('error: ' + error);
+  });
+}
 
 //====================Book=========================
 //[GET] Book List
@@ -96,10 +121,10 @@ const loadBook = (category) => {
           const bookTitle = book.post.bookTitle;
           const bookId = book.post.postid;
           const bookAuthor = book.post.bookAuthor;
-
+ 
           listBookHTML += `
           <section class="book">
-            <img src="${imgPath}" alt="${bookTitle}" class="bookImg bookModalTrigger" bookId="${bookId}"/>
+            <img src="http://10.114.34.135/Upload/${imgPath}" alt="${bookTitle}" class="bookImg bookModalTrigger" bookId="${bookId}"/>
             <p>${bookTitle}</p>
             <p>by <span>${bookAuthor}</span></p>
           </section>
@@ -123,6 +148,9 @@ const loadBook = (category) => {
             getMyRating(bookId);
           })
         })
+      } else {
+          document.querySelector('#postList').innerHTML = 
+              '<p id="noBook">Sorry, no book available yet. Write a new post to add your book here!</p>';  
       }
     }
   }).catch((error) => {
@@ -164,7 +192,7 @@ const getMostViewedBook = () => {
       const view = data.view;
 
       //show book reivew
-      document.querySelector('#mostViewedCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostViewedCover').innerHTML = `<img src="http://10.114.34.135/Upload/${imgUrl}" alt="${title}">`;
       document.querySelector('#mostViewedCount').innerHTML = view + ' Views';
       document.querySelector('#mostViewedTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
       document.querySelector('#mostViewedReview').innerHTML = review;
@@ -195,7 +223,7 @@ const getMostRatedBook = () => {
       const view = data.view;
 
       //show book reivew
-      document.querySelector('#mostRatedCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostRatedCover').innerHTML = `<img src="http://10.114.34.135/Upload/${imgUrl}" alt="${title}">`;
       document.querySelector('#mostRatedTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
       document.querySelector('#mostRatedReview').innerHTML = review;
 
@@ -247,7 +275,7 @@ const getMostCommentBook = () => {
       const view = data.view;
 
       //show book reivew
-      document.querySelector('#mostCommentCover').innerHTML = `<img src="${imgUrl}" alt="${title}">`;
+      document.querySelector('#mostCommentCover').innerHTML = `<img src="http://10.114.34.135/Upload/${imgUrl}" alt="${title}">`;
       document.querySelector('#mostCommentTitle').innerHTML = `${title} <br /><span>by ${author}</span>`;
       document.querySelector('#mostCommentReview').innerHTML = review;
 
@@ -295,10 +323,13 @@ const getBookDetail = (bookId) => {
       const view = data.view;
       const user = data.userUid.username;
       const timestamp = data.timestamp;
+        
+        console.log(data);
+        
 
       //show book reivew
-      document.querySelector('#modalHeader').innerHTML = title;
-      document.querySelector('#bookCover').innerHTML = `<img src="${imgUrl}" alt="gmat">`;
+      document.querySelector('#modalHeader').innerHTML = 'title';
+      document.querySelector('#bookCover').innerHTML = `<img src="http://10.114.34.135/Upload/${imgUrl}" alt="gmat">`;
       document.querySelector('#bookAuthor').innerHTML = `Book author: ${author}`;
       document.querySelector('#viewsCounts').innerHTML = view;
       document.querySelector('#reviewAuthor').innerHTML = user;

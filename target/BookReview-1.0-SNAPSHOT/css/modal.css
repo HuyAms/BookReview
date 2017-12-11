@@ -1,5 +1,6 @@
-/* The Modal (background) */
-
+/* --------------------------------------------------
+   Modal background
+-----------------------------------------------------*/
 .modal {
   display: none;
   /* Hidden by default */
@@ -23,7 +24,9 @@
   /* Black w/ opacity */
 }
 
-/* Modal Content */
+/* --------------------------------------------------
+   Modal content
+-----------------------------------------------------*/
 
 .modal-content {
   margin: auto;
@@ -34,11 +37,17 @@
   flex-direction: column;
 }
 
+/* --------------------------------------------------
+   Modal triggers
+-----------------------------------------------------*/
+
 .postModalTrigger, .profileModalTrigger, .bookModalTrigger {
   cursor: pointer;
 }
 
-/* Add Animation - Zoom in the Modal */
+/* --------------------------------------------------
+   Animation when open modal
+-----------------------------------------------------*/
 
 .modal-content {
   -webkit-animation-name: zoom;
@@ -65,7 +74,9 @@
   }
 }
 
-/*highlight input*/
+/* --------------------------------------------------
+   Highlight input fields
+-----------------------------------------------------*/
 
 input[type=text], input[type=email], input[type=password], textarea {
   -webkit-transition: all 0.30s ease-in-out;
@@ -85,7 +96,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
-/* The Close Button */
+/* --------------------------------------------------
+   Modal close button
+-----------------------------------------------------*/
 
 .closeModal {
   position: absolute;
@@ -103,6 +116,10 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
   cursor: pointer;
 }
 
+/* --------------------------------------------------
+   Smaller screen sizes
+-----------------------------------------------------*/
+
 @media only screen and (max-width: 960px) {
   .modal-content {
     overflow: auto;
@@ -117,7 +134,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
     .modal-content {
         width: 100%;
         padding: 10px;
