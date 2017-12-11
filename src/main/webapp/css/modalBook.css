@@ -40,11 +40,19 @@
     width: 100%;
 }
 
+#bookTitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin-bottom: 1em;
+  font-size: 18px;
+  line-height: 30px;
+}
+
 .bookModal #wholeReview {
     width: 100%;
 }
 
-.bookModal #Additional #bookAuthor {
+.bookModal #Additional #bookAuthor, .#bookTitle {
     text-align: right;
     margin-bottom: 0;
 }

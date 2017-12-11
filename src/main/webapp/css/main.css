@@ -29,9 +29,8 @@ p {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   margin-bottom: 1em;
-    font-size: 18px;
-    line-height: 30px;
- 
+   font-size: 18px;
+  line-height: 30px;
 }
 
 a:focus {

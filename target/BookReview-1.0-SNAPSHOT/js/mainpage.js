@@ -328,7 +328,7 @@ const getBookDetail = (bookId) => {
         
 
       //show book reivew
-      document.querySelector('#modalHeader').innerHTML = 'title';
+      document.querySelector('#bookTitle').innerHTML = title;
       document.querySelector('#bookCover').innerHTML = `<img src="http://10.114.34.135/Upload/${imgUrl}" alt="gmat">`;
       document.querySelector('#bookAuthor').innerHTML = `Book author: ${author}`;
       document.querySelector('#viewsCounts').innerHTML = view;
