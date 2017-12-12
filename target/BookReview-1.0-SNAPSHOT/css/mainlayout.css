@@ -283,6 +283,21 @@ footer {
   }
 }
 
+@media only screen and (max-width: 850px) {
+    .spotLight {
+  flex-direction: column;
+}
+    
+    .spotLight>article {
+margin-bottom: 1em;
+}
+    
+        .spotLight>article:last-child {
+margin-bottom: 0em;
+}
+
+}
+
 @media only screen and (max-width: 720px) and (min-width:481px) {
     .main {
         flex-flow: column wrap;

@@ -52,8 +52,8 @@
     width: 100%;
 }
 
-.bookModal #Additional #bookAuthor, .#bookTitle {
-    text-align: right;
+.bookModal #Additional #bookAuthor, #bookTitle {
+    text-align: left;
     margin-bottom: 0;
 }
 
@@ -70,8 +70,7 @@
 
 .bookModal article h2 {
     text-align: center;
-    color: #1ab188;;
-    font-family: 'Quicksand', sans-serif;
+    color: #1ab188;
     font-size: 2em;
     margin-bottom: 12px;
     font-weight: 500;

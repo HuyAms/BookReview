@@ -68,3 +68,11 @@
 .categorybook label {
   flex: 1;
 }
+
+.categoryCheckbox {
+    margin: 0 10px;
+}
+
+.categoryCheckbox input {
+    margin-left: 5px;
+}

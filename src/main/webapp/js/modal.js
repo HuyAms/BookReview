@@ -9,7 +9,7 @@ let aboutModal = document.querySelector('.aboutModal');
 // Get the triggers
 let postTrigger = document.querySelector('.postModalTrigger');
 let profileTrigger = document.querySelector('.profileModalTrigger');
-// let bookTrigger = document.querySelector('.bookModalTrigger');
+//let bookTrigger = document.querySelector('.bookModalTrigger');
 let aboutTrigger = document.querySelector('.aboutModalTrigger');
 
 //Show modals when click on triggers
@@ -22,11 +22,12 @@ profileTrigger.addEventListener('click', (evt) => {
     getMyProfile();
 })
 
-   // bookTrigger.addEventListener('click', (evt) => {
-   //     bookModal.style.display = "block";
-   // })
+    /*bookTrigger.addEventListener('click', (evt) => {
+        bookModal.style.display = "block";
+    })*/
 aboutTrigger.addEventListener('click', (evt) => {
     aboutModal.style.display = "block";
+})
 
 // Get the <span> element that closes the modal
 let closePost = document.querySelector('.closePostModal');
@@ -196,7 +197,6 @@ const postBook = () => {
           document.querySelector('.closePostModal').click();
           document.querySelector('#postForm').reset();
           loadBook(localStorage.getItem('currentTab'));
-          alert('Congratulations, your book is now shared with everyone!');
         }
       }).catch((error) => {
         console.log('error: ' + error);
